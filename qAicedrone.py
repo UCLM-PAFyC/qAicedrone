@@ -76,7 +76,7 @@ IPyAicedroneProject = None
 from . import MMTDefinitions
 
 # Import the code for the DockWidget
-# from .model_management_tools_dockwidget import ModelManagementToolsDockWidget
+from .qAicedrone_dockwidget import qAicedroneDockWidget
 
 class qAicedrone:
     """QGIS Plugin Implementation."""
@@ -311,16 +311,16 @@ class qAicedrone:
                 msgBox.setText(text)
                 msgBox.exec_()
                 return
-            # self.iPyProject = IPyAicedroneProject()
-            # self.iPyProject.setPythonModulePath(self.path_libCpp)
-            # ret = self.iPyProject.initialize()
-            # if ret[0] == "False":
-            #     msgBox = QMessageBox()
-            #     msgBox.setIcon(QMessageBox.Information)
-            #     # msgBox.setWindowTitle(self.windowTitle)
-            #     msgBox.setText("\n" + ret[1])
-            #     msgBox.exec_()
-            #     return
+            self.iPyProject = IPyAicedroneProject()
+            self.iPyProject.setPythonModulePath(self.path_libCpp)
+            ret = self.iPyProject.initialize()
+            if ret[0] == "False":
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Information)
+                # msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("\n" + ret[1])
+                msgBox.exec_()
+                return
             path_file_qsettings = self.path_plugin + '/' + MMTDefinitions.CONST_SETTINGS_FILE_NAME
             self.settings = QSettings(path_file_qsettings, QSettings.IniFormat)
             self.pluginIsInitialized = True
@@ -342,11 +342,17 @@ class qAicedrone:
                                                    self.settings,
                                                    self.iPyProject)
 
-        # connect to provide cleanup on closing of dockwidget
+        # # connect to provide cleanup on closing of dockwidget
+        # self.dockwidget.closingPlugin.connect(self.onClosePlugin)
+        #
+        # # show the dockwidget
+        # # TODO: fix to allow choice of dock location
+        # self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
+        # self.dockwidget.show()
+
         self.dockwidget.closingPlugin.connect(self.onClosePlugin)
 
-        # show the dockwidget
-        # TODO: fix to allow choice of dock location
         self.iface.addDockWidget(Qt.LeftDockWidgetArea, self.dockwidget)
         self.dockwidget.show()
-
+        self.iface.mainWindow().showMaximized()
+        self.iface.mainWindow().update()
