@@ -113,7 +113,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.pluginPointCloudToolsInstance = None
         # self.pluginPointCloudToolsInstance = utils.plugins['point_cloud_tools']
         self.pluginPhotogrammetryToolsInstance = utils.plugins['photogrammetry_tools']
-        # self.initialize()
+        self.initialize()
 
         #### depuracion report
         # report = Report(self.iface,self.path_plugin)
@@ -128,6 +128,96 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     return
 
         ####
+
+
+    def addPhotogrammetryConnection(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        items = []
+        items.append(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        self.getPhotogrammetrySpatialiteConnections()
+        for connection in self.photogrammetryConnections.keys():
+            if not connection in self.photogrammetryConnectionsInProject:
+                items.append(connection)
+        item, ok = QInputDialog.getItem(self, "Select Photogrammetry Project",
+                                    "Photogrammetry Project:", items, 0, False)
+        if ok and item:
+            if item == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                return
+            connectionName = item
+            photogrammetrySpatialiteDbFileName = self.photogrammetryConnections[connectionName]
+            ret = self.iPyProject.mmtAddPhotogrammetryDb(dbFileName,
+                                                         photogrammetrySpatialiteDbFileName)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n"+ret[1])
+                msgBox.exec_()
+                return
+            else:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Process completed successfully")
+                msgBox.exec_()
+            self.photogrammetryConnectionsInProject[connectionName] = photogrammetrySpatialiteDbFileName
+            self.photogrammetriesComboBox.clear()
+            self.photogrammetriesComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+            for photogrammetryConnectionInProject in self.photogrammetryConnectionsInProject.keys():
+                self.photogrammetriesComboBox.addItem(photogrammetryConnectionInProject)
+        return
+
+
+    def addPointCloudFileManager(self):
+        # dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        # if not dbFileName:
+        #     msgBox = QMessageBox(self)
+        #     msgBox.setIcon(QMessageBox.Information)
+        #     msgBox.setWindowTitle(self.windowTitle)
+        #     msgBox.setText("Select Db file")
+        #     msgBox.exec_()
+        #     return
+        # items = []
+        # items.append(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        # self.getPointCloudSpatialiteConnections()
+        # for pointCloudConnection in self.pointCloudConnections.keys():
+        #     if not pointCloudConnection in self.pointCloudConnectionsInProject:
+        #         items.append(pointCloudConnection)
+        # item, ok = QInputDialog.getItem(self, "Select Point Cloud",
+        #                             "Point Cloud:", items, 0, False)
+        # if ok and item:
+        #     if item == MMTDefinitions.CONST_NO_COMBO_SELECT:
+        #         return
+        #     connectionName = item
+        #     pointCloudSpatialiteDbFileName = self.pointCloudConnections[connectionName]
+        #     ret = self.iPyProject.mmtAddPointCloudDb(dbFileName,
+        #                                              pointCloudSpatialiteDbFileName)
+        #     if ret[0] == "False":
+        #         msgBox = QMessageBox(self)
+        #         msgBox.setIcon(QMessageBox.Information)
+        #         msgBox.setWindowTitle(self.windowTitle)
+        #         msgBox.setText("Error:\n"+ret[1])
+        #         msgBox.exec_()
+        #         return
+        #     else:
+        #         msgBox = QMessageBox(self)
+        #         msgBox.setIcon(QMessageBox.Information)
+        #         msgBox.setWindowTitle(self.windowTitle)
+        #         msgBox.setText("Process completed successfully")
+        #         msgBox.exec_()
+        #     self.pointCloudConnectionsInProject[connectionName] = pointCloudSpatialiteDbFileName
+        #     self.pointCloudsComboBox.clear()
+        #     self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        #     for pointCloudConnectionInProject in self.pointCloudConnectionsInProject.keys():
+        #         self.pointCloudsComboBox.addItem(pointCloudConnectionInProject)
+        return
 
 
     def closeEvent(self, event):
@@ -259,6 +349,68 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
+    def getPhotogrammetrySpatialiteConnections(self):
+        self.photogrammetryConnections = {}
+        settings = QSettings()
+        settings.beginGroup('/SpatiaLite/connections')
+        list_str_keys = settings.allKeys()
+        paths = []
+        for key in list_str_keys:
+            paths.append(settings.value(key))
+        ret = self.iPyProject.getPhotogrammetrySpatialiteDbs(paths)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            self.pmTemporalPathLineEdit.setText("")
+            self.projectManagerTemporalPath = None
+            return
+        connectionNames = settings.childGroups()
+        cont = 0
+        for connectionName in connectionNames:
+            path = paths[cont]
+            if path in ret:
+                self.photogrammetryConnections[connectionName] = paths[cont]
+            cont = cont + 1
+        # self.pointCloudsComboBox.clear()
+        # self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        # for pointCloudConnection in self.pointCloudConnections.keys():
+        #     self.pointCloudsComboBox.addItem(pointCloudConnection)
+        # return
+
+
+    def getPhotogrammetrySpatialiteConnectionsInProject(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        self.photogrammetryConnectionsInProject = {}
+        ret = self.iPyProject.mmtGetPhotogrammetrySpatialiteDbsInProject(dbFileName)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.getPhotogrammetrySpatialiteConnections()
+        for photogrammetryConnection in self.photogrammetryConnections.keys():
+            path = self.photogrammetryConnections[photogrammetryConnection]
+            if path in ret:
+                self.photogrammetryConnectionsInProject[photogrammetryConnection] = path
+        self.photogrammetriesComboBox.clear()
+        self.photogrammetriesComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        for photogrammetryConnectionInProject in self.photogrammetryConnectionsInProject.keys():
+            self.photogrammetriesComboBox.addItem(photogrammetryConnectionInProject)
+        return
+
+
     def initialize(self):
         self.num_format = re.compile(r'^\-?[1-9][0-9]*\.?[0-9]*')
         self.dbFileName = None
@@ -311,6 +463,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # else:
             # qs.setValue('svg/searchPathsForSVG', svg_paths + [self.templatePath])
 
+        self.qmlRoisFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROIS_TEMPLATE
         # self.qmlPointCloudFileName = self.templatePath + PCTDefinitions.CONST_SYMBOLOGY_POINT_CLOUD_TEMPLATE
         ret = self.iPyProject.setModelDbManager()
         if ret[0] == "False":
@@ -330,14 +483,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     msgBox.exec_()
         #     return
         #
-        # ret = self.iPyProject.setPhotogrammetryManager()
-        # if ret[0] == "False":
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Error:\n"+ret[1])
-        #     msgBox.exec_()
-        #     return
+        ret = self.iPyProject.setPhotogrammetryManager()
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
 
         self.crsEpsgCode = -1
         self.verticalCrsEpsgCode = -1
@@ -488,12 +641,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # ###################################################
         # # Processing ToolsPage
         # ###################################################
-        # self.addPointCloudPushButton.clicked.connect(self.addPointCloudConnection)
-        # self.removePointCloudPushButton.clicked.connect(self.removePointCloudConnection)
+        self.addPointCloudPushButton.clicked.connect(self.addPointCloudConnection)
+        self.removePointCloudPushButton.clicked.connect(self.removePointCloudConnection)
         # self.openPointCloudPushButton.clicked.connect(self.openPointCloud)
         #
-        # self.addPhotogrammetryPushButton.clicked.connect(self.addPhotogrammetryConnection)
-        # self.removePhotogrammetryPushButton.clicked.connect(self.removePhotogrammetryConnection)
+        self.addPhotogrammetryPushButton.clicked.connect(self.addPhotogrammetryConnection)
+        self.removePhotogrammetryPushButton.clicked.connect(self.removePhotogrammetryConnection)
         # self.openPhotogrammetryPushButton.clicked.connect(self.openPhotogrammetry)
         # self.openPhotogrammetryPushButton.setEnabled(False)
         #
@@ -515,7 +668,57 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
 
     def closeProject(self):
+        if not self.dbFileName:
+            return
+        self.openProjectPushButton.setEnabled(False)
+        self.closeProjectPushButton.setEnabled(False)
+        # delete project in ram??
+        root = QgsProject.instance().layerTreeRoot()
+        self.removeGroup(root,self.layerTreeProjectName)
+        self.dbFileName = None
+        self.layerTreeProjectName = None
+        self.layerTreeProject = None
+        # self.layerTreePCTilesName = None
+        # self.layerTreePCTiles = None
+        self.projectsComboBox.setEnabled(True)
+        self.projectsComboBox.setCurrentIndex(0)
+        self.iface.mapCanvas().refresh()
+        self.processingToolsPage.setEnabled(False)
+        self.pointCloudsComboBox.clear()
+        self.processCommandComboBox.clear()
+        # self.pvAnomaliesVLayer = None
+        # self.pvAnomaliesPanelsVLayer = None
         return
+
+
+    def loadROIsLayer(self):
+        roisTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(roisTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = roisTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = roisTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer,False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlRoisFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+            else:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Impossible to Load table: " + roisTableName
+                                   +" into QGIS")
+                msgBox.exec_()
 
 
     def onModelManagementToolBoxChanged(self,i): #changed!
@@ -546,7 +749,166 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
 
     def openProject(self):
+        self.closeProjectPushButton.setEnabled(False)
+        self.dbFileName = None
+        self.layerTreeName = None
+        self.layerTree = None
+        connectionFileName = self.projectsComboBox.currentText()
+        if connectionFileName == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select project before")
+            msgBox.exec_()
+            return
+        connectionPath = self.modelManagementConnections[connectionFileName]
+        ret = self.iPyProject.mmtOpenProject(connectionPath)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            self.projectsComboBox.setCurrentIndex(0)
+            return
+        if self.projVersionMajor < 8:
+            ret = self.iPyProject.mmtGetProjectCrsEpsgCode(connectionPath)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n"+ret[1])
+                msgBox.exec_()
+                self.projectsComboBox.setCurrentIndex(0)
+                return
+            self.crsEpsgCode = ret[1]
+        else:
+            ret = self.iPyProject.mmtGetProjectCrsEpsgCodes(connectionPath)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n"+ret[1])
+                msgBox.exec_()
+                self.projectsComboBox.setCurrentIndex(0)
+                return
+            self.crsEpsgCode = ret[1]
+            self.verticalCrsEpsgCode = ret[2]
+            strCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.crsEpsgCode)
+            #
+            # self.addPCFsQgsProjectionSelectionWidget.setCrs(
+            #     QgsCoordinateReferenceSystem(strCrsEpsgCode))
+            # # self.addPCFsQgsProjectionSelectionWidget.setCrs(
+            # #     QgsCoordinateReferenceSystem(qLidarDefinitions.CONST_DEFAULT_CRS))
+            # self.setCrsAddPCFs()
+            self.plsfVerticalCRSsComboBox.setCurrentIndex(0)
+            if self.verticalCrsEpsgCode != -1:
+                strVerticalCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.verticalCrsEpsgCode)
+                index = self.plsfVerticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
+                if index != -1:
+                    self.plsfVerticalCRSsComboBox.setCurrentIndex(index)
+            self.plsfVerticalCRSsComboBox.setEnabled(False)
+            self.spsfVerticalCRSsComboBox.setCurrentIndex(0)
+            if self.verticalCrsEpsgCode != -1:
+                strVerticalCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.verticalCrsEpsgCode)
+                index = self.spsfVerticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
+                if index != -1:
+                    self.spsfVerticalCRSsComboBox.setCurrentIndex(index)
+            self.spsfVerticalCRSsComboBox.setEnabled(False)
+        ret = self.iPyProject.mmtGetProjectType(connectionPath)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            self.projectsComboBox.setCurrentIndex(0)
+            return
+        self.projectType = ret[1]
+        self.dbFileName = connectionPath
+        groupName = MMTDefinitions.CONST_LAYER_TREE_PROJECT_NAME
+        self.layerTreeProjectName = groupName + connectionFileName
+        root = QgsProject.instance().layerTreeRoot()
+        self.layerTreeProject = root.addGroup(self.layerTreeProjectName)
+        self.loadROIsLayer()
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
+        #     self.loadElectricPylonsLayer()
+        #     self.loadElectricPylonsConnectionsLayer()
+        #     self.loadHazardAreasMshLayer()
+        #     self.loadHazardAreasLayer()
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
+        #     self.loadPhotovoltaicArrayPanels()
+        #     self.loadPhotovoltaicPanels()
+        #     self.loadPhotovoltaicAnomaliesLayers()
+        # self.loadTilesLayer()
+        self.closeProjectPushButton.setEnabled(True)
+        self.openProjectPushButton.setEnabled(False)
+        self.projectsComboBox.setEnabled(False)
+        self.projectManagementTabWidget.setEnabled(True)
+        self.projectManagementTabWidget.setTabEnabled(0, False)
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
+        #     self.projectManagementTabWidget.setTabEnabled(1, True)
+        #     self.projectManagementTabWidget.setTabEnabled(2, False)
+        #     self.plsfNameShpRadioButton.setChecked(True)
+        #     self.selectPLSFNameShp()
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
+        #     self.projectManagementTabWidget.setTabEnabled(1, False)
+        #     self.projectManagementTabWidget.setTabEnabled(2, True)
+        #     self.spdSelectSFFieldsPushButton.setEnabled(False)
+        #     self.spsfProcessPushButton.setEnabled(False)
+        # # tilesTableName = PCTDefinitions.CONST_SPATIALITE_LAYERS_TILES_TABLE_NAME
+        # # layerList = QgsProject.instance().mapLayersByName(tilesTableName)
+        # # if not layerList:
+        # #     self.projectManagementTabWidget.setTabEnabled(2, False)
+        # # else:
+        # #     tilesLayer = layerList[0]
+        # #     if tilesLayer.featureCount() > 0:
+        # #         self.projectManagementTabWidget.setTabEnabled(2, True)
+
+        self.processingToolsPage.setEnabled(True)
+        # self.getPointCloudSpatialiteConnectionsInProject()
+        self.getPhotogrammetrySpatialiteConnectionsInProject()
+        # self.getCommands()
+        # # msgBox = QMessageBox(self)
+        # # msgBox.setIcon(QMessageBox.Information)
+        # # msgBox.setWindowTitle(self.windowTitle)
+        # # msgBox.setText("Process completed successfully")
+        # # msgBox.exec_()
+
+        ret = self.iPyProject.mmtSetProjectManagerTemporalPath(self.projectManagerTemporalPath)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtSetProjectManagerOutputPath(self.projectManagerOutputPath)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
         return
+
+
+    def refreshMapCanvas(self):
+        currentScale = self.iface.mapCanvas().scale()
+        newScale = currentScale * 1.001
+        self.iface.mapCanvas().zoomScale(newScale)
+
+
+    def removeGroup(self,root,name):
+        # root = QgsProject.instance().layerTreeRoot()
+        group = root.findGroup(name)
+        if not group is None:
+            for child in group.children():
+                dump = child.dump()
+                id = dump.split("=")[-1].strip()
+                QgsProject.instance().removeMapLayer(id)
+            root.removeChildNode(group)
 
 
     def selectNewDatabase(self):
@@ -564,6 +926,25 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
 
     def selectProject(self):
+        self.openProjectPushButton.setEnabled(False)
+        self.closeProjectPushButton.setEnabled(False)
+        projectFileName = self.projectsComboBox.currentText()
+        if projectFileName == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            self.projectManagementTabWidget.setEnabled(True)
+            self.projectManagementTabWidget.setTabEnabled(0, True)
+            self.projectManagementTabWidget.setTabEnabled(1, False)
+            self.projectManagementTabWidget.setTabEnabled(2, False)
+            self.projectManagementTabWidget.setCurrentIndex(0)
+            if self.dbFileName:
+                self.closeProject()
+        else:
+            self.projectManagementTabWidget.setEnabled(False)
+            # self.projectManagementTabWidget.setTabEnabled(0, False)
+            # self.projectManagementTabWidget.setTabEnabled(1, False)
+            # self.projectManagementTabWidget.setTabEnabled(2, False)
+            self.projectManagementTabWidget.setCurrentIndex(1)
+            self.openProjectPushButton.setEnabled(True)
+            self.closeProjectPushButton.setEnabled(False)
         return
 
 
@@ -664,4 +1045,88 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.roisShapefiles.append(file)
         self.roisFilesActiveFileExtensions = dlg.getActiveFileExtensions()
         self.numberOfRoisLineEdit.setText(str(len(self.roisShapefiles)))
+        return
+
+
+    def setCrs(self):
+        crs = self.projectQgsProjectionSelectionWidget.crs()
+        isValidCrs = crs.isValid()
+        crsAuthId = crs.authid()
+        if not "EPSG:" in crsAuthId:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Selected CRS is not EPSG")
+            msgBox.exec_()
+            self.projectQgsProjectionSelectionWidget.setCrs(
+                QgsCoordinateReferenceSystem(MMTDefinitions.CONST_DEFAULT_CRS))
+            return
+        crsEpsgCode = int(crsAuthId.replace('EPSG:',''))
+        crsOsr = osr.SpatialReference()  # define test1
+        if crsOsr.ImportFromEPSG(crsEpsgCode) != 0:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error importing OSR CRS from EPSG code" + str(crsEpsgCode))
+            msgBox.exec_()
+            self.projectQgsProjectionSelectionWidget.setCrs(
+                QgsCoordinateReferenceSystem(MMTDefinitions.CONST_DEFAULT_CRS))
+            return
+        if not crsOsr.IsProjected():
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Selected CRS is not a projected CRS")
+            msgBox.exec_()
+            self.projectQgsProjectionSelectionWidget.setCrs(
+                QgsCoordinateReferenceSystem(MMTDefinitions.CONST_DEFAULT_CRS))
+            return
+        self.setVerticalCRSs(crsEpsgCode)
+        crsEpsgCodeString = 'EPSG:'+str(crsEpsgCode)
+        # self.addPCFsQgsProjectionSelectionWidget.setCrs(
+        #     QgsCoordinateReferenceSystem(crsEpsgCodeString))
+        self.crsEpsgCode = crsEpsgCode
+
+
+    def setVerticalCRSs(self,crsEpsgCode):
+        self.verticalCRSsComboBox.clear()
+        self.plsfVerticalCRSsComboBox.clear()
+        self.spsfVerticalCRSsComboBox.clear()
+        self.verticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
+        self.plsfVerticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
+        self.spsfVerticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
+        ret = self.iPyProject.mmtGetVerticalCRSs(crsEpsgCode)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            # self.projectsComboBox.setCurrentIndex(0)
+            return
+        else:
+            cont = 0
+            for value in ret:
+                if cont > 0:
+                    # strCrs = qLidarDefinitions.CONST_EPSG_PREFIX + str(value)
+                    self.verticalCRSsComboBox.addItem(value)
+                    self.plsfVerticalCRSsComboBox.addItem(value)
+                    self.spsfVerticalCRSsComboBox.addItem(value)
+                cont = cont + 1
+            # msgBox = QMessageBox(self)
+            # msgBox.setIcon(QMessageBox.Information)
+            # msgBox.setWindowTitle(self.windowTitle)
+            # msgBox.setText("Process completed successfully")
+            # msgBox.exec_()
+        strCrs = MMTDefinitions.CONST_EPSG_PREFIX + str(crsEpsgCode)
+        if strCrs == MMTDefinitions.CONST_DEFAULT_CRS:
+            index = self.verticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
+            if index > 0:
+                self.verticalCRSsComboBox.setCurrentIndex(index)
+            index = self.plsfVerticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
+            if index > 0:
+                self.plsfVerticalCRSsComboBox.setCurrentIndex(index)
+            index = self.spsfVerticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
+            if index > 0:
+                self.spsfVerticalCRSsComboBox.setCurrentIndex(index)
         return

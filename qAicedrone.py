@@ -63,6 +63,7 @@ IPyAicedroneProject = None
 # else:
 #     from .model_management_tools_dockwidget import ModelManagementToolsDockWidget
 #     from libCpp.libPyModelManagementTools import IPyMMTProject
+from libCpp.libPyAicedrone import IPyAicedroneProject
 
 # pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 # pluginPath = os.path.dirname(os.path.realpath(__file__))
