@@ -175,48 +175,46 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
-    def addPointCloudConnection(self):
-        # dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
-        # if not dbFileName:
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Select Db file")
-        #     msgBox.exec_()
-        #     return
-        # items = []
-        # items.append(MMTDefinitions.CONST_NO_COMBO_SELECT)
-        # self.getPointCloudConnections()
-        # for pointCloudConnection in self.pointCloudConnections.keys():
-        #     if not pointCloudConnection in self.pointCloudConnectionsInProject:
-        #         items.append(pointCloudConnection)
-        # item, ok = QInputDialog.getItem(self, "Select Point Cloud",
-        #                             "Point Cloud:", items, 0, False)
-        # if ok and item:
-        #     if item == MMTDefinitions.CONST_NO_COMBO_SELECT:
-        #         return
-        #     connectionName = item
-        #     pointCloudSpatialiteDbFileName = self.pointCloudConnections[connectionName]
-        #     ret = self.iPyProject.mmtAddPointCloudDb(dbFileName,
-        #                                              pointCloudSpatialiteDbFileName)
-        #     if ret[0] == "False":
-        #         msgBox = QMessageBox(self)
-        #         msgBox.setIcon(QMessageBox.Information)
-        #         msgBox.setWindowTitle(self.windowTitle)
-        #         msgBox.setText("Error:\n"+ret[1])
-        #         msgBox.exec_()
-        #         return
-        #     else:
-        #         msgBox = QMessageBox(self)
-        #         msgBox.setIcon(QMessageBox.Information)
-        #         msgBox.setWindowTitle(self.windowTitle)
-        #         msgBox.setText("Process completed successfully")
-        #         msgBox.exec_()
-        #     self.pointCloudConnectionsInProject[connectionName] = pointCloudSpatialiteDbFileName
-        #     self.pointCloudsComboBox.clear()
-        #     self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
-        #     for pointCloudConnectionInProject in self.pointCloudConnectionsInProject.keys():
-        #         self.pointCloudsComboBox.addItem(pointCloudConnectionInProject)
+    def addPointCloud(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        strDir = QFileDialog.getExistingDirectory(self, "Select point cloud path", self.path,
+                                                  QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
+        if strDir:
+            for pointCloud in self.pointCloudsInProject:
+                if pointCloud.lower() == strDir.lower():
+                    return
+            ret = self.iPyProject.mmtAddPointCloud(dbFileName, strDir)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                self.pmOutputPathLineEdit.setText("")
+                self.projectManagerOutputPath = None
+                return
+            else:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Process completed successfully")
+                msgBox.exec_()
+            self.pointCloudsInProject.append(strDir)
+            self.pointCloudsComboBox.clear()
+            self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+            for pointCloud in self.pointCloudsInProject:
+                self.pointCloudsComboBox.addItem(pointCloud)
+            self.projectManagerOutputPath = strDir
+            self.settings.setValue("project_management_output_path", self.projectManagerOutputPath)
+            self.settings.sync()
+            self.pmOutputPathLineEdit.setText(strDir)
         return
 
 
@@ -411,36 +409,71 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
-    def getPointCloudConnections(self):
-        self.pointCloudConnections = {}
-        settings = QSettings()
-        settings.beginGroup('/SpatiaLite/connections')
-        list_str_keys = settings.allKeys()
-        paths = []
-        for key in list_str_keys:
-            paths.append(settings.value(key))
-        ret = self.iPyProject.getPointCloudSpatialiteDbs(paths)
+    def getPointCloudsInProject(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        self.pointCloudsInProject = []
+        ret = self.iPyProject.mmtGetPointCloudsInProject(dbFileName)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
             msgBox.setText("Error:\n" + ret[1])
             msgBox.exec_()
-            self.pmTemporalPathLineEdit.setText("")
-            self.projectManagerTemporalPath = None
             return
-        connectionNames = settings.childGroups()
+        # self.getPhotogrammetrySpatialiteConnections()
+        # for photogrammetryConnection in self.photogrammetryConnections.keys():
+        #     path = self.photogrammetryConnections[photogrammetryConnection]
+        #     if path in ret:
+        #         self.photogrammetryConnectionsInProject[photogrammetryConnection] = path
         cont = 0
-        for connectionName in connectionNames:
-            path = paths[cont]
-            if path in ret:
-                self.pointCloudConnections[connectionName] = paths[cont]
+        for value in ret:
+            if cont > 0:
+                self.pointCloudsInProject.append(value)
             cont = cont + 1
-        # self.pointCloudsComboBox.clear()
-        # self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
-        # for pointCloudConnection in self.pointCloudConnections.keys():
-        #     self.pointCloudsComboBox.addItem(pointCloudConnection)
-        # return
+        self.pointCloudsComboBox.clear()
+        self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        for pointCloudInProject in self.pointCloudsInProject:
+            self.pointCloudsComboBox.addItem(pointCloudInProject)
+        return
+
+
+    # def getPointCloudConnections(self):
+    #     self.pointCloudConnections = {}
+    #     settings = QSettings()
+    #     settings.beginGroup('/SpatiaLite/connections')
+    #     list_str_keys = settings.allKeys()
+    #     paths = []
+    #     for key in list_str_keys:
+    #         paths.append(settings.value(key))
+    #     ret = self.iPyProject.getPointCloudSpatialiteDbs(paths)
+    #     if ret[0] == "False":
+    #         msgBox = QMessageBox(self)
+    #         msgBox.setIcon(QMessageBox.Information)
+    #         msgBox.setWindowTitle(self.windowTitle)
+    #         msgBox.setText("Error:\n" + ret[1])
+    #         msgBox.exec_()
+    #         self.pmTemporalPathLineEdit.setText("")
+    #         self.projectManagerTemporalPath = None
+    #         return
+    #     connectionNames = settings.childGroups()
+    #     cont = 0
+    #     for connectionName in connectionNames:
+    #         path = paths[cont]
+    #         if path in ret:
+    #             self.pointCloudConnections[connectionName] = paths[cont]
+    #         cont = cont + 1
+    #     # self.pointCloudsComboBox.clear()
+    #     # self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+    #     # for pointCloudConnection in self.pointCloudConnections.keys():
+    #     #     self.pointCloudsComboBox.addItem(pointCloudConnection)
+    #     # return
 
 
     def initialize(self):
@@ -450,8 +483,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.layerTree = None
         self.projectType = None
         self.modelManagementConnections = {}
-        self.pointCloudConnections = {}
-        self.pointCloudConnectionsInProject = {}
+        # self.pointCloudConnections = {}
+        self.pointCloudsInProject = []
         self.photogrammetryConnections = {}
         self.photogrammetryConnectionsInProject = {}
         self.windowTitle = MMTDefinitions.CONST_PROGRAM_NAME
@@ -673,14 +706,19 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # ###################################################
         # # Processing ToolsPage
         # ###################################################
-        self.addPointCloudPushButton.clicked.connect(self.addPointCloudConnection)
-        self.removePointCloudPushButton.clicked.connect(self.removePointCloudConnection)
-        # self.openPointCloudPushButton.clicked.connect(self.openPointCloud)
+        self.addPointCloudPushButton.clicked.connect(self.addPointCloud)
+        self.removePointCloudPushButton.clicked.connect(self.removePointCloud)
+        self.openPointCloudPushButton.clicked.connect(self.openPointCloud)
+        self.openPointCloudPushButton.setEnabled(False)
+        self.pointCloudsComboBox.currentIndexChanged.connect(self.selectPointCloud)
+        self.removePointCloudPushButton.setEnabled(False)
         #
         self.addPhotogrammetryPushButton.clicked.connect(self.addPhotogrammetryConnection)
         self.removePhotogrammetryPushButton.clicked.connect(self.removePhotogrammetryConnection)
         self.openPhotogrammetryPushButton.clicked.connect(self.openPhotogrammetry)
         self.openPhotogrammetryPushButton.setEnabled(False)
+        self.photogrammetriesComboBox.currentIndexChanged.connect(self.selectPhotogrammetry)
+        self.removePhotogrammetryPushButton.setEnabled(False)
         #
         # self.processCommandComboBox.currentIndexChanged.connect(self.selectCommand)
         # self.commandParamtersPushButton.clicked.connect(self.selectCommandParameters)
@@ -781,6 +819,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
 
     def openPhotogrammetry(self):
+        return
+
+
+    def openPointCloud(self):
         return
 
 
@@ -902,7 +944,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # #         self.projectManagementTabWidget.setTabEnabled(2, True)
 
         self.processingToolsPage.setEnabled(True)
-        # self.getPointCloudSpatialiteConnectionsInProject()
+        self.getPointCloudsInProject()
         self.getPhotogrammetrySpatialiteConnectionsInProject()
         # self.getCommands()
         # # msgBox = QMessageBox(self)
@@ -983,39 +1025,38 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
-    def removePointCloudConnection(self):
-        # dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
-        # if not dbFileName:
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Select Db file")
-        #     msgBox.exec_()
-        #     return
-        # selectedPointCloudConnectionInProject = self.pointCloudsComboBox.currentText()
-        # if selectedPointCloudConnectionInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
-        #     return
-        # pointCloudSpatialiteDbFileName = self.pointCloudConnectionsInProject[selectedPointCloudConnectionInProject]
-        # ret = self.iPyProject.mmtRemovePointCloudDb(dbFileName,
-        #                                             pointCloudSpatialiteDbFileName)
-        # if ret[0] == "False":
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Error:\n"+ret[1])
-        #     msgBox.exec_()
-        #     return
-        # else:
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Process completed successfully")
-        #     msgBox.exec_()
-        # del self.pointCloudConnectionsInProject[selectedPointCloudConnectionInProject]
-        # self.pointCloudsComboBox.clear()
-        # self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
-        # for pointCloudConnectionInProject in self.pointCloudConnectionsInProject.keys():
-        #     self.pointCloudsComboBox.addItem(pointCloudConnectionInProject)
+    def removePointCloud(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        selectedPointCloudInProject = self.pointCloudsComboBox.currentText()
+        if selectedPointCloudInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            return
+        ret = self.iPyProject.mmtRemovePointCloud(dbFileName,
+                                                  selectedPointCloudInProject)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        else:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Process completed successfully")
+            msgBox.exec_()
+        self.pointCloudsInProject.remove(selectedPointCloudInProject)
+        self.pointCloudsComboBox.clear()
+        self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        for pointCloud in self.pointCloudsInProject:
+            self.pointCloudsComboBox.addItem(pointCloud)
         return
 
 
@@ -1031,6 +1072,22 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.settings.setValue("last_path", self.path)
             self.settings.sync()
         return
+
+
+    def selectPhotogrammetry(self):
+        self.openPhotogrammetryPushButton.setEnabled(False)
+        self.removePhotogrammetryPushButton.setEnabled(False)
+        photogrammetry = self.photogrammetriesComboBox.currentText()
+        if photogrammetry != MMTDefinitions.CONST_NO_COMBO_SELECT:
+            self.removePhotogrammetryPushButton.setEnabled(True)
+
+
+    def selectPointCloud(self):
+        self.openPointCloudPushButton.setEnabled(False)
+        self.removePointCloudPushButton.setEnabled(False)
+        pointCloud = self.pointCloudsComboBox.currentText()
+        if pointCloud != MMTDefinitions.CONST_NO_COMBO_SELECT:
+            self.removePointCloudPushButton.setEnabled(True)
 
 
     def selectProject(self):
@@ -1060,7 +1117,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strDir = QFileDialog.getExistingDirectory(self, "Select directory", self.projectManagerOutputPath,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         if strDir:
-            ret = self.iPyProject.mmtSetProjectManagerOutputPath(self.projectManagerOutputPath)
+            ret = self.iPyProject.mmtSetProjectManagerOutputPath(strDir)
             if ret[0] == "False":
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
@@ -1081,7 +1138,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strDir = QFileDialog.getExistingDirectory(self,"Select directory", self.projectManagerTemporalPath,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
         if strDir:
-            ret = self.iPyProject.mmtSetProjectManagerTemporalPath(self.projectManagerTemporalPath)
+            ret = self.iPyProject.mmtSetProjectManagerTemporalPath(strDir)
             if ret[0] == "False":
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
