@@ -314,6 +314,36 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
+    def getCommands(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtGetCommands(dbFileName)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        commands = []
+        cont = 0
+        for value in ret:
+            if cont > 0:
+                commands.append(value)
+            cont = cont + 1
+        self.processCommandComboBox.clear()
+        self.processCommandComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
+        for pointCloudCommand in commands:
+            self.processCommandComboBox.addItem(pointCloudCommand)
+        return
+
+
     def getModelManagementSpatialiteConnections(self):
         self.modelManagementConnections = {}
         settings = QSettings()
@@ -721,7 +751,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.removePhotogrammetryPushButton.setEnabled(False)
         #
         # self.processCommandComboBox.currentIndexChanged.connect(self.selectCommand)
-        # self.commandParamtersPushButton.clicked.connect(self.selectCommandParameters)
+        self.commandParamtersPushButton.clicked.connect(self.selectCommandParameters)
         # self.processCommandPushButton.clicked.connect(self.selectCommandProcess)
         # self.processCommandPushButton.setEnabled(False)
         # self.reportGroupBox.setVisible(False)
@@ -946,7 +976,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.processingToolsPage.setEnabled(True)
         self.getPointCloudsInProject()
         self.getPhotogrammetrySpatialiteConnectionsInProject()
-        # self.getCommands()
+        self.getCommands()
         # # msgBox = QMessageBox(self)
         # # msgBox.setIcon(QMessageBox.Information)
         # # msgBox.setWindowTitle(self.windowTitle)
@@ -1057,6 +1087,29 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.pointCloudsComboBox.addItem(MMTDefinitions.CONST_NO_COMBO_SELECT)
         for pointCloud in self.pointCloudsInProject:
             self.pointCloudsComboBox.addItem(pointCloud)
+        return
+
+
+    def selectCommandParameters(self):
+        command = self.processCommandComboBox.currentText()
+        if command == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            return
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtSelectCommandParameters(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
         return
 
 
