@@ -750,11 +750,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.photogrammetriesComboBox.currentIndexChanged.connect(self.selectPhotogrammetry)
         self.removePhotogrammetryPushButton.setEnabled(False)
         #
-        # self.processCommandComboBox.currentIndexChanged.connect(self.selectCommand)
+        self.processCommandComboBox.currentIndexChanged.connect(self.selectCommand)
         self.commandParamtersPushButton.clicked.connect(self.selectCommandParameters)
-        # self.processCommandPushButton.clicked.connect(self.selectCommandProcess)
-        # self.processCommandPushButton.setEnabled(False)
+        self.processCommandPushButton.clicked.connect(self.selectCommandProcess)
+        self.commandParamtersPushButton.setEnabled(False)
+        self.processCommandPushButton.setEnabled(False)
         # self.reportGroupBox.setVisible(False)
+        self.reportGroupBox.setEnabled(False)
         # self.reportReferenceLayerComboBox.setFilters(QgsMapLayerProxyModel.RasterLayer)
         # self.reportReferenceLayerComboBox.layerChanged.connect(self.selectReportReferenceLayerComboBox)
         # self.reportSelectedFeatureCheckBox.stateChanged.connect(self.selectReportSelectedFeature)
@@ -901,28 +903,21 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.projectsComboBox.setCurrentIndex(0)
                 return
             self.crsEpsgCode = ret[1]
-            self.verticalCrsEpsgCode = ret[2]
             strCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.crsEpsgCode)
+            self.projectQgsProjectionSelectionWidget.setCrs(QgsCoordinateReferenceSystem(strCrsEpsgCode))
+            self.verticalCrsEpsgCode = ret[2]
             #
             # self.addPCFsQgsProjectionSelectionWidget.setCrs(
             #     QgsCoordinateReferenceSystem(strCrsEpsgCode))
             # # self.addPCFsQgsProjectionSelectionWidget.setCrs(
             # #     QgsCoordinateReferenceSystem(qLidarDefinitions.CONST_DEFAULT_CRS))
             # self.setCrsAddPCFs()
-            self.plsfVerticalCRSsComboBox.setCurrentIndex(0)
+            self.verticalCRSsComboBox.setCurrentIndex(0)
             if self.verticalCrsEpsgCode != -1:
                 strVerticalCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.verticalCrsEpsgCode)
-                index = self.plsfVerticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
+                index = self.verticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
                 if index != -1:
-                    self.plsfVerticalCRSsComboBox.setCurrentIndex(index)
-            self.plsfVerticalCRSsComboBox.setEnabled(False)
-            self.spsfVerticalCRSsComboBox.setCurrentIndex(0)
-            if self.verticalCrsEpsgCode != -1:
-                strVerticalCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.verticalCrsEpsgCode)
-                index = self.spsfVerticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
-                if index != -1:
-                    self.spsfVerticalCRSsComboBox.setCurrentIndex(index)
-            self.spsfVerticalCRSsComboBox.setEnabled(False)
+                    self.verticalCRSsComboBox.setCurrentIndex(index)
         ret = self.iPyProject.mmtGetProjectType(connectionPath)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
@@ -1090,6 +1085,30 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
 
+    def selectCommand(self):
+        if self.projectsComboBox.currentText() == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            return
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        # self.reportGroupBox.setVisible(False)
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            self.processCommandPushButton.setEnabled(False)
+            return
+        command = self.processCommandComboBox.currentText()
+        if command == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            self.processCommandPushButton.setEnabled(False)
+            self.commandParamtersPushButton.setEnabled(False)
+            return
+        # processCommandIsEnabled = self.iPyProject.mmtGetEnabledProcessCommand(command)
+        # self.processCommandPushButton.setEnabled(processCommandIsEnabled)
+        self.commandParamtersPushButton.setEnabled(True)
+        self.processCommandPushButton.setEnabled(True)
+
+
     def selectCommandParameters(self):
         command = self.processCommandComboBox.currentText()
         if command == MMTDefinitions.CONST_NO_COMBO_SELECT:
@@ -1110,6 +1129,142 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Error:\n"+ret[1])
             msgBox.exec_()
             return
+        return
+
+
+    def selectCommandProcess(self):
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        command = self.processCommandComboBox.currentText()
+        if command == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select command to process")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtGetCommandNeedsPointCloudDb(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        needsPointCloudDb = False
+        strNeeds = ret[1]
+        strNeeds = strNeeds.lower()
+        if strNeeds == "true":
+            needsPointCloudDb = True
+        ret = self.iPyProject.mmtGetCommandNeedsPhotogrammetryDb(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        needsPhotogrammetryDb = False
+        strNeeds = ret[1]
+        strNeeds = strNeeds.lower()
+        if strNeeds == "true":
+            needsPhotogrammetryDb = True
+        pointCloudSpatialiteDbFileName = ""
+        photogrammetrySpatialiteDbFileName = ""
+        if needsPointCloudDb:
+            selectedPointCloudConnectionInProject = self.pointCloudsComboBox.currentText()
+            if selectedPointCloudConnectionInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Point Cloud Project")
+                msgBox.exec_()
+                return
+            # pointCloudSpatialiteDbFileName = self.pointCloudConnectionsInProject[selectedPointCloudConnectionInProject]
+        if needsPhotogrammetryDb:
+            selectedPhotogrammetryInProject = self.photogrammetriesComboBox.currentText()
+            if selectedPhotogrammetryInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Photogrammetry Project")
+                msgBox.exec_()
+                return
+            photogrammetrySpatialiteDbFileName = self.photogrammetryConnectionsInProject[selectedPhotogrammetryInProject]
+        # initialDateTime = QDateTime.currentDateTime()
+        # ret = self.iPyProject.mmtProcessCommand(dbFileName,command,
+        #                                         pointCloudSpatialiteDbFileName,
+        #                                         photogrammetrySpatialiteDbFileName)
+        # if ret[0] == "False":
+        #     msgBox = QMessageBox(self)
+        #     msgBox.setIcon(QMessageBox.Information)
+        #     msgBox.setWindowTitle(self.windowTitle)
+        #     msgBox.setText("Error:\n"+ret[1])
+        #     msgBox.exec_()
+        #     return
+        #
+        # finalDateTime = QDateTime.currentDateTime()
+        # initialSeconds = initialDateTime.toTime_t()
+        # finalSeconds = finalDateTime.toTime_t()
+        # totalDurationSeconds = finalSeconds - initialSeconds
+        # durationDays = floor(totalDurationSeconds / 60.0 / 60.0 / 24.0)
+        # durationHours = floor((totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0) / 60.0 / 60.0)
+        # durationMinutes = floor(
+        #     (totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0) / 60.0)
+        # durationSeconds = totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0 - durationMinutes * 60.0
+        # msgTtime = "- Process time:\n"
+        # msgTtime += "  - Start time of the process ......................: "
+        # msgTtime += initialDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
+        # msgTtime += "\n"
+        # msgTtime += "  - End time of the process ........................: "
+        # msgTtime += finalDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
+        # msgTtime += "\n"
+        # msgTtime += "  - Number of total seconds ........................: "
+        # msgTtime += f"{totalDurationSeconds:.3f}"  # QString.number(totalDurationSeconds, 'f', 3)
+        # msgTtime += "\n"
+        # msgTtime += "    - Number of days ...............................: "
+        # msgTtime += str(durationDays)  # QString.number(durationDays)
+        # msgTtime += "\n"
+        # msgTtime += "    - Number of hours ..............................: "
+        # msgTtime += str(durationHours)  # QString.number(durationHours)
+        # msgTtime += "\n"
+        # msgTtime += "    - Number of minutes ............................: "
+        # msgTtime += str(durationMinutes)  # QString.number(durationMinutes)
+        # msgTtime += "\n"
+        # msgTtime += "    - Number of seconds ............................: "
+        # msgTtime += f"{durationSeconds:.3f}"  # QString.number(durationSeconds, 'f', 3)
+        # msgTtime += "\n"
+        # msg = "Process completed successfully"
+        # msg += "\n"
+        # msg += msgTtime
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText(msg)
+        # msgBox.exec_()
+        #
+        # if ret[1] == "True": #needReloadProject:
+        #     msg = "Before the next step, QGis and the Project must be reopened "
+        #     msgBox = QMessageBox(self)
+        #     msgBox.setIcon(QMessageBox.Information)
+        #     msgBox.setWindowTitle(self.windowTitle)
+        #     msgBox.setText(msg)
+        #     msgBox.exec_()
+        #
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
+        #     self.loadHazardAreasMshLayer()
+        #     self.loadHazardAreasLayer()
+        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
+        #     self.loadPhotovoltaicArrayPanels()
+        #     self.loadPhotovoltaicPanels()
+        #     self.loadPhotovoltaicAnomaliesLayers()
+        # self.refreshMapCanvas()
         return
 
 
@@ -1308,11 +1463,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     def setVerticalCRSs(self,crsEpsgCode):
         self.verticalCRSsComboBox.clear()
-        self.plsfVerticalCRSsComboBox.clear()
-        self.spsfVerticalCRSsComboBox.clear()
         self.verticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
-        self.plsfVerticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
-        self.spsfVerticalCRSsComboBox.addItem(MMTDefinitions.CONST_ELLIPSOID_HEIGHT)
         ret = self.iPyProject.mmtGetVerticalCRSs(crsEpsgCode)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
@@ -1328,8 +1479,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 if cont > 0:
                     # strCrs = qLidarDefinitions.CONST_EPSG_PREFIX + str(value)
                     self.verticalCRSsComboBox.addItem(value)
-                    self.plsfVerticalCRSsComboBox.addItem(value)
-                    self.spsfVerticalCRSsComboBox.addItem(value)
                 cont = cont + 1
             # msgBox = QMessageBox(self)
             # msgBox.setIcon(QMessageBox.Information)
@@ -1341,10 +1490,4 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             index = self.verticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
             if index > 0:
                 self.verticalCRSsComboBox.setCurrentIndex(index)
-            index = self.plsfVerticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
-            if index > 0:
-                self.plsfVerticalCRSsComboBox.setCurrentIndex(index)
-            index = self.spsfVerticalCRSsComboBox.findText(MMTDefinitions.CONST_DEFAULT_VERTICAL_CRS)#, QtCore.Qt.MatchFixedString)
-            if index > 0:
-                self.spsfVerticalCRSsComboBox.setCurrentIndex(index)
         return

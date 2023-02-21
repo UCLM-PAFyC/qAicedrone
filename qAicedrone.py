@@ -29,8 +29,6 @@ from .resources import *
 
 import os.path
 import sys
-# sys.path.append("C:\Program Files\JetBrains\PyCharm 2018.3.3\debug-eggs\pycharm-debug.egg") # dhl
-# # sys.path.append("C:\Program Files\JetBrains\PyCharm 2019.2.5\debug-eggs\pycharm-debug.egg") # bfg
 # sys.path.append("C:\Program Files\JetBrains\PyCharm 2020.3\debug-eggs\pydevd-pycharm.egg") # dhl
 # import pydevd
 

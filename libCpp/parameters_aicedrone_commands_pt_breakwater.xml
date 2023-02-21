@@ -1,3 +1,95 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_Shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Shapefile polygons 2D, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/Productos_geomaticos/breakwater_cubes_zone_1.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MinNumberOfPointsByPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimal number of points required for a plane</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>500</Value>
+        <MaximumValue>10000</MaximumValue>
+        <MinimumValue>50</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaxDistanceToPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance to plane for points within (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.03</Value>
+        <MaximumValue>0.15</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_SamplingResolution</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Should correspond to the distance between neighboring points in the data (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.03</Value>
+        <MaximumValue>0.15</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaxNormalAngleDeviationToPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum deviation from the ideal shape normal vector (in degrees)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>5.0</Value>
+        <MaximumValue>25.0</MaximumValue>
+        <MinimumValue>1.0</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaxNormalAngleDeviationToPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Probability that no better candidate was overlooked during sampling (the lower the better!)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.001</Value>
+        <MaximumValue>0.100</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_RemoveSegmentedPoints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Remove segmented points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
 </ParametersManager>
