@@ -1175,18 +1175,17 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         strNeeds = strNeeds.lower()
         if strNeeds == "true":
             needsPhotogrammetryDb = True
-        pointCloudSpatialiteDbFileName = ""
+        pointCloudPath = ""
         photogrammetrySpatialiteDbFileName = ""
         if needsPointCloudDb:
-            selectedPointCloudConnectionInProject = self.pointCloudsComboBox.currentText()
-            if selectedPointCloudConnectionInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
+            pointCloudPath = self.pointCloudsComboBox.currentText()
+            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
                 msgBox.setWindowTitle(self.windowTitle)
                 msgBox.setText("Select Point Cloud Project")
                 msgBox.exec_()
                 return
-            # pointCloudSpatialiteDbFileName = self.pointCloudConnectionsInProject[selectedPointCloudConnectionInProject]
         if needsPhotogrammetryDb:
             selectedPhotogrammetryInProject = self.photogrammetriesComboBox.currentText()
             if selectedPhotogrammetryInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
@@ -1197,66 +1196,67 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.exec_()
                 return
             photogrammetrySpatialiteDbFileName = self.photogrammetryConnectionsInProject[selectedPhotogrammetryInProject]
-        # initialDateTime = QDateTime.currentDateTime()
-        # ret = self.iPyProject.mmtProcessCommand(dbFileName,command,
-        #                                         pointCloudSpatialiteDbFileName,
-        #                                         photogrammetrySpatialiteDbFileName)
-        # if ret[0] == "False":
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Error:\n"+ret[1])
-        #     msgBox.exec_()
-        #     return
-        #
-        # finalDateTime = QDateTime.currentDateTime()
-        # initialSeconds = initialDateTime.toTime_t()
-        # finalSeconds = finalDateTime.toTime_t()
-        # totalDurationSeconds = finalSeconds - initialSeconds
-        # durationDays = floor(totalDurationSeconds / 60.0 / 60.0 / 24.0)
-        # durationHours = floor((totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0) / 60.0 / 60.0)
-        # durationMinutes = floor(
-        #     (totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0) / 60.0)
-        # durationSeconds = totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0 - durationMinutes * 60.0
-        # msgTtime = "- Process time:\n"
-        # msgTtime += "  - Start time of the process ......................: "
-        # msgTtime += initialDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
-        # msgTtime += "\n"
-        # msgTtime += "  - End time of the process ........................: "
-        # msgTtime += finalDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
-        # msgTtime += "\n"
-        # msgTtime += "  - Number of total seconds ........................: "
-        # msgTtime += f"{totalDurationSeconds:.3f}"  # QString.number(totalDurationSeconds, 'f', 3)
-        # msgTtime += "\n"
-        # msgTtime += "    - Number of days ...............................: "
-        # msgTtime += str(durationDays)  # QString.number(durationDays)
-        # msgTtime += "\n"
-        # msgTtime += "    - Number of hours ..............................: "
-        # msgTtime += str(durationHours)  # QString.number(durationHours)
-        # msgTtime += "\n"
-        # msgTtime += "    - Number of minutes ............................: "
-        # msgTtime += str(durationMinutes)  # QString.number(durationMinutes)
-        # msgTtime += "\n"
-        # msgTtime += "    - Number of seconds ............................: "
-        # msgTtime += f"{durationSeconds:.3f}"  # QString.number(durationSeconds, 'f', 3)
-        # msgTtime += "\n"
-        # msg = "Process completed successfully"
-        # msg += "\n"
-        # msg += msgTtime
-        # msgBox = QMessageBox(self)
-        # msgBox.setIcon(QMessageBox.Information)
-        # msgBox.setWindowTitle(self.windowTitle)
-        # msgBox.setText(msg)
-        # msgBox.exec_()
-        #
-        # if ret[1] == "True": #needReloadProject:
-        #     msg = "Before the next step, QGis and the Project must be reopened "
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText(msg)
-        #     msgBox.exec_()
-        #
+        initialDateTime = QDateTime.currentDateTime()
+        ret = self.iPyProject.mmtProcessCommand(dbFileName,
+                                                command,
+                                                pointCloudPath,
+                                                photogrammetrySpatialiteDbFileName)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+
+        finalDateTime = QDateTime.currentDateTime()
+        initialSeconds = initialDateTime.toTime_t()
+        finalSeconds = finalDateTime.toTime_t()
+        totalDurationSeconds = finalSeconds - initialSeconds
+        durationDays = floor(totalDurationSeconds / 60.0 / 60.0 / 24.0)
+        durationHours = floor((totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0) / 60.0 / 60.0)
+        durationMinutes = floor(
+            (totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0) / 60.0)
+        durationSeconds = totalDurationSeconds - durationDays * 60.0 * 60.0 * 24.0 - durationHours * 60.0 * 60.0 - durationMinutes * 60.0
+        msgTtime = "- Process time:\n"
+        msgTtime += "  - Start time of the process ......................: "
+        msgTtime += initialDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
+        msgTtime += "\n"
+        msgTtime += "  - End time of the process ........................: "
+        msgTtime += finalDateTime.toString("yyyy/MM/dd - hh/mm/ss.zzz")
+        msgTtime += "\n"
+        msgTtime += "  - Number of total seconds ........................: "
+        msgTtime += f"{totalDurationSeconds:.3f}"  # QString.number(totalDurationSeconds, 'f', 3)
+        msgTtime += "\n"
+        msgTtime += "    - Number of days ...............................: "
+        msgTtime += str(durationDays)  # QString.number(durationDays)
+        msgTtime += "\n"
+        msgTtime += "    - Number of hours ..............................: "
+        msgTtime += str(durationHours)  # QString.number(durationHours)
+        msgTtime += "\n"
+        msgTtime += "    - Number of minutes ............................: "
+        msgTtime += str(durationMinutes)  # QString.number(durationMinutes)
+        msgTtime += "\n"
+        msgTtime += "    - Number of seconds ............................: "
+        msgTtime += f"{durationSeconds:.3f}"  # QString.number(durationSeconds, 'f', 3)
+        msgTtime += "\n"
+        msg = "Process completed successfully"
+        msg += "\n"
+        msg += msgTtime
+        msgBox = QMessageBox(self)
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setWindowTitle(self.windowTitle)
+        msgBox.setText(msg)
+        msgBox.exec_()
+
+        if ret[1] == "True": #needReloadProject:
+            msg = "Before the next step, QGis and the Project must be reopened "
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText(msg)
+            msgBox.exec_()
+
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
         #     self.loadHazardAreasMshLayer()
         #     self.loadHazardAreasLayer()
@@ -1264,7 +1264,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()
         #     self.loadPhotovoltaicAnomaliesLayers()
-        # self.refreshMapCanvas()
+        self.refreshMapCanvas()
         return
 
 
