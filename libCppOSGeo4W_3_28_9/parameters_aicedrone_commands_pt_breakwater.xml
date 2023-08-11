@@ -1,0 +1,501 @@
+<!DOCTYPE ParametersManager>
+<ParametersManager version="1.1">
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_CubesDimensions</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Three dimension by cube separated by ',' and cubes separated by ';'</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.2,2.4,1.5;1.9,1.5,1.5;1.5,1.5,1.5;2.4,1.5,1.3</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_GenerateReports</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Generate reports</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_KnowSpacingPoints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Know spacing between points (in meters), used for another parameters if is greather than 0.0</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaxDistanceToPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance to plane for points within (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.030</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaxNormalAngleDeviation</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum deviation from the ideal shape normal vector (in degrees)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>15.0000</Value>
+        <MaximumValue>25.0000</MaximumValue>
+        <MinimumValue>1.0000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MaximumDimensionCube</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum dimension of a cube (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>3.500</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.300</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MinNumberOfPointsByPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimal number of points required for a plane</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1000</Value>
+        <MaximumValue>10000</MaximumValue>
+        <MinimumValue>50</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_MinimumDimensionCube</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum dimension of a cube (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.300</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.300</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_OverlookingProbability</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Probability that no better candidate was overlooked during sampling (the lower the better!)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>0.0500</Value>
+        <MaximumValue>0.3000</MaximumValue>
+        <MinimumValue>0.0001</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_PlanesOrthogonallityTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Planes orthogonallity tolerance (in degrees)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>20.0000</Value>
+        <MaximumValue>35.0000</MaximumValue>
+        <MinimumValue>0.1000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_RemoveSegmentedPoints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Remove segmented points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_SamplingResolution</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Should correspond to the distance between neighboring points in the data (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.050</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation within polygons</Command>
+        <Code>CSPOLYGONS_Shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Shapefile polygons 2D, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/Productos_geomaticos/breakwater_cubes_zone_1.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_CubesDimensions</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Three dimension by cube separated by ',' and cubes separated by ';'</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.2,2.4,2.4</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_GenerateReports</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Generate reports</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_KnowSpacingPoints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Know spacing between points (in meters), used for another parameters if is greather than 0.0</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_MaxDistanceToPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance to plane for points within (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.030</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_MaxNormalAngleDeviation</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum deviation from the ideal shape normal vector (in degrees)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>15.0000</Value>
+        <MaximumValue>25.0000</MaximumValue>
+        <MinimumValue>1.0000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_MaximumDimensionCube</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum dimension of a cube (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>3.500</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.300</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_MinNumberOfPointsByPlane</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimal number of points required for a plane</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1000</Value>
+        <MaximumValue>10000</MaximumValue>
+        <MinimumValue>50</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_MinimumDimensionCube</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum dimension of a cube (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.300</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.300</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_OverlookingProbability</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Probability that no better candidate was overlooked during sampling (the lower the better!)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>0.0500</Value>
+        <MaximumValue>0.3000</MaximumValue>
+        <MinimumValue>0.0001</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_PlanesOrthogonallityTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Planes orthogonallity tolerance (in degrees)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>sexagesimal degrees (DEG)</Unit>
+        <Value>15.0000</Value>
+        <MaximumValue>35.0000</MaximumValue>
+        <MinimumValue>0.1000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_ProcessOnlyEnabledTiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled tiles</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_RemoveSegmentedPoints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Remove segmented points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_SamplingResolution</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Should correspond to the distance between neighboring points in the data (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.050</Value>
+        <MaximumValue>0.150</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_SetCubesDimensionsFromTilesShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Set cubes dimensions from values field named cubes_dims in input tiles shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for tiles shapefile</Command>
+        <Code>CSSHP_Shapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Tiles shapefile, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/Productos_geomaticos/BreakwaterCubeRoiTilesCubesSegmentation_25831.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Create tiles shapefile for cubes segmentation</Command>
+        <Code>CTSHPCD_CubesDimensions</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Three dimension by cube separated by ',' and cubes separated by ';'</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.2,2.4,2.4</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Create tiles shapefile for cubes segmentation</Command>
+        <Code>CTSHPCD_MaximumDimensionCube</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum dimension of a cube (in meters)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>3.500</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.300</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Create tiles shapefile for cubes segmentation</Command>
+        <Code>CTSHPCD_RoiShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Region of interest input shapefile, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/Productos_geomaticos/BreakwaterCubeRoi_25831.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Create tiles shapefile for cubes segmentation</Command>
+        <Code>CTSHPCD_TilesShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Tiles output shapefile</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/Productos_geomaticos/BreakwaterCubeRoiTilesCubesSegmentation_25831.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_AIObjectsIdsFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>AI objects identifiers file.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/MetashapeProjects/20221028_Puertocalpe/puerto_Calpe_PHANTOM4_RTK/AIObjectsIds.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_ImagesFootprintBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Images footprint buffer distance to check points within images</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.200</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_MultiProcess</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use multi process</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_ProcessOnlyEnabledObjects</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled objects</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_RemoveExistingAIFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Remove AI files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Get objects footprints in images</Command>
+        <Code>GOFI_WriteAILabelFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write AI label files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+</ParametersManager>

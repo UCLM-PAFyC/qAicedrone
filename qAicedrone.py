@@ -34,7 +34,28 @@ import sys
 
 from PyQt5.QtWidgets import QMessageBox,QFileDialog,QTabWidget,QInputDialog,QLineEdit
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject, QFile
-from qgis.core import QgsApplication, QgsDataSourceUri
+from qgis.core import QgsApplication, QgsDataSourceUri, Qgis
+
+strQGISVersion = Qgis.QGIS_VERSION
+versionItems = strQGISVersion.split('.')
+qGisFirstVersion = int(versionItems[0])
+qGisSecondVersion = int(versionItems[1])
+strThirdVersion = versionItems[2]
+strThirdVersionItems = strThirdVersion.split('-')
+qGisThirdVersion = int(strThirdVersionItems[0])
+# if qGisSecondVersion <= 28:
+#     text = "QGIS version: " + strQGISVersion
+#     text += "\nFirst version: " + str(qGisFirstVersion)
+#     text += "\nSecond version: " + str(qGisSecondVersion)
+#     text += "\nThird version: " + str(qGisThirdVersion)
+#     msgBox = QMessageBox()
+#     msgBox.setIcon(QMessageBox.Information)
+#     msgBox.setText(text)
+#     msgBox.exec_()
+# else:
+#     raise ValueError('Invalid QGIS version')
+if qGisFirstVersion == 3 and qGisSecondVersion == 28 and qGisThirdVersion !=9:
+    raise ValueError('For QGIS 3.28 only is valid 3.28.9')
 
 from osgeo import osr
 projVersionMajor = osr.GetPROJVersionMajor()
@@ -43,6 +64,10 @@ pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 pluginPath = os.path.dirname(os.path.realpath(__file__))
 pluginPath = os.path.join(pluginsPath, pluginPath)
 libCppPath = None
+if qGisSecondVersion < 28:
+    libCppPath = os.path.join(pluginPath, 'libCpp')
+else: # de momento no se si falla con versiones superiores a 3.28
+    libCppPath = os.path.join(pluginPath, 'libCppOSGeo4W_3_28_9')
 # if projVersionMajor < 8:
 #     libCppPath = os.path.join(pluginPath, 'libCppOldOSGeo4W')
 # else:
@@ -55,13 +80,10 @@ os.environ["PATH"] += os.pathsep + libCppPath
 
 qAicedroneDockWidget = None
 IPyAicedroneProject = None
-# if projVersionMajor < 8:
-#     from .model_management_tools_dockwidget import ModelManagementToolsDockWidget
-#     from libCppOldOSGeo4W.libPyModelManagementTools import IPyMMTProject
-# else:
-#     from .model_management_tools_dockwidget import ModelManagementToolsDockWidget
-#     from libCpp.libPyModelManagementTools import IPyMMTProject
-from libCpp.libPyAicedrone import IPyAicedroneProject
+if qGisSecondVersion < 28:
+    from libCpp.libPyAicedrone import IPyAicedroneProject
+else: # de momento no se si falla con versiones superiores a 3.28
+    from libCppOSGeo4W_3_28_9.libPyAicedrone import IPyAicedroneProject
 
 # pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 # pluginPath = os.path.dirname(os.path.realpath(__file__))
