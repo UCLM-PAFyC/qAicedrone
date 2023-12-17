@@ -1,3 +1,438 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
+    <Parameter>
+        <Command>0. Mask flat areas in raster digital elevation model</Command>
+        <Code>MFADEM_InliersPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum percentage of pixels that are inliers, in percentage</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>95.0</Value>
+        <MaximumValue>100.0</MaximumValue>
+        <MinimumValue>0.1</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>0. Mask flat areas in raster digital elevation model</Command>
+        <Code>MFADEM_InputDEM</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DEM file, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/export/swords_dsm_4083_20cm_H-1cm_average.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>0. Mask flat areas in raster digital elevation model</Command>
+        <Code>MFADEM_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for results, empty for use path of input DEM</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>0. Mask flat areas in raster digital elevation model</Command>
+        <Code>MFADEM_Radius</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance for local analysis region</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>1.00</Value>
+        <MaximumValue>5.00</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>0. Mask flat areas in raster digital elevation model</Command>
+        <Code>MFADEM_SlopeThreshold</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Slope threshold, in percentage</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10.00</Value>
+        <MaximumValue>60.00</MaximumValue>
+        <MinimumValue>0.50</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_AngleToleranceLinesMerge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Angle tolerance for lines merge, in degrees</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>5.0</Value>
+        <MaximumValue>30.0</MaximumValue>
+        <MinimumValue>0.1</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_CreateBackupOutputShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Create copy of existing results shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_InputShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with segmented roads marks, same CRS as project</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_imgs_seg.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_IoUThreshold</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Intersection Over Union (IoU) threshold, per unit, for road marks coincidences</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.35</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_MinimumDetectionsInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of detections in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>20</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_OutputReportfile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Output file for report, or empty.</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_seg.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_OutputShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Output shapefile, rewrite if exists</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_seg.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Merge segmented road marks</Command>
+        <Code>MSRM_ProcessOnlyEnabledRoadMarks</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled road marks</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_CreateBackupOutputShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Create copy of existing results shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_DTM</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM file, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/export/swords_dsm_4083_10cm.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_DtmMaskShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM mask shapefile, same CRS as DTM.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/export/swords_dsm_4083_50cm_H-1cm_average_mask.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_FilterByDtmMaskShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Filter by DTM mask shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_FilterByRoadsShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Filter by roads shapefile</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_IgnoreProcessedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Ignore processed images, so as not to duplicate the results</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_ImagesFootprintBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Images footprint buffer distance to check geometries within images</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_IoUThreshold</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Intersection Over Union (IoU) threshold, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.55</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_MaximumRelativeDifferenceGrayValues</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Maximum relative difference for gray values, 8 bits range</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10</Value>
+        <MaximumValue>50</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_MinimumWhiteValues</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum for white values, 8 bits range</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>165</Value>
+        <MaximumValue>240</MaximumValue>
+        <MinimumValue>140</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for results</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results_3imgs_kmeans</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_OutputRoadMarksShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Output shapefile, rewrite if exists, computing only marks for files in some feature setted to reprocess</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results_3imgs_kmeans/road_marks_imgs_seg.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_ProcessOnlyEnabledRoadsAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled roads axis</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_StandardRoadMarksShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Standard road marks shapefile</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_RoadsShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with roads polygons, same CRS as project</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/calzada.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_SplitDetectedLinesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Split in segments the detected lines in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_ThresholdsGrayValues</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Threshold gray values: min value - max difference; another, ..., 8 bits range</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>160-30;190-40;215-255</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_UseUndistortedImageIfExists</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use undistorted image if exists</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_WriteDebuggingFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write debugging files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_WriteMaskedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write cropped images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. Import results from shapefiles</Command>
+        <Code>IRFS_MergedRoadMarksShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with merged roads marks, same CRS as project</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_seg_edited.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. Import results from shapefiles</Command>
+        <Code>IRFS_StandardRoadMarksShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with standard roads marks</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
+    </Parameter>
 </ParametersManager>

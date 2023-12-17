@@ -131,7 +131,7 @@
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
-        <Description>Minimum length of computed rail sections, </Description>
+        <Description>Minimum length of computed rail sections, per unit</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
         <Value>0.10</Value>
@@ -228,14 +228,14 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_CroppedImagesOutputPath</Code>
+        <Code>RCRWSFIS_OutputPath</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Path</Type>
         <Description>Output path for splited point cloud files</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/laz_split_railway_point_cloud/cropped_images</Value>
+        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/images_segmentation_results</Value>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -268,7 +268,7 @@
         <Description>Output shapefile, rewrite if exists, computing only  segments for files in some feature setted to reprocess</Description>
         <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/laz_split_railway_point_cloud/railway_sections_imgs_seg.shp</Value>
+        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/images_segmentation_results/railway_sections_imgs_seg.shp</Value>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -332,6 +332,18 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_WritePhotogrammetryBackwardInReportFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
         <Code>RCRWSFIS_PointCloudFilesSuffix</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -368,6 +380,145 @@
         <MaximumValue>200.000</MaximumValue>
         <MinimumValue>0.010</MinimumValue>
         <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_BackwardPixelDistanceTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance between lines detected in images and photogrammetric backward calculation for candidate object points, in pixels</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.0</Value>
+        <MaximumValue>20.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MinimumObjectLenghtPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum percentage of the segment distance for the final valid solution, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.80</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.30</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MaximumNumberOfBackwardImageOutliers</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Maximum number of outliers in photogrammetry backward for candidate object points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>10</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_maximumBackwardImageMse</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixesl</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0</Value>
+        <MaximumValue>20.0</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_LinearToleranceObjectSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for 2d line adjust tolerance and constant heigth for final segment solution in object space, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.02</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MaxRowDistanceFromCenterInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance in rows from center to railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.200</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MinimumLengthInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length for railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.0</Value>
+        <MaximumValue>6.000</MaximumValue>
+        <MinimumValue>0.100</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_LinearToleranceImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for adjust lines in images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.200</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_AngularToleranceParallelLinesInImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for parallel lines detected in images, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0</Value>
+        <MaximumValue>20.0</MaximumValue>
+        <MinimumValue>0.50</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
         <Command>Split railway point cloud from contours shapefile</Command>

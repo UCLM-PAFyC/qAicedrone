@@ -559,6 +559,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             # qs.setValue('svg/searchPathsForSVG', svg_paths + [self.templatePath])
 
         self.qmlRoisFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROIS_TEMPLATE
+        self.qmlRoadMarksFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROAD_MARKS_TEMPLATE
         # self.qmlPointCloudFileName = self.templatePath + PCTDefinitions.CONST_SYMBOLOGY_POINT_CLOUD_TEMPLATE
         ret = self.iPyProject.setModelDbManager()
         if ret[0] == "False":
@@ -792,6 +793,35 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.pvAnomaliesPanelsVLayer = None
         return
 
+    def loadRoadMarksLayer(self):
+        roadMarksTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(roadMarksTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = roadMarksTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = roadMarksTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer,False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlRoadMarksFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+            else:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Impossible to Load table: " + roadMarksTableName
+                                   +" into QGIS")
+                msgBox.exec_()
+
 
     def loadROIsLayer(self):
         roisTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_NAME
@@ -892,6 +922,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.projectsComboBox.setCurrentIndex(0)
                 return
             self.crsEpsgCode = ret[1]
+            strCrsEpsgCode = MMTDefinitions.CONST_EPSG_PREFIX + str(self.crsEpsgCode)
         else:
             ret = self.iPyProject.mmtGetProjectCrsEpsgCodes(connectionPath)
             if ret[0] == "False":
@@ -918,6 +949,11 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 index = self.verticalCRSsComboBox.findText(strVerticalCrsEpsgCode, Qt.MatchFixedString)
                 if index != -1:
                     self.verticalCRSsComboBox.setCurrentIndex(index)
+        # establecer el crs del proyecto de qgis si no coincide con el del proyecto del plugin
+        qgisProjectCrsAsEpsg = QgsProject.instance().crs().authid()
+        if qgisProjectCrsAsEpsg.lower() != strCrsEpsgCode:
+            projectCrs = QgsCoordinateReferenceSystem.fromEpsgId(self.crsEpsgCode)
+            QgsProject.instance().setCrs(projectCrs)
         ret = self.iPyProject.mmtGetProjectType(connectionPath)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
@@ -934,11 +970,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         root = QgsProject.instance().layerTreeRoot()
         self.layerTreeProject = root.addGroup(self.layerTreeProjectName)
         self.loadROIsLayer()
-        # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
-        #     self.loadElectricPylonsLayer()
-        #     self.loadElectricPylonsConnectionsLayer()
-        #     self.loadHazardAreasMshLayer()
-        #     self.loadHazardAreasLayer()
+        if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
+            self.loadRoadMarksLayer()
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()

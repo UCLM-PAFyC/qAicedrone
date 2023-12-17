@@ -30,7 +30,8 @@ from .resources import *
 import os.path
 import sys
 # sys.path.append("C:\Program Files\JetBrains\PyCharm 2020.3\debug-eggs\pydevd-pycharm.egg") # dhl
-# import pydevd
+sys.path.append("C:\Program Files\JetBrains\PyCharm 2023.2\debug-eggs\pydevd-pycharm.egg") # dhl
+import pydevd
 
 from PyQt5.QtWidgets import QMessageBox,QFileDialog,QTabWidget,QInputDialog,QLineEdit
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject, QFile
@@ -72,7 +73,7 @@ else: # de momento no se si falla con versiones superiores a 3.28
 #     libCppPath = os.path.join(pluginPath, 'libCppOldOSGeo4W')
 # else:
 #     libCppPath = os.path.join(pluginPath, 'libCpp')
-libCppPath = os.path.join(pluginPath, 'libCpp')
+# libCppPath = os.path.join(pluginPath, 'libCpp')
 existsPluginPath = QDir(libCppPath).exists()
 sys.path.append(pluginPath)
 sys.path.append(libCppPath)
