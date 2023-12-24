@@ -86,6 +86,8 @@ if qGisSecondVersion < 28:
 else: # de momento no se si falla con versiones superiores a 3.28
     from libCppOSGeo4W_3_28_9.libPyAicedrone import IPyAicedroneProject
 
+# from libCppOSGeo4W_3_28_9.libPyAicedrone import IPyAicedroneProject
+
 # pluginsPath = QFileInfo(QgsApplication.qgisUserDatabaseFilePath()).path()
 # pluginPath = os.path.dirname(os.path.realpath(__file__))
 # pluginPath = os.path.join(pluginsPath, pluginPath)

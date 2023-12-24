@@ -75,6 +75,7 @@ FORM_CLASS = None
 #         os.path.dirname(__file__), 'model_management_tools_dockwidget_base.ui'))
 FORM_CLASS, _ = uic.loadUiType(os.path.join(os.path.dirname(__file__), 'qAicedrone_dockwidget_base.ui'))
 
+
 class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     closingPlugin = pyqtSignal()
@@ -129,7 +130,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
         ####
 
-
     def addPhotogrammetryConnection(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -174,7 +174,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.photogrammetriesComboBox.addItem(photogrammetryConnectionInProject)
         return
 
-
     def addPointCloud(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -217,11 +216,180 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.pmOutputPathLineEdit.setText(strDir)
         return
 
+    def field_to_value_map(self, vLayer, field, list_values):
+        config = {'map': list_values}
+        widget_setup = QgsEditorWidgetSetup('ValueMap', config)
+        field_idx = vLayer.fields().indexFromName(field)
+        vLayer.setEditorWidgetSetup(field_idx, widget_setup)
+
+    def addVirtualRoadMarksLayers(self):
+        projectCrs = QgsCoordinateReferenceSystem.fromEpsgId(self.crsEpsgCode)
+        catalogueFileNames = []
+        # recuperar los ficheros de marcas
+        uri = QgsDataSourceUri()
+        uri.setDatabase(self.dbFileName)
+        schema = ''
+        roadMarksTable = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
+        roadMarksGeomColumn = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_GEOMETRY_COLUMN
+        uri.setDataSource(schema, roadMarksTable, roadMarksGeomColumn)
+        roadMarkslayer = QgsVectorLayer(uri.uri(), 'road_marks', 'spatialite')
+        if not roadMarkslayer.isValid():
+            return # cuando todavia no se han procesado road_marks
+        for roadMarkFeature in roadMarkslayer.getFeatures():
+            mark_file = roadMarkFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ROAD_MARKS_FILE]
+            if not mark_file in catalogueFileNames:
+                catalogueFileNames.append(mark_file)
+        # recuperar los valores del catalogo
+        uri = QgsDataSourceUri()
+        uri.setDatabase(self.dbFileName)
+        schema = ''
+        catalogTable = MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_TABLE_NAME
+        catalogGeomColumn = MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_GEOMETRY
+        uri.setDataSource(schema, catalogTable, catalogGeomColumn)
+        cataloguelayer = QgsVectorLayer(uri.uri(), 'catalogue', 'spatialite')
+        if not cataloguelayer.isValid():
+            return # cuando todavia no se han procesado road_marks
+            # if vlayer.featureCount() == 0:
+            #     return
+            # QgsProject.instance().addMapLayer(vlayer, False)
+            # self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+            # vlayer.loadNamedStyle(self.qmlRoadMarksFileName)
+            # vlayer.triggerRepaint()
+            # self.iface.setActiveLayer(vlayer)
+            # self.iface.zoomToActiveLayer()
+        catalogueWidths = []
+        catalogueValuesById = {}
+        for catalogueFeature in cataloguelayer.getFeatures():
+            strId = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ID]
+            code = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE]
+            type = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE]
+            strEnabled = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ENABLED]
+            strWidth = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_WIDTH]
+            if MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE_LONGITUDINAL_SUB_STRING in type:
+                if not strWidth in catalogueWidths:
+                    width = float(strWidth)
+                    catalogueWidths.append(width)
+            catalogueValues = {}
+            catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE] = code
+            catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE] = type
+            if strEnabled == '1':
+                catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ENABLED] = True
+            else:
+                catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ENABLED] = False
+            # catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE] = code
+            id = int(strId)
+            catalogueValuesById[id] = catalogueValues
+
+        layerManualEditingLinearRoadMarksTitle = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_NAME
+        layerList = QgsProject.instance().mapLayersByName(layerManualEditingLinearRoadMarksTitle)
+        if not layerList:
+            self.manualEditingLinearRoadMarksLayer = None
+            self.manualEditingLinearRoadMarksLayer = QgsVectorLayer("Linestring?crs=" + projectCrs.authid(),
+                                                               layerManualEditingLinearRoadMarksTitle, "memory")
+            self.manualEditingLinearRoadMarksLayer.startEditing()
+            widthFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH
+            widthField = QgsField(widthFieldName, QVariant.String)
+            catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+            catalogueField = QgsField(catalogueFieldName, QVariant.String)
+            self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField, catalogueField])
+            self.manualEditingLinearRoadMarksLayer.commitChanges()
+            if self.manualEditingLinearRoadMarksLayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(self.manualEditingLinearRoadMarksLayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.manualEditingLinearRoadMarksLayer))
+                self.manualEditingLinearRoadMarksLayer.loadNamedStyle(self.qmlManualEditingLinearRoadMarksFileName)
+                # formConfig = manualEditingLinearRoadMarksLayer.editFormConfig()
+                # formConfig.setReadOnly(0, True)
+                # manualEditingLinearRoadMarksLayer.setEditFormConfig(formConfig)
+                widthlistValues = {}
+                # widthlistValues = {'0.1': 1, '0.15': 2}
+                pos = 0
+                for width in catalogueWidths:
+                    widthlistValues[str(width)] = pos
+                    pos = pos + 1
+                self.field_to_value_map(self.manualEditingLinearRoadMarksLayer, widthFieldName, widthlistValues)
+                listValues = {"kakita 1": 1, "kakita 2": 2}
+                catalogueFilesListValues = {}
+                pos = 0
+                for catalogueFile in catalogueFileNames:
+                    catalogueFilesListValues[catalogueFile] = pos
+                    pos = pos + 1
+                self.field_to_value_map(self.manualEditingLinearRoadMarksLayer, catalogueFieldName, catalogueFilesListValues)
+                # widthFieldIndex = fields.indexFromName(field_name)
+                self.manualEditingLinearRoadMarksLayer.triggerRepaint()
+                self.iface.setActiveLayer(self.manualEditingLinearRoadMarksLayer)
+                self.iface.zoomToActiveLayer()
+                self.manualEditingLinearRoadMarksLayer.startEditing()
+            else:
+                self.manualEditingLinearRoadMarksLayer = None
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Impossible to Load table: " + layerManualEditingLinearRoadMarksTitle
+                                   + " into QGIS")
+                msgBox.exec_()
+        layerManualEditingNonLinearRoadMarksTitle = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_NAME
+        layerList = QgsProject.instance().mapLayersByName(layerManualEditingNonLinearRoadMarksTitle)
+        if not layerList:
+            self.manualEditingNonLinearRoadMarksLayer = None
+            self.manualEditingNonLinearRoadMarksLayer = QgsVectorLayer("Point?crs=" + projectCrs.authid(),
+                                                               layerManualEditingNonLinearRoadMarksTitle, "memory")
+            self.manualEditingNonLinearRoadMarksLayer.startEditing()
+            roadMarkIdFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_ID
+            roadMarkIdField = QgsField(roadMarkIdFieldName,QVariant.String)
+            codeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_CODE
+            codeField = QgsField(codeFieldName,QVariant.String)
+            typeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_TYPE
+            typeField = QgsField(typeFieldName,QVariant.String)
+            catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+            catalogueField = QgsField(catalogueFieldName,QVariant.String)
+            self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes([roadMarkIdField, codeField, typeField, catalogueField])
+            self.manualEditingNonLinearRoadMarksLayer.commitChanges()
+            if self.manualEditingNonLinearRoadMarksLayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(self.manualEditingNonLinearRoadMarksLayer,False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.manualEditingNonLinearRoadMarksLayer))
+                self.manualEditingNonLinearRoadMarksLayer.loadNamedStyle(self.qmlManualEditingNonLinearRoadMarksFileName)
+                roadMarkIdlistValues = {}
+                codelistValues = {}
+                typelistValues = {}
+                # widthlistValues = {'0.1': 1, '0.15': 2}
+                pos = 0
+                for roadMarkId in catalogueValuesById.keys():
+                    roadMarkIdlistValues[str(roadMarkId)] = pos
+                    code = catalogueValuesById[roadMarkId][MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE]
+                    type = catalogueValuesById[roadMarkId][MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE]
+                    codelistValues[code] = pos
+                    typelistValues[type] = pos
+                    pos = pos + 1
+                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, roadMarkIdFieldName, roadMarkIdlistValues)
+                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, codeFieldName, codelistValues)
+                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, typeFieldName, typelistValues)
+                catalogueFilesListValues = {}
+                pos = 0
+                for catalogueFile in catalogueFileNames:
+                    catalogueFilesListValues[catalogueFile] = pos
+                    pos = pos + 1
+                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, catalogueFieldName, catalogueFilesListValues)
+                self.manualEditingNonLinearRoadMarksLayer.triggerRepaint()
+                self.iface.setActiveLayer(self.manualEditingNonLinearRoadMarksLayer)
+                self.iface.zoomToActiveLayer()
+                self.manualEditingNonLinearRoadMarksLayer.startEditing()
+            else:
+                self.manualEditingNonLinearRoadMarksLayer = None
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Impossible to Load table: " + layerManualEditingNonLinearRoadMarksTitle
+                                   + " into QGIS")
+                msgBox.exec_()
+        return
 
     def closeEvent(self, event):
         self.closingPlugin.emit()
         event.accept()
-
 
     def createProject(self):
         projectType = self.projectTypeComboBox.currentText()
@@ -313,7 +481,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         msgBox.exec_()
         return
 
-
     def getCommands(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -342,7 +509,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         for pointCloudCommand in commands:
             self.processCommandComboBox.addItem(pointCloudCommand)
         return
-
 
     def getModelManagementSpatialiteConnections(self):
         self.modelManagementConnections = {}
@@ -376,7 +542,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.projectsComboBox.addItem(connection)
         return
 
-
     def getPhotogrammetrySpatialiteConnections(self):
         self.photogrammetryConnections = {}
         settings = QSettings()
@@ -408,7 +573,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     self.pointCloudsComboBox.addItem(pointCloudConnection)
         # return
 
-
     def getPhotogrammetrySpatialiteConnectionsInProject(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -437,7 +601,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         for photogrammetryConnectionInProject in self.photogrammetryConnectionsInProject.keys():
             self.photogrammetriesComboBox.addItem(photogrammetryConnectionInProject)
         return
-
 
     def getPointCloudsInProject(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
@@ -505,7 +668,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
     #     #     self.pointCloudsComboBox.addItem(pointCloudConnection)
     #     # return
 
-
     def initialize(self):
         self.num_format = re.compile(r'^\-?[1-9][0-9]*\.?[0-9]*')
         self.dbFileName = None
@@ -560,6 +722,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
         self.qmlRoisFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROIS_TEMPLATE
         self.qmlRoadMarksFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROAD_MARKS_TEMPLATE
+        self.qmlManualEditingLinearRoadMarksFileName = (self.templatePath
+                                                        + MMTDefinitions.CONST_SYMBOLOGY_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
+        self.uiManualEditingLinearRoadMarksFileName = (self.templatePath
+                                                        + MMTDefinitions.CONST_FORM_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
+        self.qmlManualEditingNonLinearRoadMarksFileName = (self.templatePath
+                                                           + MMTDefinitions.CONST_SYMBOLOGY_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
         # self.qmlPointCloudFileName = self.templatePath + PCTDefinitions.CONST_SYMBOLOGY_POINT_CLOUD_TEMPLATE
         ret = self.iPyProject.setModelDbManager()
         if ret[0] == "False":
@@ -658,6 +826,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
         self.layerTreeProject = None
         self.layerTreeProjectName = None
+        self.roadMarksVLayer = None
         # self.layerTreePCTiles = None
         # self.layerTreePCTilesName = None
         # self.loadedTiles = []
@@ -756,8 +925,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.processCommandPushButton.clicked.connect(self.selectCommandProcess)
         self.commandParamtersPushButton.setEnabled(False)
         self.processCommandPushButton.setEnabled(False)
+
+        self.removeSelectedRoadMarksPushButton.clicked.connect(self.selectRemoveSelectedRoadMarks)
+        self.saveLinearRoadMarksPushButton.clicked.connect(self.selectSaveManuallyEditedLinearRoadMarks)
+
+
         # self.reportGroupBox.setVisible(False)
-        self.reportGroupBox.setEnabled(False)
+        # self.reportGroupBox.setEnabled(False)
         # self.reportReferenceLayerComboBox.setFilters(QgsMapLayerProxyModel.RasterLayer)
         # self.reportReferenceLayerComboBox.layerChanged.connect(self.selectReportReferenceLayerComboBox)
         # self.reportSelectedFeatureCheckBox.stateChanged.connect(self.selectReportSelectedFeature)
@@ -768,7 +942,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.reportHotspotComboBox.currentIndexChanged.connect(self.selectReportHotspot)
         # self.reportProcessPushButton.clicked.connect(self.selectReportProcess)
         # self.mapPanel = self.reportMapPanelCheckBox.isChecked()
-
 
     def closeProject(self):
         if not self.dbFileName:
@@ -789,11 +962,16 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.processingToolsPage.setEnabled(False)
         self.pointCloudsComboBox.clear()
         self.processCommandComboBox.clear()
+        self.roadMarksVLayer = None
+        self.manualEditingLinearRoadMarksLayer = None
+        self.manualEditingNonLinearRoadMarksLayer = None
+
         # self.pvAnomaliesVLayer = None
         # self.pvAnomaliesPanelsVLayer = None
         return
 
     def loadRoadMarksLayer(self):
+        self.roadMarksVLayer = None
         roadMarksTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
         layerList = QgsProject.instance().mapLayersByName(roadMarksTableName)
         if not layerList:
@@ -814,14 +992,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 vlayer.triggerRepaint()
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
-            else:
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Impossible to Load table: " + roadMarksTableName
-                                   +" into QGIS")
-                msgBox.exec_()
-
+                self.roadMarksVLayer = vlayer
+            # else: # cuando todavia no se han procesado road_marks
+            #     msgBox = QMessageBox(self)
+            #     msgBox.setIcon(QMessageBox.Information)
+            #     msgBox.setWindowTitle(self.windowTitle)
+            #     msgBox.setText("Impossible to Load table: " + roadMarksTableName
+            #                        +" into QGIS")
+            #     msgBox.exec_()
 
     def loadROIsLayer(self):
         roisTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_NAME
@@ -852,16 +1030,24 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                                    +" into QGIS")
                 msgBox.exec_()
 
-
     def onModelManagementToolBoxChanged(self,i): #changed!
         # QMessageBox.information(self,
         #           "Model Management ToolBox Changed!",
         #           "Current Tab Index: %d" % i ) #changed!
-        # if i==1: # Point Clouds Projects
-        #     self.getPointCloudSpatialiteConnections()
-        # yo = 1
+        if i==1: # Processing tools
+            self.editingProcessesTabWidget.setTabEnabled(0, False)
+            self.editingProcessesTabWidget.setTabEnabled(1, False)
+            self.editingProcessesTabWidget.setTabEnabled(2, False)
+            if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_BREAKWATER.lower():
+                self.editingProcessesTabWidget.setTabEnabled(0, True)
+                self.editingProcessesTabWidget.setCurrentIndex(0)
+            elif self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_RAILWAY.lower():
+                self.editingProcessesTabWidget.setTabEnabled(1, True)
+                self.editingProcessesTabWidget.setCurrentIndex(1)
+            elif self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
+                self.editingProcessesTabWidget.setTabEnabled(2, True)
+                self.editingProcessesTabWidget.setCurrentIndex(2)
         return
-
 
     def onProjectManagementTabWidgetChanged(self,i): #changed!
         # QMessageBox.information(self,
@@ -879,20 +1065,20 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     self.plsfElectricPylonsHeightLineEdit.setText(strValueHeight)
         return
 
-
     def openPhotogrammetry(self):
         return
 
-
     def openPointCloud(self):
         return
-
 
     def openProject(self):
         self.closeProjectPushButton.setEnabled(False)
         self.dbFileName = None
         self.layerTreeName = None
         self.layerTree = None
+        self.roadMarksVLayer = None
+        self.manualEditingLinearRoadMarksLayer = None
+        self.manualEditingNonLinearRoadMarksLayer = None
         connectionFileName = self.projectsComboBox.currentText()
         if connectionFileName == MMTDefinitions.CONST_NO_COMBO_SELECT:
             msgBox = QMessageBox(self)
@@ -972,6 +1158,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.loadROIsLayer()
         if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
             self.loadRoadMarksLayer()
+            self.addVirtualRoadMarksLayers()
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()
@@ -1027,14 +1214,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Error:\n" + ret[1])
             msgBox.exec_()
             return
-        return
-
+        self.modelManagementToolBox.setCurrentIndex(1)
 
     def refreshMapCanvas(self):
         currentScale = self.iface.mapCanvas().scale()
         newScale = currentScale * 1.001
         self.iface.mapCanvas().zoomScale(newScale)
-
 
     def removeGroup(self,root,name):
         # root = QgsProject.instance().layerTreeRoot()
@@ -1045,7 +1230,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 id = dump.split("=")[-1].strip()
                 QgsProject.instance().removeMapLayer(id)
             root.removeChildNode(group)
-
 
     def removePhotogrammetryConnection(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
@@ -1082,7 +1266,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.photogrammetriesComboBox.addItem(photogrammetryConnectionInProject)
         return
 
-
     def removePointCloud(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -1117,7 +1300,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.pointCloudsComboBox.addItem(pointCloud)
         return
 
-
     def selectCommand(self):
         if self.projectsComboBox.currentText() == MMTDefinitions.CONST_NO_COMBO_SELECT:
             return
@@ -1141,7 +1323,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.commandParamtersPushButton.setEnabled(True)
         self.processCommandPushButton.setEnabled(True)
 
-
     def selectCommandParameters(self):
         command = self.processCommandComboBox.currentText()
         if command == MMTDefinitions.CONST_NO_COMBO_SELECT:
@@ -1163,7 +1344,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         return
-
 
     def selectCommandProcess(self):
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
@@ -1300,7 +1480,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.refreshMapCanvas()
         return
 
-
     def selectNewDatabase(self):
         oldFileName=self.databaseLineEdit.text()
         title="Select New Project File (.sqlite)"
@@ -1314,7 +1493,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.settings.sync()
         return
 
-
     def selectPhotogrammetry(self):
         self.openPhotogrammetryPushButton.setEnabled(False)
         self.removePhotogrammetryPushButton.setEnabled(False)
@@ -1322,14 +1500,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if photogrammetry != MMTDefinitions.CONST_NO_COMBO_SELECT:
             self.removePhotogrammetryPushButton.setEnabled(True)
 
-
     def selectPointCloud(self):
         self.openPointCloudPushButton.setEnabled(False)
         self.removePointCloudPushButton.setEnabled(False)
         pointCloud = self.pointCloudsComboBox.currentText()
         if pointCloud != MMTDefinitions.CONST_NO_COMBO_SELECT:
             self.removePointCloudPushButton.setEnabled(True)
-
 
     def selectProject(self):
         self.openProjectPushButton.setEnabled(False)
@@ -1353,7 +1529,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.closeProjectPushButton.setEnabled(False)
         return
 
-
     def selectProjectManagerOutputPath(self):
         strDir = QFileDialog.getExistingDirectory(self, "Select directory", self.projectManagerOutputPath,
                                                   QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks)
@@ -1373,7 +1548,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.settings.sync()
             self.pmOutputPathLineEdit.setText(strDir)
         return
-
 
     def selectProjectManagerTemporalPath(self):
         strDir = QFileDialog.getExistingDirectory(self,"Select directory", self.projectManagerTemporalPath,
@@ -1414,7 +1588,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         return
 
-
     def selectProjectType(self):
         projectType = self.projectTypeComboBox.currentText()
         # msgBox = QMessageBox(self)
@@ -1424,6 +1597,55 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # msgBox.exec_()
         return
 
+    def selectRemoveSelectedRoadMarks(self):
+        if not self.roadMarksVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Road marks Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelectedRoadMarks = self.roadMarksVLayer.selectedFeatureCount()
+        if numberOfSelectedRoadMarks < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from road marks layer")
+            msgBox.exec_()
+            return
+        road_marks_ids_to_remove = []
+        fieldIdIdx = self.roadMarksVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelectedRoadMarks):
+            roadMarkFeature = self.roadMarksVLayer.selectedFeatures()[i]
+            roadMarkId = roadMarkFeature.attributes()[fieldIdIdx]
+            road_marks_ids_to_remove.append(roadMarkId)
+            str_ids = str_ids + str(roadMarkId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtRemoveRoadMarks(dbFileName, road_marks_ids_to_remove)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
 
     def selectRois(self):
         previousFiles = self.roisShapefiles[:] # copia desligada
@@ -1453,6 +1675,85 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.numberOfRoisLineEdit.setText(str(len(self.roisShapefiles)))
         return
 
+    def selectSaveManuallyEditedLinearRoadMarks(self):
+        if not self.manualEditingLinearRoadMarksLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Invalid layer for manually editid linear road marks")
+            msgBox.exec_()
+            return
+        numberOfFeatures = self.manualEditingLinearRoadMarksLayer.featureCount()
+        if numberOfFeatures < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Edit some feature in layer " + self.manualEditingLinearRoadMarksLayer.name())
+            msgBox.exec_()
+            return
+        widths = []
+        standarRoadMarksFileNames = []
+        wktGeometries = []
+        widthsIdx = (self.manualEditingLinearRoadMarksLayer.
+                   fields().indexFromName(MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH))
+        # widthsDictionary = self.manualEditingLinearRoadMarksLayer.editorWidgetSetup(widthsIdx).config().values()
+        widths_key_list = list(self.manualEditingLinearRoadMarksLayer.
+                               editorWidgetSetup(widthsIdx).config()['map'].keys())
+        widths_val_list = list(self.manualEditingLinearRoadMarksLayer.
+                               editorWidgetSetup(widthsIdx).config()['map'].values())
+        standarRoadMarksFileNamesIdx = (self.manualEditingLinearRoadMarksLayer.fields().indexFromName(
+            MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE))
+        # standarRoadMarksFileNamesDictionary = (self.manualEditingLinearRoadMarksLayer.
+        #                                        editorWidgetSetup(standarRoadMarksFileNamesIdx).config().values())
+        standarRoadMarksFileNames_key_list = list(self.manualEditingLinearRoadMarksLayer.
+                                               editorWidgetSetup(standarRoadMarksFileNamesIdx).config()['map'].keys())
+        standarRoadMarksFileNames_val_list = list(self.manualEditingLinearRoadMarksLayer.
+                                               editorWidgetSetup(standarRoadMarksFileNamesIdx).config()['map'].values())
+        for feature in self.manualEditingLinearRoadMarksLayer.getFeatures():
+            wktGeometry = feature.geometry().asWkt()
+            widthDictIndex = feature[MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH]
+            width = -1
+            if not widthDictIndex == NULL:
+                position = widths_val_list.index(widthDictIndex)
+                if position > -1:
+                    width = float(widths_key_list[position])
+            standarRoadMarkFileNameDictIndex = feature[
+                MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE]
+            standarRoadMarkFileName = ''
+            if not standarRoadMarkFileNameDictIndex == NULL:
+                position = standarRoadMarksFileNames_val_list.index(standarRoadMarkFileNameDictIndex)
+                if position > -1:
+                    standarRoadMarkFileName = standarRoadMarksFileNames_key_list[position]
+            if width > 0:
+                widths.append(width)
+                standarRoadMarksFileNames.append(standarRoadMarkFileName)
+                wktGeometries.append(wktGeometry)
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtSaveManuallyEditedLinearRoadMarks(dbFileName,
+                                                                   widths,
+                                                                   standarRoadMarksFileNames,
+                                                                   wktGeometries)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        self.manualEditingLinearRoadMarksLayer.startEditing()
+        for feature in self.manualEditingLinearRoadMarksLayer.getFeatures():
+            self.manualEditingLinearRoadMarksLayer.deleteFeature(feature.id())
+        self.manualEditingLinearRoadMarksLayer.commitChanges()
+        self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
 
     def setCrs(self):
         crs = self.projectQgsProjectionSelectionWidget.crs()
@@ -1492,7 +1793,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.addPCFsQgsProjectionSelectionWidget.setCrs(
         #     QgsCoordinateReferenceSystem(crsEpsgCodeString))
         self.crsEpsgCode = crsEpsgCode
-
 
     def setVerticalCRSs(self,crsEpsgCode):
         self.verticalCRSsComboBox.clear()
