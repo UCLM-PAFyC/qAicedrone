@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/plugins/qAicedrone" >
         <file>icon.png</file>
+		<file>icons/mActionSelectRectangle.png</file>
+		<file>icons/mActionSelectPolygon.png</file>
     </qresource>
 </RCC>

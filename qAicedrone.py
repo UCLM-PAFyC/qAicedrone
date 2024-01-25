@@ -25,7 +25,8 @@ from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction
 # Initialize Qt resources from file resources.py
-from .resources import *
+# from .resources import *
+from .resources_rc import *
 
 import os.path
 import sys

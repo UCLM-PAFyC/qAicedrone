@@ -23,7 +23,8 @@
 """
 
 # dhl
-import sys,os
+import sys, os
+from .resources_rc import *
 from osgeo import osr
 from decimal import Decimal
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QFileInfo, QDir, QObject
@@ -43,6 +44,9 @@ from .multipleFileSelectorDialog.multiple_file_selector_dialog import * #panel n
 # from .reports.Report import *
 # import MMTDefinitions
 from . import MMTDefinitions
+from .selectionMapTools.rectangle_map_tool import RectangleMapTool
+from .selectionMapTools.polygon_map_tool import PolygonMapTool
+
 #  dhl
 
 import os
@@ -217,10 +221,15 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def field_to_value_map(self, vLayer, field, list_values):
+        # config = {'map': list_values, 'AllowNull': False}
         config = {'map': list_values}
         widget_setup = QgsEditorWidgetSetup('ValueMap', config)
         field_idx = vLayer.fields().indexFromName(field)
         vLayer.setEditorWidgetSetup(field_idx, widget_setup)
+        # pichurri
+        form_config = vLayer.editFormConfig()
+        form_config.setReuseLastValue(field_idx, True)
+        vLayer.setEditFormConfig(form_config)
 
     def addVirtualRoadMarksLayers(self):
         projectCrs = QgsCoordinateReferenceSystem.fromEpsgId(self.crsEpsgCode)
@@ -929,6 +938,11 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.removeSelectedRoadMarksPushButton.clicked.connect(self.selectRemoveSelectedRoadMarks)
         self.saveLinearRoadMarksPushButton.clicked.connect(self.selectSaveManuallyEditedLinearRoadMarks)
 
+        self.breakwaterCubesSelectRegionByRectangleToolButton.clicked.connect(self.selectBreakwaterCubesRegionByRectangle)
+        self.breakwaterCubesSelectRegionByPolygonToolButton.clicked.connect(self.selectBreakwaterCubesRegionByPolygon)
+        self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(False)
+        self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(False)
+
 
         # self.reportGroupBox.setVisible(False)
         # self.reportGroupBox.setEnabled(False)
@@ -1047,6 +1061,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             elif self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
                 self.editingProcessesTabWidget.setTabEnabled(2, True)
                 self.editingProcessesTabWidget.setCurrentIndex(2)
+                self.saveNonLinearRoadMarksPushButton.setEnabled(False)
         return
 
     def onProjectManagementTabWidgetChanged(self,i): #changed!
@@ -1216,6 +1231,68 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         self.modelManagementToolBox.setCurrentIndex(1)
 
+    def processCubesForRegion(self):
+        segmentCubes = self.breakwaterSegmentCubesRadioButton.isChecked()
+        removeCubes = self.breakwaterRemoveCubesRadioButton.isChecked()
+        wktGeom = None
+        if self.toolRectangle:
+            wktGeom = self.toolRectangle.getWktGeomeetry()
+            self.toolRectangle.endSelection.disconnect(self.processCubesForRegion)
+            self.toolRectangle.rubberBand.hide()
+            self.toolRectangle = None
+            self.iface.mapCanvas().unsetMapTool(self.toolRectangle)
+            self.breakwaterCubesSelectRegionByRectangleToolButton.setChecked(False)
+        elif self.toolPolygon:
+            wktGeom = self.toolPolygon.getWktGeomeetry()
+            self.toolPolygon.endSelection.disconnect(self.processCubesForRegion)
+            self.toolPolygon.rubberBand.hide()
+            self.toolPolygon.rubberBand.reset(QgsWkbTypes.PolygonGeometry)
+            self.toolPolygon.reset()
+            self.toolPolygon = None
+            self.iface.mapCanvas().unsetMapTool(self.toolPolygon)
+            self.breakwaterCubesSelectRegionByPolygonToolButton.setChecked(False)
+        if not wktGeom:
+            return
+        text = "It will proceed to "
+        if segmentCubes:
+            text += "segment cubes"
+        text += "\nfor the selected region"
+        text += "\nThis process will update the project database"
+        text += "\n\nDo you wish continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), self.windowTitle,
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Process finished:\n")
+            msgBox.exec_()
+            return
+        else:
+            return
+        projectCrs = QgsProject.instance().crs()
+        projectCrsEpsgCode = -1
+        projectCrsProj4 = ""
+        projectCrsAuthId = projectCrs.authid()
+        if "EPSG" in projectCrsAuthId:
+            projectCrsEpsgCode = int(projectCrsAuthId.replace("EPSG:", ""))
+        projectCrsProj4 = projectCrs.toProj4()
+
+        # ret = self.iPyProject.pctGetTilesFromWktGeometry(self.projectPath,
+        #                                                  wktGeom,
+        #                                                  projectCrsEpsgCode,
+        #                                                  projectCrsProj4)
+        # if ret[0] == "False":
+        #     msgBox = QMessageBox(self)
+        #     msgBox.setIcon(QMessageBox.Information)
+        #     msgBox.setWindowTitle(self.windowTitle)
+        #     msgBox.setText("Error:\n" + ret[1])
+        #     msgBox.exec_()
+        #     return
+        yo = 1
+
+        return
+
     def refreshMapCanvas(self):
         currentScale = self.iface.mapCanvas().scale()
         newScale = currentScale * 1.001
@@ -1300,7 +1377,22 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.pointCloudsComboBox.addItem(pointCloud)
         return
 
+    def selectBreakwaterCubesRegionByPolygon(self):
+        return
+
+    def selectBreakwaterCubesRegionByRectangle(self):
+        self.breakwaterCubesSelectRegionByRectangleToolButton.setChecked(True)
+        self.breakwaterCubesSelectRegionByPolygonToolButton.setChecked(False)
+        self.toolRectangle = None
+        self.toolPolygon = None
+        self.toolRectangle = RectangleMapTool(self.iface.mapCanvas())
+        self.iface.mapCanvas().setMapTool(self.toolRectangle)
+        self.toolRectangle.endSelection.connect(self.processCubesForRegion)
+        return
+
     def selectCommand(self):
+        self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(False)
+        self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(False)
         if self.projectsComboBox.currentText() == MMTDefinitions.CONST_NO_COMBO_SELECT:
             return
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
@@ -1322,6 +1414,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.processCommandPushButton.setEnabled(processCommandIsEnabled)
         self.commandParamtersPushButton.setEnabled(True)
         self.processCommandPushButton.setEnabled(True)
+        if (command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_CSSHP
+                or command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_RCSHP):
+            self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(True)
+            self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(True)
 
     def selectCommandParameters(self):
         command = self.processCommandComboBox.currentText()
@@ -1752,6 +1848,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.manualEditingLinearRoadMarksLayer.deleteFeature(feature.id())
         self.manualEditingLinearRoadMarksLayer.commitChanges()
         self.roadMarksVLayer.triggerRepaint()
+        self.manualEditingLinearRoadMarksLayer.startEditing()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
