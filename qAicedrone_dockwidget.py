@@ -1273,7 +1273,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("There are not segmented cubes")
                 msgBox.exec_()
                 return
-        else:
+        elif segmentCubes:
             pointCloudPath = self.pointCloudsComboBox.currentText()
             if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
                 msgBox = QMessageBox(self)
@@ -1340,7 +1340,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             ret = self.iPyProject.mmtCubesSegmentationForWkt(dbFileName,
                                                              wktGeom,
                                                              projectCrsEpsgCode,
-                                                             projectCrsProj4)
+                                                             projectCrsProj4,
+                                                             pointCloudPath)
             if ret[0] == "False":
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
