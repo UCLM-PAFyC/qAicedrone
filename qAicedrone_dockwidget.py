@@ -737,6 +737,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                                                         + MMTDefinitions.CONST_FORM_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
         self.qmlManualEditingNonLinearRoadMarksFileName = (self.templatePath
                                                            + MMTDefinitions.CONST_SYMBOLOGY_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
+        self.qmlCubesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_CUBES_TEMPLATE
         # self.qmlPointCloudFileName = self.templatePath + PCTDefinitions.CONST_SYMBOLOGY_POINT_CLOUD_TEMPLATE
         ret = self.iPyProject.setModelDbManager()
         if ret[0] == "False":
@@ -836,6 +837,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.layerTreeProject = None
         self.layerTreeProjectName = None
         self.roadMarksVLayer = None
+        self.cubesVLayer = None
         # self.layerTreePCTiles = None
         # self.layerTreePCTilesName = None
         # self.loadedTiles = []
@@ -942,9 +944,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.breakwaterCubesSelectRegionByPolygonToolButton.clicked.connect(self.selectBreakwaterCubesRegionByPolygon)
         self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(False)
         self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(False)
+        self.breakwaterSegmentCubesRadioButton.setEnabled(False)
+        self.breakwaterRemoveCubesRadioButton.setEnabled(False)
 
-
-        # self.reportGroupBox.setVisible(False)
+    # self.reportGroupBox.setVisible(False)
         # self.reportGroupBox.setEnabled(False)
         # self.reportReferenceLayerComboBox.setFilters(QgsMapLayerProxyModel.RasterLayer)
         # self.reportReferenceLayerComboBox.layerChanged.connect(self.selectReportReferenceLayerComboBox)
@@ -983,6 +986,31 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.pvAnomaliesVLayer = None
         # self.pvAnomaliesPanelsVLayer = None
         return
+
+    def loadCubes(self):
+        self.cubesVLayer = None
+        cubesTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_CUBES_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(cubesTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = cubesTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_CUBES_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = cubesTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlCubesFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.cubesVLayer = vlayer
+
 
     def loadRoadMarksLayer(self):
         self.roadMarksVLayer = None
@@ -1174,6 +1202,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
             self.loadRoadMarksLayer()
             self.addVirtualRoadMarksLayers()
+        elif self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_BREAKWATER.lower():
+            self.loadCubes()
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_SOLARPARK.lower():
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()
@@ -1234,6 +1264,25 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
     def processCubesForRegion(self):
         segmentCubes = self.breakwaterSegmentCubesRadioButton.isChecked()
         removeCubes = self.breakwaterRemoveCubesRadioButton.isChecked()
+        pointCloudPath = ''
+        if removeCubes:
+            if not self.cubesVLayer:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("There are not segmented cubes")
+                msgBox.exec_()
+                return
+        else:
+            pointCloudPath = self.pointCloudsComboBox.currentText()
+            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Point Cloud Project")
+                msgBox.exec_()
+                self.processCommandComboBox.setCurrentIndex(0)
+                return
         wktGeom = None
         if self.toolRectangle:
             wktGeom = self.toolRectangle.getWktGeomeetry()
@@ -1256,20 +1305,22 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         text = "It will proceed to "
         if segmentCubes:
             text += "segment cubes"
+        elif removeCubes:
+            text += "remove cubes"
         text += "\nfor the selected region"
         text += "\nThis process will update the project database"
         text += "\n\nDo you wish continue?"
         reply = QMessageBox.question(self.iface.mainWindow(), self.windowTitle,
                                      text, QMessageBox.Yes, QMessageBox.No)
-        if reply == QMessageBox.Yes:
-            msgBox = QMessageBox(self)
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Process finished:\n")
-            msgBox.exec_()
+        if reply != QMessageBox.Yes:
             return
-        else:
-            return
+        #     msgBox = QMessageBox(self)
+        #     msgBox.setIcon(QMessageBox.Information)
+        #     msgBox.setWindowTitle(self.windowTitle)
+        #     msgBox.setText("Process finished:\n")
+        #     msgBox.exec_()
+        # else:
+        #     return
         projectCrs = QgsProject.instance().crs()
         projectCrsEpsgCode = -1
         projectCrsProj4 = ""
@@ -1277,20 +1328,41 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         if "EPSG" in projectCrsAuthId:
             projectCrsEpsgCode = int(projectCrsAuthId.replace("EPSG:", ""))
         projectCrsProj4 = projectCrs.toProj4()
-
-        # ret = self.iPyProject.pctGetTilesFromWktGeometry(self.projectPath,
-        #                                                  wktGeom,
-        #                                                  projectCrsEpsgCode,
-        #                                                  projectCrsProj4)
-        # if ret[0] == "False":
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Error:\n" + ret[1])
-        #     msgBox.exec_()
-        #     return
-        yo = 1
-
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        if segmentCubes:
+            ret = self.iPyProject.mmtCubesSegmentationForWkt(dbFileName,
+                                                             wktGeom,
+                                                             projectCrsEpsgCode,
+                                                             projectCrsProj4)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+        elif removeCubes:
+            ret = self.iPyProject.mmtRemoveCubesForWkt(dbFileName,
+                                                       wktGeom,
+                                                       projectCrsEpsgCode,
+                                                       projectCrsProj4)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+        self.cubesVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
         return
 
     def refreshMapCanvas(self):
@@ -1378,9 +1450,36 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def selectBreakwaterCubesRegionByPolygon(self):
+        if self.breakwaterSegmentCubesRadioButton.isChecked():
+            pointCloudPath = self.pointCloudsComboBox.currentText()
+            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Point Cloud Project")
+                msgBox.exec_()
+                self.processCommandComboBox.setCurrentIndex(0)
+                return
+        self.breakwaterCubesSelectRegionByRectangleToolButton.setChecked(False)
+        self.breakwaterCubesSelectRegionByPolygonToolButton.setChecked(True)
+        self.toolRectangle = None
+        self.toolPolygon = None
+        self.toolPolygon = PolygonMapTool(self.iface.mapCanvas())
+        self.iface.mapCanvas().setMapTool(self.toolPolygon)
+        self.toolPolygon.endSelection.connect(self.processCubesForRegion)
         return
 
     def selectBreakwaterCubesRegionByRectangle(self):
+        if self.breakwaterSegmentCubesRadioButton.isChecked():
+            pointCloudPath = self.pointCloudsComboBox.currentText()
+            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Point Cloud Project")
+                msgBox.exec_()
+                self.processCommandComboBox.setCurrentIndex(0)
+                return
         self.breakwaterCubesSelectRegionByRectangleToolButton.setChecked(True)
         self.breakwaterCubesSelectRegionByPolygonToolButton.setChecked(False)
         self.toolRectangle = None
@@ -1410,6 +1509,55 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.processCommandPushButton.setEnabled(False)
             self.commandParamtersPushButton.setEnabled(False)
             return
+        ret = self.iPyProject.mmtGetCommandNeedsPointCloudDb(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        needsPointCloudDb = False
+        strNeeds = ret[1]
+        strNeeds = strNeeds.lower()
+        if strNeeds == "true":
+            needsPointCloudDb = True
+        ret = self.iPyProject.mmtGetCommandNeedsPhotogrammetryDb(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n"+ret[1])
+            msgBox.exec_()
+            return
+        needsPhotogrammetryDb = False
+        strNeeds = ret[1]
+        strNeeds = strNeeds.lower()
+        if strNeeds == "true":
+            needsPhotogrammetryDb = True
+        pointCloudPath = ""
+        photogrammetrySpatialiteDbFileName = ""
+        if needsPointCloudDb:
+            pointCloudPath = self.pointCloudsComboBox.currentText()
+            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Point Cloud Project")
+                msgBox.exec_()
+                self.processCommandComboBox.setCurrentIndex(0)
+                return
+        if needsPhotogrammetryDb:
+            selectedPhotogrammetryInProject = self.photogrammetriesComboBox.currentText()
+            if selectedPhotogrammetryInProject == MMTDefinitions.CONST_NO_COMBO_SELECT:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Select Photogrammetry Project")
+                msgBox.exec_()
+                self.processCommandComboBox.setCurrentIndex(0)
+                return
+            photogrammetrySpatialiteDbFileName = self.photogrammetryConnectionsInProject[selectedPhotogrammetryInProject]
         # processCommandIsEnabled = self.iPyProject.mmtGetEnabledProcessCommand(command)
         # self.processCommandPushButton.setEnabled(processCommandIsEnabled)
         self.commandParamtersPushButton.setEnabled(True)
@@ -1418,6 +1566,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 or command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_RCSHP):
             self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(True)
             self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(True)
+            if command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_CSSHP:
+                self.breakwaterSegmentCubesRadioButton.setChecked(True)
+            else:
+                self.breakwaterRemoveCubesRadioButton.setChecked(True)
 
     def selectCommandParameters(self):
         command = self.processCommandComboBox.currentText()

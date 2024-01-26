@@ -10,10 +10,11 @@ class PolygonMapTool(QgsMapToolEmitPoint):
     """
     endSelection = QtCore.pyqtSignal()
 
-    def __init__(self, canvas,layerNames,selectPoints=True):
+    # def __init__(self, canvas,layerNames,selectPoints=True):
+    def __init__(self, canvas):
         self.canvas = canvas
-        self.layerNames = layerNames
-        self.selectPoints = selectPoints
+        # self.layerNames = layerNames
+        # self.selectPoints = selectPoints
         self.wktGeomery = None
         QgsMapToolEmitPoint.__init__(self, self.canvas)
         self.rubberBand = QgsRubberBand(self.canvas, True)
@@ -38,7 +39,6 @@ class PolygonMapTool(QgsMapToolEmitPoint):
         self.points = []
         self.rubberBand.reset(True)
 
-
     def canvasPressEvent(self, e):
         if e.button() == Qt.RightButton:
             self.selection()
@@ -49,7 +49,6 @@ class PolygonMapTool(QgsMapToolEmitPoint):
             self.isEmittingPoint = True
             # self.marker.setCenter(QgsPointXY(self.point))
             self.showPol()
-
 
     def canvasMoveEvent(self, e):
         if not self.isEmittingPoint:
@@ -76,26 +75,26 @@ class PolygonMapTool(QgsMapToolEmitPoint):
 
     def selection(self):
         geom_selection = self.rubberBand.asGeometry()
-        self.wktGeomery = None
-        if not self.selectPoints:
-            self.wktGeomery = geom_selection.asWkt()
-            self.endSelection.emit()
-            return
-        layers = self.canvas.layers()
-        for layer in layers:
-            layerName = layer.name()
-            if not layerName in self.layerNames:
-                continue
-            if layer.type() == QgsMapLayer.VectorLayer:
-                features_bb = layer.getFeatures(QgsFeatureRequest().setFilterRect(geom_selection.boundingBox()))
-                for feature in features_bb:
-                    if feature.geometry().within(geom_selection):
-                        layer.select(feature.id())
+        # self.wktGeomery = None
+        self.wktGeomery = geom_selection.asWkt()
+        self.endSelection.emit()
+        # if not self.selectPoints:
+        #     self.wktGeomery = geom_selection.asWkt()
+        #     self.endSelection.emit()
+        #     return
+        # layers = self.canvas.layers()
+        # for layer in layers:
+        #     layerName = layer.name()
+        #     if not layerName in self.layerNames:
+        #         continue
+        #     if layer.type() == QgsMapLayer.VectorLayer:
+        #         features_bb = layer.getFeatures(QgsFeatureRequest().setFilterRect(geom_selection.boundingBox()))
+        #         for feature in features_bb:
+        #             if feature.geometry().within(geom_selection):
+        #                 layer.select(feature.id())
         self.rubberBand.hide()
         self.rubberBand.reset(QgsWkbTypes.PolygonGeometry)
         self.reset()
-
-
 
     def deactivate(self):
         self.canvas.scene().removeItem(self.rubberBand)
