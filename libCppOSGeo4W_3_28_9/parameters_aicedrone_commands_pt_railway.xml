@@ -227,15 +227,749 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_OutputPath</Code>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_AngularToleranceParallelLinesInImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for parallel lines detected in images, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0000</Value>
+        <MaximumValue>20.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_BackwardPixelDistanceTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance between lines detected in images and photogrammetric backward calculation for candidate object points, in pixels</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.000</Value>
+        <MaximumValue>20.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_DsmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DSM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_IgnoreHiddenObjectsInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Ignore hidden objects in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ImagesFootprintBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Images footprint buffer distance to check geometries within images</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_LinearToleranceImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for adjust lines in images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.040</Value>
+        <MaximumValue>0.200</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_LinearToleranceObjectSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for 2d line adjust tolerance and constant heigth for final segment solution in object space, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_MaxRowDistanceFromCenterInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance in rows from center to railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.200</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_MaximumNumberOfBackwardImageOutliers</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Maximum number of outliers in photogrammetry backward for candidate object points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>10</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_MinimumLengthInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length for railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>6.000</MaximumValue>
+        <MinimumValue>0.100</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_MinimumObjectLenghtPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum percentage of the segment distance for the final valid solution, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.80</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.30</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_OutputPath</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Path</Type>
         <Description>Output path for splited point cloud files</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/images_segmentation_results</Value>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_RailLineBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail line buffer distance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.300</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_UseUndistortedImageIfExists</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use undistorted image if exists</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_WriteCroppedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write cropped images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_WritePhotogrammetryBackwardInReportFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_WriteReportFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_maximumBackwardImageMse</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixesl</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.00</Value>
+        <MaximumValue>20.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_AngularTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Angular tolerance for segments of a rail within adjacent tiles, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0000</Value>
+        <MaximumValue>20.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_AlongDistanceTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Along distance tolerance for segments of a rail within adjacent tiles, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>8.000</Value>
+        <MaximumValue>20.000</MaximumValue>
+        <MinimumValue>0.100</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_OrthogonalDistanceTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Orthogonal distance tolerance for segments of a rail within adjacent tiles, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.2</Value>
+        <MaximumValue>1.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_ElongationNotAdjacentTiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Elongation for merge segments within not adjacent tiles, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>20.0</Value>
+        <MaximumValue>100.000</MaximumValue>
+        <MinimumValue>1.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for reports</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output_4</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_WriteReportFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_DsmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DSM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_DtmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DtM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_FormatFileFeaturesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Format of files of featues in images</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>1:ClassNumber WKT</ValueList>
+        <Value>1:ClassNumber WKT</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_IgnoredSensorPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Exterior percentage of sensor format ignored.</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>percentage</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_PathFilesFeaturesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Path to files of features in images</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/ia/images/results</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailClassNumber</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Rail class nuber in result files</Description>
+        <PrintSize>3</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailMaximumWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum with for rail, more than rail head (0.07), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.300</Value>
+        <MaximumValue>1.500</MaximumValue>
+        <MinimumValue>0.070</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailMinimumLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>40.000</MaximumValue>
+        <MinimumValue>0.500</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailMinimumWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum with for rail, more than half rail head (0.07), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.040</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.030</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>With for rail, more than rail head (0.07), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>1.000</MaximumValue>
+        <MinimumValue>0.070</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailwayClassNumber</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Railway class nuber in result files</Description>
+        <PrintSize>3</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailwayMaximumWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum with for railways, more than track gauge (1.668), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>4.500</Value>
+        <MaximumValue>5.000</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailwayMinimumLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>40.000</MaximumValue>
+        <MinimumValue>0.500</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailwayMinimumWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum with for railways, more than track gauge (1.668), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.800</Value>
+        <MaximumValue>3.100</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RailwayWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>With for railway, more than track gauge (1.668), in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.600</Value>
+        <MaximumValue>6.000</MaximumValue>
+        <MinimumValue>0.070</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_RemoveObjectsByMinimumArea</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Remove objects by minimum area</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>false</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_SectionLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Section length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>5.000</Value>
+        <MaximumValue>40.000</MaximumValue>
+        <MinimumValue>0.500</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_TileSize</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tile size, in meters. Recommended equal to section length</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>5.000</Value>
+        <MaximumValue>100.000</MaximumValue>
+        <MinimumValue>1.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_AngularTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for parallel rails, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.0000</Value>
+        <MaximumValue>20.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_LineAdjustmentTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Linear tolerance for rails adjustment in line, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.2000</Value>
+        <MaximumValue>1.0000</MaximumValue>
+        <MinimumValue>0.0100</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_MinimumNumberOfOcurrences</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of occurrences for valid rails segments</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>100</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_RailMinimumLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>5.000</MaximumValue>
+        <MinimumValue>0.050</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_ReportFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Report file, empty for no report</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output/preprocess_ai_results_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_UseRailGeometryWithinTile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use the rail geometry within the tile</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_AngularToleranceParallelLinesInImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for parallel lines detected in images, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0000</Value>
+        <MaximumValue>20.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_BackwardPixelDistanceTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance between lines detected in images and photogrammetric backward calculation for candidate object points, in pixels</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3.000</Value>
+        <MaximumValue>20.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -250,6 +984,20 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_ImagesFootprintBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Images footprint buffer distance to check geometries within images</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
         <Code>RCRWSFIS_IntputShapeFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -261,6 +1009,100 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_LinearToleranceImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for adjust lines in images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.050</Value>
+        <MaximumValue>0.200</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_LinearToleranceObjectSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for 2d line adjust tolerance and constant heigth for final segment solution in object space, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MaxRowDistanceFromCenterInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance in rows from center to railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.200</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MaximumNumberOfBackwardImageOutliers</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Maximum number of outliers in photogrammetry backward for candidate object points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>10</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MinimumLengthInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length for railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>6.000</MaximumValue>
+        <MinimumValue>0.100</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_MinimumObjectLenghtPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum percentage of the segment distance for the final valid solution, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.80</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.30</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for splited point cloud files</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/images_segmentation_results</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
         <Code>RCRWSFIS_OutputShapefile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -269,6 +1111,29 @@
         <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
         <Value>F:/2022_AICEDRONE/casos_uso/20230125_RAIL/restitucion/images_segmentation_results/railway_sections_imgs_seg.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_PointCloudFilesSuffix</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Point cloud files suffix, for get DSM files name</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>_final</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -284,15 +1149,31 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_ProcessOnlyEnabledImages</Code>
+        <Code>RCRWSFIS_RailHeadWidth</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Process only enabled images</Description>
-        <PrintSize>10</PrintSize>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>Recompute railway sections from images segmentation</Command>
+        <Code>RCRWSFIS_RailwayLineBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Railway line buffer distance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.300</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -320,18 +1201,6 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_WriteReportFiles</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Write report files</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
         <Code>RCRWSFIS_WritePhotogrammetryBackwardInReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -344,83 +1213,15 @@
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_PointCloudFilesSuffix</Code>
+        <Code>RCRWSFIS_WriteReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>Text</Type>
-        <Description>Point cloud files suffix, for get DSM files name</Description>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
         <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>_final</Value>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_ImagesFootprintBufferDistance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Images footprint buffer distance to check geometries within images</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>meters</Unit>
-        <Value>0.5</Value>
-        <MaximumValue>200.000</MaximumValue>
-        <MinimumValue>0.010</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_RailwayLineBufferDistance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Railway line buffer distance</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>meters</Unit>
-        <Value>0.30</Value>
-        <MaximumValue>200.000</MaximumValue>
-        <MinimumValue>0.010</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_BackwardPixelDistanceTolerance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Maximum distance between lines detected in images and photogrammetric backward calculation for candidate object points, in pixels</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>3.0</Value>
-        <MaximumValue>20.000</MaximumValue>
-        <MinimumValue>0.010</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_MinimumObjectLenghtPercentage</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Minimum percentage of the segment distance for the final valid solution, per unit</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.80</Value>
-        <MaximumValue>0.99</MaximumValue>
-        <MinimumValue>0.30</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_MaximumNumberOfBackwardImageOutliers</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Integer number</Type>
-        <Description>Maximum number of outliers in photogrammetry backward for candidate object points</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>3</Value>
-        <MaximumValue>10</MaximumValue>
-        <MinimumValue>1</MinimumValue>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -431,93 +1232,9 @@
         <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixesl</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>2.0</Value>
-        <MaximumValue>20.0</MaximumValue>
+        <Value>2.00</Value>
+        <MaximumValue>20.00</MaximumValue>
         <MinimumValue>0.01</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_LinearToleranceObjectSpace</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Tolerance for 2d line adjust tolerance and constant heigth for final segment solution in object space, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>meters</Unit>
-        <Value>0.02</Value>
-        <MaximumValue>0.500</MaximumValue>
-        <MinimumValue>0.001</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_MaxRowDistanceFromCenterInTransformedImages</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Maximum distance in rows from center to railway detected lines in cropped and transformed images, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.200</Value>
-        <MaximumValue>0.500</MaximumValue>
-        <MinimumValue>0.010</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_MinimumLengthInTransformedImages</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Minimum length for railway detected lines in cropped and transformed images, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>1.0</Value>
-        <MaximumValue>6.000</MaximumValue>
-        <MinimumValue>0.100</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_LinearToleranceImageSpace</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Tolerance for adjust lines in images, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.020</Value>
-        <MaximumValue>0.200</MaximumValue>
-        <MinimumValue>0.010</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_AngularToleranceParallelLinesInImageSpace</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Tolerance for parallel lines detected in images, in DEG</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>2.0</Value>
-        <MaximumValue>20.0</MaximumValue>
-        <MinimumValue>0.50</MinimumValue>
-        <PrintPrecision>4</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>Recompute railway sections from images segmentation</Command>
-        <Code>RCRWSFIS_RailHeadWidth</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Rail head width, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.07</Value>
-        <MaximumValue>0.12</MaximumValue>
-        <MinimumValue>0.05</MinimumValue>
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>

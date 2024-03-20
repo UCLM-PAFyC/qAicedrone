@@ -2,6 +2,17 @@
 <ParametersManager version="1.1">
     <Parameter>
         <Command>Cubes segmentation for shapefile</Command>
+        <Code>CSSHP_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Path for report results</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231218_Villajoyosa/qAicedrone/output</Value>
+    </Parameter>
+    <Parameter>
+        <Command>Cubes segmentation for shapefile</Command>
         <Code>CSSHP_CubesDimensions</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
