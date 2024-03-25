@@ -1976,6 +1976,74 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 return
             photogrammetrySpatialiteDbFileName = self.photogrammetryConnectionsInProject[
                 selectedPhotogrammetryInProject]
+        if command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR:
+            activeLayer = self.iface.activeLayer()
+            activeLayerName = activeLayer.name()
+            if activeLayerName != MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                text = ("This command requieres active layer: "
+                        + MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME)
+                text += " and select features to process"
+                msgBox.setText(text)
+                msgBox.exec_()
+                return
+            numberOfFeaturesSelected = activeLayer.selectedFeatureCount()
+            if numberOfFeaturesSelected < 1:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                text = ("This command requieres active layer: "
+                        + MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME)
+                text += " and select features to process"
+                msgBox.setText(text)
+                msgBox.exec_()
+                return
+            # fieldIdIdx = activeLayer.fieldNameIndex(MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID)
+            fieldIdIdx = activeLayer.fields().indexFromName(MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID)
+            if fieldIdIdx < 0:
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                text = ("This command requieres active layer: "
+                        + MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME)
+                text += " and select features to process"
+                text += " and active layer does not has a field id"
+                msgBox.setText(text)
+                msgBox.exec_()
+                return
+            parameterTag = MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR_PARAMETER_TAG_SELECTED_RAILS_ID
+            parameterValue = ""
+            ret = self.iPyProject.mmtSetCommandParameterValue(dbFileName,
+                                                              parameterTag,
+                                                              parameterValue)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+            parameterValue = ""
+            for selectedFeature in activeLayer.selectedFeatures():
+                selectedFeatureGeometry = selectedFeature.geometry()
+                if parameterValue != "":
+                    parameterValue = parameterValue + ";"
+                # selectedFeatureId = selectedFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID]
+                selectedFeatureId = str(selectedFeature.attribute(fieldIdIdx))
+                parameterValue = parameterValue + selectedFeatureId
+            parameterTag = MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR_PARAMETER_TAG_SELECTED_RAILS_ID
+            ret = self.iPyProject.mmtSetCommandParameterValue(dbFileName,
+                                                              parameterTag,
+                                                              parameterValue)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
         initialDateTime = QDateTime.currentDateTime()
         ret = self.iPyProject.mmtProcessCommand(dbFileName,
                                                 command,
@@ -1987,8 +2055,20 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setWindowTitle(self.windowTitle)
             msgBox.setText("Error:\n" + ret[1])
             msgBox.exec_()
+            if command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR:
+                parameterTag = MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR_PARAMETER_TAG_SELECTED_RAILS_ID
+                parameterValue = ""
+                ret = self.iPyProject.mmtSetCommandParameterValue(dbFileName,
+                                                                  parameterTag,
+                                                                  parameterValue)
+                if ret[0] == "False":
+                    msgBox = QMessageBox(self)
+                    msgBox.setIcon(QMessageBox.Information)
+                    msgBox.setWindowTitle(self.windowTitle)
+                    msgBox.setText("Error:\n" + ret[1])
+                    msgBox.exec_()
+                    return
             return
-
         finalDateTime = QDateTime.currentDateTime()
         initialSeconds = initialDateTime.toTime_t()
         finalSeconds = finalDateTime.toTime_t()
@@ -2028,7 +2108,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         msgBox.setWindowTitle(self.windowTitle)
         msgBox.setText(msg)
         msgBox.exec_()
-
         if ret[1] == "True":  # needReloadProject:
             msg = "Before the next step, QGis and the Project must be reopened "
             msgBox = QMessageBox(self)
@@ -2036,6 +2115,19 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setWindowTitle(self.windowTitle)
             msgBox.setText(msg)
             msgBox.exec_()
+        if command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR:
+            parameterTag = MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CVPHOFSAIR_PARAMETER_TAG_SELECTED_RAILS_ID
+            parameterValue = ""
+            ret = self.iPyProject.mmtSetCommandParameterValue(dbFileName,
+                                                              parameterTag,
+                                                              parameterValue)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
 
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
         #     self.loadHazardAreasMshLayer()

@@ -227,7 +227,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_AngularToleranceParallelLinesInImageSpace</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -241,7 +241,7 @@
         <PrintPrecision>4</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_BackwardPixelDistanceTolerance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -255,7 +255,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_DsmRasterFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -266,7 +266,7 @@
         <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_IgnoreHiddenObjectsInImages</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -278,7 +278,7 @@
         <Value>false</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_ImagesFootprintBufferDistance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -292,7 +292,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_LinearToleranceImageSpace</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -306,7 +306,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_LinearToleranceObjectSpace</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -320,7 +320,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_MaxRowDistanceFromCenterInTransformedImages</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -334,7 +334,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_MaximumNumberOfBackwardImageOutliers</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -347,7 +347,7 @@
         <MinimumValue>1</MinimumValue>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_MinimumLengthInTransformedImages</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -361,7 +361,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_MinimumObjectLenghtPercentage</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -375,18 +375,18 @@
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_OutputPath</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Path</Type>
-        <Description>Output path for splited point cloud files</Description>
+        <Description>Output path for reports and images</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
         <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_ProcessOnlyEnabledImages</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -398,7 +398,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_ProcessOnlyEnabledRails</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -410,7 +410,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_RailHeadWidth</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -424,7 +424,7 @@
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_RailLineBufferDistance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -438,7 +438,7 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_UseUndistortedImageIfExists</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -450,7 +450,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_WriteCroppedImages</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -462,7 +462,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_WritePhotogrammetryBackwardInReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -474,7 +474,7 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_WriteReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -486,12 +486,12 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. CV and Photogrammetry solution from AI results</Command>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
         <Code>CVPHOFAIR_maximumBackwardImageMse</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
-        <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixesl</Description>
+        <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixels</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
         <Value>2.00</Value>
@@ -500,12 +500,12 @@
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_AngularTolerance</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_AngularToleranceParallelLinesInImageSpace</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
-        <Description>Angular tolerance for segments of a rail within adjacent tiles, in DEG</Description>
+        <Description>Tolerance for parallel lines detected in images, in DEG</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
         <Value>2.0000</Value>
@@ -514,61 +514,165 @@
         <PrintPrecision>4</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_AlongDistanceTolerance</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_BackwardPixelDistanceTolerance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
-        <Description>Along distance tolerance for segments of a rail within adjacent tiles, in meters</Description>
+        <Description>Maximum distance between lines detected in images and photogrammetric backward calculation for candidate object points, in pixels</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>8.000</Value>
+        <Value>3.000</Value>
         <MaximumValue>20.000</MaximumValue>
-        <MinimumValue>0.100</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_OrthogonalDistanceTolerance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Orthogonal distance tolerance for segments of a rail within adjacent tiles, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.2</Value>
-        <MaximumValue>1.000</MaximumValue>
         <MinimumValue>0.010</MinimumValue>
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_ElongationNotAdjacentTiles</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_DsmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DSM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_IgnoreHiddenObjectsInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Ignore hidden objects in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_ImagesFootprintBufferDistance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
-        <Description>Elongation for merge segments within not adjacent tiles, in meters</Description>
+        <Description>Images footprint buffer distance to check geometries within images</Description>
         <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>20.0</Value>
-        <MaximumValue>100.000</MaximumValue>
-        <MinimumValue>1.000</MinimumValue>
+        <Unit>meters</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_OutputPath</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_LinearToleranceImageSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for adjust lines in images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.040</Value>
+        <MaximumValue>0.200</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_LinearToleranceObjectSpace</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tolerance for 2d line adjust tolerance and constant heigth for final segment solution in object space, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.020</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_MaxRowDistanceFromCenterInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance in rows from center to railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.200</Value>
+        <MaximumValue>0.500</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_MaximumNumberOfBackwardImageOutliers</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Maximum number of outliers in photogrammetry backward for candidate object points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>3</Value>
+        <MaximumValue>10</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_MinimumLengthInTransformedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length for railway detected lines in cropped and transformed images, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.000</Value>
+        <MaximumValue>6.000</MaximumValue>
+        <MinimumValue>0.100</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_MinimumObjectLenghtPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum percentage of the segment distance for the final valid solution, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.80</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.30</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_OutputPath</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Path</Type>
-        <Description>Output path for reports</Description>
+        <Description>Output path for reports and images</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output_4</Value>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug</Value>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_ProcessOnlyEnabledRails</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_ProcessOnlyEnabledRails</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
@@ -579,8 +683,71 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_WriteReportFiles</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_RailLineBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail line buffer distance</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.300</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_SelectedRailsId</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Selected rails ids separated by ';' and setted by QGIS interface</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value></Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_UseUndistortedImageIfExists</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use undistorted image if exists</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_WriteCroppedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write cropped images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_WritePhotogrammetryBackwardInReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
@@ -591,15 +758,30 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>4. Merge rails</Command>
-        <Code>MERGERAILS_DsmRasterFile</Code>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_WriteReportFiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>File</Type>
-        <Description>DSM raster file, same CRS as project and with no data value.</Description>
-        <PrintSize>200</PrintSize>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
+        <Code>CVPHOFSAIR_maximumBackwardImageMse</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixels</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.00</Value>
+        <MaximumValue>20.00</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
         <Command>1. Import AI results</Command>
@@ -838,6 +1020,119 @@
         <MaximumValue>100.000</MaximumValue>
         <MinimumValue>1.000</MinimumValue>
         <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_AngularTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Angular tolerance for segments of a rail within adjacent tiles, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0000</Value>
+        <MaximumValue>20.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_DsmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DSM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_DtmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for reports</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output_4</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_RailwayRadius</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Railway curve radius, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>500.00</Value>
+        <MaximumValue>10000.00</MaximumValue>
+        <MinimumValue>50.00</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_TrackGauge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Track gauge, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.668</Value>
+        <MaximumValue>3.100</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge rails</Command>
+        <Code>MERGERAILS_WriteReportFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write report files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>2. Preprocess AI results</Command>
