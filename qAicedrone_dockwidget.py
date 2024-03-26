@@ -740,6 +740,9 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # qs.setValue('svg/searchPathsForSVG', svg_paths + [self.templatePath])
 
         self.qmlRoisFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROIS_TEMPLATE
+        self.qmlAiPaintsImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_PAINTS_IMPORT_TEMPLATE
+        self.qmlAiRoadsImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_ROADS_IMPORT_TEMPLATE
+        self.qmlAiPaintsTilesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_PAINTS_TILES_TEMPLATE
         self.qmlRoadMarksFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROAD_MARKS_TEMPLATE
         self.qmlManualEditingLinearRoadMarksFileName = (self.templatePath
                                                         + MMTDefinitions.CONST_SYMBOLOGY_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
@@ -852,6 +855,9 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
         self.layerTreeProject = None
         self.layerTreeProjectName = None
+        self.aiPaintsImportVLayer = None
+        self.aiRoadsImportVLayer = None
+        self.aiPaintsTilesVLayer = None
         self.roadMarksVLayer = None
         self.cubesVLayer = None
         self.aiRailsImportVLayer = None
@@ -1165,6 +1171,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.mergedRailsVLayer = vlayer
+        self.refreshMapCanvas()
 
     def loadCubes(self):
         # self.cubesVLayer = None
@@ -1191,6 +1198,73 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.cubesVLayer = vlayer
 
     def loadRoadMarksLayer(self):
+        # self.aiRailsImportVLayer = None
+        aiPaintsImportTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_PAINTS_IMPORT_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(aiPaintsImportTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = aiPaintsImportTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_PAINTS_IMPORT_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = aiPaintsImportTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlAiPaintsImportFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.aiPaintsImportVLayer = vlayer
+        # self.aiRailwaysImportVLayer = None
+        aiRoadsImportTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_ROADS_IMPORT_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(aiRoadsImportTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = aiRoadsImportTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_ROADS_IMPORT_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = aiRoadsImportTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlAiRoadsImportFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.aiRoadsImportVLayer = vlayer
+        # self.aiRailsTilesVLayer = None
+        aiPaintsTilesTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_PAINTS_TILES_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(aiPaintsTilesTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = aiPaintsTilesTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_PAINTS_TILES_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = aiPaintsTilesTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlAiPaintsTilesFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.aiPaintsTilesVLayer = vlayer
+        # self.aiRailsImportVLayer = None
         # self.roadMarksVLayer = None
         roadMarksTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
         layerList = QgsProject.instance().mapLayersByName(roadMarksTableName)
@@ -2128,7 +2202,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("Error:\n" + ret[1])
                 msgBox.exec_()
                 return
-
+        self.loadRailwayLayers()
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
         #     self.loadHazardAreasMshLayer()
         #     self.loadHazardAreasLayer()
@@ -2136,7 +2210,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()
         #     self.loadPhotovoltaicAnomaliesLayers()
-        self.refreshMapCanvas()
+        # self.refreshMapCanvas()
         return
 
     def selectNewDatabase(self):
