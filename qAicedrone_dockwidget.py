@@ -1165,6 +1165,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.mergedRailsVLayer = vlayer
+        self.refreshMapCanvas()
 
     def loadCubes(self):
         # self.cubesVLayer = None
@@ -2128,7 +2129,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("Error:\n" + ret[1])
                 msgBox.exec_()
                 return
-
+        self.loadRailwayLayers()
         # if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_POWERLINE.lower():
         #     self.loadHazardAreasMshLayer()
         #     self.loadHazardAreasLayer()
@@ -2136,7 +2137,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         #     self.loadPhotovoltaicArrayPanels()
         #     self.loadPhotovoltaicPanels()
         #     self.loadPhotovoltaicAnomaliesLayers()
-        self.refreshMapCanvas()
+        # self.refreshMapCanvas()
         return
 
     def selectNewDatabase(self):
