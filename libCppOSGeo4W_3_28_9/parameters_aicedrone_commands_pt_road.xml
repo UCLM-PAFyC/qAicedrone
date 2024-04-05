@@ -1,6 +1,163 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
     <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_DtmRasterFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DtM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/DatosAuxiliares/swords_dtm_4083_20cm.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_FormatFileFeaturesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Format of files of features in images</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>1:MaskTiles</ValueList>
+        <Value>1:MaskTiles</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_IgnoredSensorPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Exterior percentage of sensor format ignored.</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>percentage</Unit>
+        <Value>0.010</Value>
+        <MaximumValue>10.000</MaximumValue>
+        <MinimumValue>0.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_MaskAIImagesDilateKernelSize</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Dilate kernel size for mask in IA images, 0 no apply</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1</Value>
+        <MaximumValue>20</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_MaskAIImagesMinimumDN</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum DN value for mask in IA images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>200</Value>
+        <MaximumValue>255</MaximumValue>
+        <MinimumValue>0</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_OriginalAIImagesTileSize</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Original AI images tile size</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1200</Value>
+        <MaximumValue>50000</MaximumValue>
+        <MinimumValue>100</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for reports</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/qAicedrone/output_1</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_PathFilesPaintClassFeaturesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Path to files of paint class features in images</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/ia/predictions_paints</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_PathFilesRoadClassFeaturesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Path to files of road class features in images</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/ia/predictions_roads</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Import AI results</Command>
+        <Code>IAIR_TileSize</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Tile size, in meters. Recommended equal to section length</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10.000</Value>
+        <MaximumValue>100.000</MaximumValue>
+        <MinimumValue>1.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3. Import results from shapefiles</Command>
+        <Code>IRFS_MergedRoadMarksShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with merged roads marks, same CRS as project</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_seg_edited.shp</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3. Import results from shapefiles</Command>
+        <Code>IRFS_StandardRoadMarksShapeFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Input shapefile with standard roads marks</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
+    </Parameter>
+    <Parameter>
         <Command>0. Mask flat areas in raster digital elevation model</Command>
         <Code>MFADEM_InliersPercentage</Code>
         <Enabled>Yes</Enabled>
@@ -334,17 +491,6 @@
     </Parameter>
     <Parameter>
         <Command>1. Roads marks segmentation in images</Command>
-        <Code>RMSI_StandardRoadMarksShapefile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>SaveFile</Type>
-        <Description>Standard road marks shapefile</Description>
-        <PrintSize>300</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
-    </Parameter>
-    <Parameter>
-        <Command>1. Roads marks segmentation in images</Command>
         <Code>RMSI_RoadsShapeFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -365,6 +511,17 @@
         <Unit>adimensional</Unit>
         <ValueList>true;false</ValueList>
         <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>1. Roads marks segmentation in images</Command>
+        <Code>RMSI_StandardRoadMarksShapefile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Standard road marks shapefile</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
     </Parameter>
     <Parameter>
         <Command>1. Roads marks segmentation in images</Command>
@@ -414,25 +571,14 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. Import results from shapefiles</Command>
-        <Code>IRFS_MergedRoadMarksShapeFile</Code>
+        <Command>0. Import road marks catalog shapefile</Command>
+        <Code>IRMCSHP_Shapefile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>File</Type>
-        <Description>Input shapefile with merged roads marks, same CRS as project</Description>
+        <Description>Shapefile to import</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/images_segmentation_results/road_marks_seg_edited.shp</Value>
-    </Parameter>
-    <Parameter>
-        <Command>3. Import results from shapefiles</Command>
-        <Code>IRFS_StandardRoadMarksShapeFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>Input shapefile with standard roads marks</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>F:/2022_AICEDRONE/casos_uso/Swords_reprocesado/restitucion/standard_road_marks.shp</Value>
+        <Value>E:/dev/src/python/qgis3/qAicedrone/templates/road_marks_catalogs/road_marks_catalog_20240401.shp</Value>
     </Parameter>
 </ParametersManager>
