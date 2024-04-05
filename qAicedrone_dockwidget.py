@@ -1268,15 +1268,15 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.aiPaintsTilesVLayer = vlayer
         # self.aiRailwaysImportVLayer = None
         aiRoadstTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_ROADS_TABLE_NAME
-        layerList = QgsProject.instance().mapLayersByName(aiRoadsImportTableName)
+        layerList = QgsProject.instance().mapLayersByName(aiRoadstTableName)
         if not layerList:
             uri = QgsDataSourceUri()
             uri.setDatabase(self.dbFileName)
             schema = ''
-            table = aiRoadsImportTableName
+            table = aiRoadstTableName
             geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_ROADS_GEOMETRY_COLUMN
             uri.setDataSource(schema, table, geom_column)
-            display_name = aiRoadsImportTableName
+            display_name = aiRoadstTableName
             vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
             if vlayer.isValid():
                 # if vlayer.featureCount() == 0:
