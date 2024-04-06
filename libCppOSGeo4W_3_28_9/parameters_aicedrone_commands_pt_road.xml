@@ -581,4 +581,175 @@
         <Unit>adimensional</Unit>
         <Value>E:/dev/src/python/qgis3/qAicedrone/templates/road_marks_catalogs/road_marks_catalog_20240401.shp</Value>
     </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_ProcessOnlyEnabledAiImportedRoads</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled AI imported roads</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Preprocess AI results</Command>
+        <Code>PPAIR_AiImportedRoadsMinimumArea</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>AI imported roads minimum areas to merge, in squared meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>10.0</Value>
+        <MaximumValue>200</MaximumValue>
+        <MinimumValue>1.</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for results</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/qAicedrone/output_2_1</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_DTM</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM file, same CRS as project.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/DatosAuxiliares/swords_dtm_4083_20cm.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_FilterPaintsByRoads</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Filter by roads, ignore paints not within roads</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ProcessOnlyEnabledPaints</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled paints</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ProcessOnlyEnabledImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_UseUndistortedImageIfExists</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use undistorted image if exists</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_WriteMaskedImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write cropped images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_WriteDebuggingFiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Write debugging files</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ImagesFootprintBufferDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Images footprint buffer distance to check geometries within images</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.500</Value>
+        <MaximumValue>200.000</MaximumValue>
+        <MinimumValue>0.010</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_IoUThreshold</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Intersection Over Union (IoU) threshold, per unit</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.55</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_SplitDetectedLinesInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Split in segments the detected lines in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1 CV and Photogrammetry solution from AI results</Command>
+        <Code>CVPHOFAIR_ThresholdsGrayValues</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Text</Type>
+        <Description>Threshold gray values: min value - max difference; another, ..., 8 bits range</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>160-30;190-40;215-255</Value>
+    </Parameter>
 </ParametersManager>

@@ -744,6 +744,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.qmlAiRoadsImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_ROADS_IMPORT_TEMPLATE
         self.qmlAiRoadsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_ROADS_TEMPLATE
         self.qmlAiPaintsTilesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_PAINTS_TILES_TEMPLATE
+        self.qmlcvPhmPaintsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_CV_PHM_PAINTS_TEMPLATE
         self.qmlRoadMarksFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_ROAD_MARKS_TEMPLATE
         self.qmlManualEditingLinearRoadMarksFileName = (self.templatePath
                                                         + MMTDefinitions.CONST_SYMBOLOGY_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_TEMPLATE)
@@ -860,6 +861,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.aiRoadsImportVLayer = None
         self.aiRoadsVLayer = None
         self.aiPaintsTilesVLayer = None
+        self.cvPhmPaintsVLayer = None
         self.roadMarksVLayer = None
         self.cubesVLayer = None
         self.aiRailsImportVLayer = None
@@ -1318,6 +1320,28 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             #     msgBox.setText("Impossible to Load table: " + roadMarksTableName
             #                        +" into QGIS")
             #     msgBox.exec_()
+        # self.aiRailsImportVLayer = None
+        cvPhmPaintsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_PAINTS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(aiPaintsImportTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = aiPaintsImportTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_PAINTS_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = aiPaintsImportTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlcvPhmPaintsFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.cvPhmPaintsVLayer = vlayer
 
     def loadROIsLayer(self):
         roisTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_NAME
