@@ -1322,15 +1322,15 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             #     msgBox.exec_()
         # self.aiRailsImportVLayer = None
         cvPhmPaintsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_PAINTS_TABLE_NAME
-        layerList = QgsProject.instance().mapLayersByName(aiPaintsImportTableName)
+        layerList = QgsProject.instance().mapLayersByName(cvPhmPaintsTableName)
         if not layerList:
             uri = QgsDataSourceUri()
             uri.setDatabase(self.dbFileName)
             schema = ''
-            table = aiPaintsImportTableName
+            table = cvPhmPaintsTableName
             geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_PAINTS_GEOMETRY_COLUMN
             uri.setDataSource(schema, table, geom_column)
-            display_name = aiPaintsImportTableName
+            display_name = cvPhmPaintsTableName
             vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
             if vlayer.isValid():
                 # if vlayer.featureCount() == 0:
@@ -2519,7 +2519,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         widths = []
-        standarRoadMarksFileNames = []
+        # standarRoadMarksFileNames = []
         wktGeometries = []
         widthsIdx = (self.manualEditingLinearRoadMarksLayer.
                      fields().indexFromName(MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH))
@@ -2528,16 +2528,16 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                                editorWidgetSetup(widthsIdx).config()['map'].keys())
         widths_val_list = list(self.manualEditingLinearRoadMarksLayer.
                                editorWidgetSetup(widthsIdx).config()['map'].values())
-        standarRoadMarksFileNamesIdx = (self.manualEditingLinearRoadMarksLayer.fields().indexFromName(
-            MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE))
-        # standarRoadMarksFileNamesDictionary = (self.manualEditingLinearRoadMarksLayer.
-        #                                        editorWidgetSetup(standarRoadMarksFileNamesIdx).config().values())
-        standarRoadMarksFileNames_key_list = list(self.manualEditingLinearRoadMarksLayer.
-                                                  editorWidgetSetup(standarRoadMarksFileNamesIdx).config()[
-                                                      'map'].keys())
-        standarRoadMarksFileNames_val_list = list(self.manualEditingLinearRoadMarksLayer.
-                                                  editorWidgetSetup(standarRoadMarksFileNamesIdx).config()[
-                                                      'map'].values())
+        # # standarRoadMarksFileNamesIdx = (self.manualEditingLinearRoadMarksLayer.fields().indexFromName(
+        # #     MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE))
+        # # standarRoadMarksFileNamesDictionary = (self.manualEditingLinearRoadMarksLayer.
+        # #                                        editorWidgetSetup(standarRoadMarksFileNamesIdx).config().values())
+        # standarRoadMarksFileNames_key_list = list(self.manualEditingLinearRoadMarksLayer.
+        #                                           editorWidgetSetup(standarRoadMarksFileNamesIdx).config()[
+        #                                               'map'].keys())
+        # standarRoadMarksFileNames_val_list = list(self.manualEditingLinearRoadMarksLayer.
+        #                                           editorWidgetSetup(standarRoadMarksFileNamesIdx).config()[
+        #                                               'map'].values())
         for feature in self.manualEditingLinearRoadMarksLayer.getFeatures():
             wktGeometry = feature.geometry().asWkt()
             widthDictIndex = feature[MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH]
@@ -2546,16 +2546,16 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 position = widths_val_list.index(widthDictIndex)
                 if position > -1:
                     width = float(widths_key_list[position])
-            standarRoadMarkFileNameDictIndex = feature[
-                MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE]
-            standarRoadMarkFileName = ''
-            if not standarRoadMarkFileNameDictIndex == NULL:
-                position = standarRoadMarksFileNames_val_list.index(standarRoadMarkFileNameDictIndex)
-                if position > -1:
-                    standarRoadMarkFileName = standarRoadMarksFileNames_key_list[position]
+            # standarRoadMarkFileNameDictIndex = feature[
+            #     MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE]
+            # standarRoadMarkFileName = ''
+            # if not standarRoadMarkFileNameDictIndex == NULL:
+            #     position = standarRoadMarksFileNames_val_list.index(standarRoadMarkFileNameDictIndex)
+            #     if position > -1:
+            #         standarRoadMarkFileName = standarRoadMarksFileNames_key_list[position]
             if width > 0:
                 widths.append(width)
-                standarRoadMarksFileNames.append(standarRoadMarkFileName)
+                # standarRoadMarksFileNames.append(standarRoadMarkFileName)
                 wktGeometries.append(wktGeometry)
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
@@ -2567,7 +2567,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         ret = self.iPyProject.mmtSaveManuallyEditedLinearRoadMarks(dbFileName,
                                                                    widths,
-                                                                   standarRoadMarksFileNames,
+                                                                   # standarRoadMarksFileNames,
                                                                    wktGeometries)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
