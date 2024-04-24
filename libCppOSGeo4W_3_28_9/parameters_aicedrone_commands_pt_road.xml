@@ -752,4 +752,68 @@
         <ValueList>true;false</ValueList>
         <Value>true</Value>
     </Parameter>
+    <Parameter>
+        <Command>4. Merge road marks</Command>
+        <Code>MRM_AngleToleranceLinesMerge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Angle tolerance for lines merge, in degrees</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>5.0</Value>
+        <MaximumValue>30.0</MaximumValue>
+        <MinimumValue>0.1</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge road marks</Command>
+        <Code>MRM_IoUThreshold</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Intersection Over Union (IoU) threshold, per unit, for road marks coincidences</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>meters</Unit>
+        <Value>0.35</Value>
+        <MaximumValue>0.99</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge road marks</Command>
+        <Code>MRM_MinimumDetectionsInImages</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of detections in images</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2</Value>
+        <MaximumValue>20</MaximumValue>
+        <MinimumValue>1</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge road marks</Command>
+        <Code>MRM_OutputReportfile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Output file for report, or empty.</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230807_Roads/qAicedrone/output_4/merge_roads_marks_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>4. Merge road marks</Command>
+        <Code>MRM_ProcessOnlyEnabledRoadMarks</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled road marks</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
 </ParametersManager>

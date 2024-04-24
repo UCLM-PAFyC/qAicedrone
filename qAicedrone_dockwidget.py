@@ -236,7 +236,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
 
     def addVirtualRoadMarksLayers(self):
         projectCrs = QgsCoordinateReferenceSystem.fromEpsgId(self.crsEpsgCode)
-        catalogueFileNames = []
+        # catalogueFileNames = []
         # recuperar los ficheros de marcas
         uri = QgsDataSourceUri()
         uri.setDatabase(self.dbFileName)
@@ -247,10 +247,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         roadMarkslayer = QgsVectorLayer(uri.uri(), 'road_marks', 'spatialite')
         if not roadMarkslayer.isValid():
             return  # cuando todavia no se han procesado road_marks
-        for roadMarkFeature in roadMarkslayer.getFeatures():
-            mark_file = roadMarkFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ROAD_MARKS_FILE]
-            if not mark_file in catalogueFileNames:
-                catalogueFileNames.append(mark_file)
+        # for roadMarkFeature in roadMarkslayer.getFeatures():
+        #     mark_file = roadMarkFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ROAD_MARKS_FILE]
+        #     if not mark_file in catalogueFileNames:
+        #         catalogueFileNames.append(mark_file)
         # recuperar los valores del catalogo
         uri = QgsDataSourceUri()
         uri.setDatabase(self.dbFileName)
@@ -301,9 +301,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.manualEditingLinearRoadMarksLayer.startEditing()
             widthFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH
             widthField = QgsField(widthFieldName, QVariant.String)
-            catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
-            catalogueField = QgsField(catalogueFieldName, QVariant.String)
-            self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField, catalogueField])
+            # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+            # catalogueField = QgsField(catalogueFieldName, QVariant.String)
+            # self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField, catalogueField])
+            self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField])
             self.manualEditingLinearRoadMarksLayer.commitChanges()
             if self.manualEditingLinearRoadMarksLayer.isValid():
                 # if vlayer.featureCount() == 0:
@@ -322,13 +323,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     pos = pos + 1
                 self.field_to_value_map(self.manualEditingLinearRoadMarksLayer, widthFieldName, widthlistValues)
                 listValues = {"kakita 1": 1, "kakita 2": 2}
-                catalogueFilesListValues = {}
-                pos = 0
-                for catalogueFile in catalogueFileNames:
-                    catalogueFilesListValues[catalogueFile] = pos
-                    pos = pos + 1
-                self.field_to_value_map(self.manualEditingLinearRoadMarksLayer, catalogueFieldName,
-                                        catalogueFilesListValues)
+                # catalogueFilesListValues = {}
+                # pos = 0
+                # for catalogueFile in catalogueFileNames:
+                #     catalogueFilesListValues[catalogueFile] = pos
+                #     pos = pos + 1
+                # self.field_to_value_map(self.manualEditingLinearRoadMarksLayer, catalogueFieldName,
+                #                         catalogueFilesListValues)
                 # widthFieldIndex = fields.indexFromName(field_name)
                 self.manualEditingLinearRoadMarksLayer.triggerRepaint()
                 self.iface.setActiveLayer(self.manualEditingLinearRoadMarksLayer)
@@ -356,10 +357,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             codeField = QgsField(codeFieldName, QVariant.String)
             typeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_TYPE
             typeField = QgsField(typeFieldName, QVariant.String)
-            catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
-            catalogueField = QgsField(catalogueFieldName, QVariant.String)
+            # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+            # catalogueField = QgsField(catalogueFieldName, QVariant.String)
+            # self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
+            #     [roadMarkIdField, codeField, typeField, catalogueField])
             self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
-                [roadMarkIdField, codeField, typeField, catalogueField])
+                [roadMarkIdField, codeField, typeField])
             self.manualEditingNonLinearRoadMarksLayer.commitChanges()
             if self.manualEditingNonLinearRoadMarksLayer.isValid():
                 # if vlayer.featureCount() == 0:
@@ -386,13 +389,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                                         roadMarkIdlistValues)
                 self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, codeFieldName, codelistValues)
                 self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, typeFieldName, typelistValues)
-                catalogueFilesListValues = {}
-                pos = 0
-                for catalogueFile in catalogueFileNames:
-                    catalogueFilesListValues[catalogueFile] = pos
-                    pos = pos + 1
-                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, catalogueFieldName,
-                                        catalogueFilesListValues)
+                # catalogueFilesListValues = {}
+                # pos = 0
+                # for catalogueFile in catalogueFileNames:
+                #     catalogueFilesListValues[catalogueFile] = pos
+                #     pos = pos + 1
+                # self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, catalogueFieldName,
+                #                         catalogueFilesListValues)
                 self.manualEditingNonLinearRoadMarksLayer.triggerRepaint()
                 self.iface.setActiveLayer(self.manualEditingNonLinearRoadMarksLayer)
                 self.iface.zoomToActiveLayer()
@@ -1290,36 +1293,22 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.aiRoadsVLayer = vlayer
+                if self.aiRoadsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRoadsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRoadsVLayer.id())
+                layerNode.setExpanded(True)
+
+                # if self.aiPaintsImportVLayer.isValid():
+                #     QgsProject.instance().layerTreeRoot().findLayer(
+                #         self.aiPaintsImportVLayer.id()).setItemVisibilityChecked(False)
+                # if self.aiPaintsTilesVLayer.isValid():
+                #     QgsProject.instance().layerTreeRoot().findLayer(
+                #         self.aiPaintsTilesVLayer.id()).setItemVisibilityChecked(False)
+
         # self.aiRailsImportVLayer = None
-        # self.roadMarksVLayer = None
-        roadMarksTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
-        layerList = QgsProject.instance().mapLayersByName(roadMarksTableName)
-        if not layerList:
-            uri = QgsDataSourceUri()
-            uri.setDatabase(self.dbFileName)
-            schema = ''
-            table = roadMarksTableName
-            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_GEOMETRY_COLUMN
-            uri.setDataSource(schema, table, geom_column)
-            display_name = roadMarksTableName
-            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
-            if vlayer.isValid():
-                # if vlayer.featureCount() == 0:
-                #     return
-                QgsProject.instance().addMapLayer(vlayer, False)
-                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
-                vlayer.loadNamedStyle(self.qmlRoadMarksFileName)
-                vlayer.triggerRepaint()
-                self.iface.setActiveLayer(vlayer)
-                self.iface.zoomToActiveLayer()
-                self.roadMarksVLayer = vlayer
-            # else: # cuando todavia no se han procesado road_marks
-            #     msgBox = QMessageBox(self)
-            #     msgBox.setIcon(QMessageBox.Information)
-            #     msgBox.setWindowTitle(self.windowTitle)
-            #     msgBox.setText("Impossible to Load table: " + roadMarksTableName
-            #                        +" into QGIS")
-            #     msgBox.exec_()
         # self.aiRailsImportVLayer = None
         cvPhmPaintsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_PAINTS_TABLE_NAME
         layerList = QgsProject.instance().mapLayersByName(cvPhmPaintsTableName)
@@ -1342,6 +1331,82 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.cvPhmPaintsVLayer = vlayer
+                if self.aiRoadsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRoadsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiPaintsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiPaintsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiPaintsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiPaintsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiPaintsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiPaintsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                # if self.aiRoadsVLayer.isValid():
+                #     QgsProject.instance().layerTreeRoot().findLayer(
+                #         self.aiRoadsVLayer.id()).setItemVisibilityChecked(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.cvPhmPaintsVLayer.id())
+                layerNode.setExpanded(True)
+
+        # self.roadMarksVLayer = None
+        roadMarksTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(roadMarksTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = roadMarksTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = roadMarksTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlRoadMarksFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.roadMarksVLayer = vlayer
+                if self.aiRoadsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRoadsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiPaintsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiPaintsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiPaintsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiPaintsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiPaintsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiPaintsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                # if self.aiRoadsVLayer.isValid():
+                #     QgsProject.instance().layerTreeRoot().findLayer(
+                #         self.aiRoadsVLayer.id()).setItemVisibilityChecked(False)
+                if self.cvPhmPaintsVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.cvPhmPaintsVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.cvPhmPaintsVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.roadMarksVLayer.id())
+                layerNode.setExpanded(True)
+            # else: # cuando todavia no se han procesado road_marks
+            #     msgBox = QMessageBox(self)
+            #     msgBox.setIcon(QMessageBox.Information)
+            #     msgBox.setWindowTitle(self.windowTitle)
+            #     msgBox.setText("Impossible to Load table: " + roadMarksTableName
+            #                        +" into QGIS")
+            #     msgBox.exec_()
+
 
     def loadROIsLayer(self):
         roisTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_ROIS_TABLE_NAME
@@ -1497,7 +1562,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         groupName = MMTDefinitions.CONST_LAYER_TREE_PROJECT_NAME
         self.layerTreeProjectName = groupName + connectionFileName
         root = QgsProject.instance().layerTreeRoot()
-        self.layerTreeProject = root.addGroup(self.layerTreeProjectName)
+        # self.layerTreeProject = root.addGroup(self.layerTreeProjectName)
+        self.layerTreeProject = root.insertGroup(0, self.layerTreeProjectName)
         self.loadROIsLayer()
         if self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
             self.loadRoadMarksLayer()
