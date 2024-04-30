@@ -716,7 +716,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.settings.sync()
         self.pmTemporalPathLineEdit.setText(self.projectManagerTemporalPath)
 
-        self.sldFilesPath = self.path_libCpp + MMTDefinitions.CONST_PROJECT_MANAGEMENT_SLD_FILES_PATH
+        self.sldFilesPath = self.path_plugin + MMTDefinitions.CONST_PROJECT_MANAGEMENT_SLD_FILES_PATH
 
         self.projectManagerOutputPath = self.settings.value("project_management_output_path")
         auxDir = QDir(self.path)
