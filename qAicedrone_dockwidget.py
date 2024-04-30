@@ -716,6 +716,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             self.settings.sync()
         self.pmTemporalPathLineEdit.setText(self.projectManagerTemporalPath)
 
+        self.sldFilesPath = self.path_libCpp + MMTDefinitions.CONST_PROJECT_MANAGEMENT_SLD_FILES_PATH
+
         self.projectManagerOutputPath = self.settings.value("project_management_output_path")
         auxDir = QDir(self.path)
         if not self.projectManagerOutputPath or not auxDir.exists(self.projectManagerOutputPath):
@@ -1620,6 +1622,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         ret = self.iPyProject.mmtSetProjectManagerOutputPath(self.projectManagerOutputPath)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtSetSldFilesPath(self.sldFilesPath)
         if ret[0] == "False":
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
