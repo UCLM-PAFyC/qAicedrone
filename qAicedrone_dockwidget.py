@@ -275,6 +275,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             strId = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ID]
             code = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE]
             type = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE]
+            img = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG]
             strEnabled = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ENABLED]
             strWidth = catalogueFeature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_WIDTH]
             if MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE_LONGITUDINAL_SUB_STRING in type:
@@ -289,6 +290,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             else:
                 catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_ENABLED] = False
             # catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE] = code
+            catalogueValues[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG] = img
             id = int(strId)
             catalogueValuesById[id] = catalogueValues
 
@@ -345,24 +347,17 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.exec_()
         layerManualEditingNonLinearRoadMarksTitle = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_NAME
         layerList = QgsProject.instance().mapLayersByName(layerManualEditingNonLinearRoadMarksTitle)
+        catalogImgsPath = self.path_plugin + "/" + MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_PATH_IMGS
         if not layerList:
             self.manualEditingNonLinearRoadMarksLayer = None
-            self.manualEditingNonLinearRoadMarksLayer = QgsVectorLayer("Point?crs=" + projectCrs.authid(),
+            self.manualEditingNonLinearRoadMarksLayer = QgsVectorLayer("Linestring?crs=" + projectCrs.authid(),
                                                                        layerManualEditingNonLinearRoadMarksTitle,
                                                                        "memory")
             self.manualEditingNonLinearRoadMarksLayer.startEditing()
-            roadMarkIdFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_ID
-            roadMarkIdField = QgsField(roadMarkIdFieldName, QVariant.String)
-            codeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_CODE
-            codeField = QgsField(codeFieldName, QVariant.String)
-            typeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_TYPE
-            typeField = QgsField(typeFieldName, QVariant.String)
-            # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
-            # catalogueField = QgsField(catalogueFieldName, QVariant.String)
-            # self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
-            #     [roadMarkIdField, codeField, typeField, catalogueField])
+            imgFieldName = MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG
+            imgField = QgsField(imgFieldName, QVariant.String)
             self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
-                [roadMarkIdField, codeField, typeField])
+                [imgField])
             self.manualEditingNonLinearRoadMarksLayer.commitChanges()
             if self.manualEditingNonLinearRoadMarksLayer.isValid():
                 # if vlayer.featureCount() == 0:
@@ -371,31 +366,24 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.manualEditingNonLinearRoadMarksLayer))
                 self.manualEditingNonLinearRoadMarksLayer.loadNamedStyle(
                     self.qmlManualEditingNonLinearRoadMarksFileName)
-                roadMarkIdlistValues = {}
-                codelistValues = {}
-                typelistValues = {}
-                # widthlistValues = {'0.1': 1, '0.15': 2}
-                pos = 0
-                for roadMarkId in catalogueValuesById.keys():
-                    roadMarkIdlistValues[str(roadMarkId)] = pos
-                    code = catalogueValuesById[roadMarkId][
-                        MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE]
-                    type = catalogueValuesById[roadMarkId][
-                        MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE]
-                    codelistValues[code] = pos
-                    typelistValues[type] = pos
-                    pos = pos + 1
-                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, roadMarkIdFieldName,
-                                        roadMarkIdlistValues)
-                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, codeFieldName, codelistValues)
-                self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, typeFieldName, typelistValues)
-                # catalogueFilesListValues = {}
-                # pos = 0
-                # for catalogueFile in catalogueFileNames:
-                #     catalogueFilesListValues[catalogueFile] = pos
-                #     pos = pos + 1
-                # self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, catalogueFieldName,
-                #                         catalogueFilesListValues)
+                field = MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG
+                widgetImg = QgsEditorWidgetSetup(
+                    'ExternalResource',
+                    {
+                        # 'name':'symbol',
+                        # 'PropertyCollection': {'name': 'symbol'},
+                        'FileWidget': True,
+                        'DefaultRoot': catalogImgsPath,
+                        'DocumentViewer': 1,
+                        'RelativeStorage': 0,
+                        'StorageMode': 0,
+                        'DocumentViewerHeight': 0,
+                        'FileWidgetButton': True,
+                        'DocumentViewerWidth': 100,
+                        'FileWidgetFilter': '*.png'
+                    })
+                index = self.manualEditingNonLinearRoadMarksLayer.fields().indexFromName(field)
+                aux_value = self.manualEditingNonLinearRoadMarksLayer.setEditorWidgetSetup(index, widgetImg)
                 self.manualEditingNonLinearRoadMarksLayer.triggerRepaint()
                 self.iface.setActiveLayer(self.manualEditingNonLinearRoadMarksLayer)
                 self.iface.zoomToActiveLayer()
@@ -408,6 +396,72 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 msgBox.setText("Impossible to Load table: " + layerManualEditingNonLinearRoadMarksTitle
                                + " into QGIS")
                 msgBox.exec_()
+
+        # layerManualEditingNonLinearRoadMarksTitle = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_NAME
+        # layerList = QgsProject.instance().mapLayersByName(layerManualEditingNonLinearRoadMarksTitle)
+        # if not layerList:
+        #     self.manualEditingNonLinearRoadMarksLayer = None
+        #     self.manualEditingNonLinearRoadMarksLayer = QgsVectorLayer("Point?crs=" + projectCrs.authid(),
+        #                                                                layerManualEditingNonLinearRoadMarksTitle,
+        #                                                                "memory")
+        #     self.manualEditingNonLinearRoadMarksLayer.startEditing()
+        #     roadMarkIdFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_ID
+        #     roadMarkIdField = QgsField(roadMarkIdFieldName, QVariant.String)
+        #     codeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_CODE
+        #     codeField = QgsField(codeFieldName, QVariant.String)
+        #     typeFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_ROAD_MARK_TYPE
+        #     typeField = QgsField(typeFieldName, QVariant.String)
+        #     # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_NON_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+        #     # catalogueField = QgsField(catalogueFieldName, QVariant.String)
+        #     # self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
+        #     #     [roadMarkIdField, codeField, typeField, catalogueField])
+        #     self.manualEditingNonLinearRoadMarksLayer.dataProvider().addAttributes(
+        #         [roadMarkIdField, codeField, typeField])
+        #     self.manualEditingNonLinearRoadMarksLayer.commitChanges()
+        #     if self.manualEditingNonLinearRoadMarksLayer.isValid():
+        #         # if vlayer.featureCount() == 0:
+        #         #     return
+        #         QgsProject.instance().addMapLayer(self.manualEditingNonLinearRoadMarksLayer, False)
+        #         self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.manualEditingNonLinearRoadMarksLayer))
+        #         self.manualEditingNonLinearRoadMarksLayer.loadNamedStyle(
+        #             self.qmlManualEditingNonLinearRoadMarksFileName)
+        #         roadMarkIdlistValues = {}
+        #         codelistValues = {}
+        #         typelistValues = {}
+        #         # widthlistValues = {'0.1': 1, '0.15': 2}
+        #         pos = 0
+        #         for roadMarkId in catalogueValuesById.keys():
+        #             roadMarkIdlistValues[str(roadMarkId)] = pos
+        #             code = catalogueValuesById[roadMarkId][
+        #                 MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_CODE]
+        #             type = catalogueValuesById[roadMarkId][
+        #                 MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_TYPE]
+        #             codelistValues[code] = pos
+        #             typelistValues[type] = pos
+        #             pos = pos + 1
+        #         self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, roadMarkIdFieldName,
+        #                                 roadMarkIdlistValues)
+        #         self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, codeFieldName, codelistValues)
+        #         self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, typeFieldName, typelistValues)
+        #         # catalogueFilesListValues = {}
+        #         # pos = 0
+        #         # for catalogueFile in catalogueFileNames:
+        #         #     catalogueFilesListValues[catalogueFile] = pos
+        #         #     pos = pos + 1
+        #         # self.field_to_value_map(self.manualEditingNonLinearRoadMarksLayer, catalogueFieldName,
+        #         #                         catalogueFilesListValues)
+        #         self.manualEditingNonLinearRoadMarksLayer.triggerRepaint()
+        #         self.iface.setActiveLayer(self.manualEditingNonLinearRoadMarksLayer)
+        #         self.iface.zoomToActiveLayer()
+        #         self.manualEditingNonLinearRoadMarksLayer.startEditing()
+        #     else:
+        #         self.manualEditingNonLinearRoadMarksLayer = None
+        #         msgBox = QMessageBox(self)
+        #         msgBox.setIcon(QMessageBox.Information)
+        #         msgBox.setWindowTitle(self.windowTitle)
+        #         msgBox.setText("Impossible to Load table: " + layerManualEditingNonLinearRoadMarksTitle
+        #                        + " into QGIS")
+        #         msgBox.exec_()
         return
 
     def closeEvent(self, event):
@@ -975,7 +1029,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.processCommandPushButton.setEnabled(False)
 
         self.removeSelectedRoadMarksPushButton.clicked.connect(self.selectRemoveSelectedRoadMarks)
+        self.enableSelectedRoadMarksPushButton.clicked.connect(self.selectEnableSelectedRoadMarks)
+        self.disableSelectedRoadMarksPushButton.clicked.connect(self.selectDisableSelectedRoadMarks)
         self.saveLinearRoadMarksPushButton.clicked.connect(self.selectSaveManuallyEditedLinearRoadMarks)
+        self.saveNonLinearRoadMarksPushButton.clicked.connect(self.selectSaveManuallyEditedNonLinearRoadMarks)
 
         self.breakwaterCubesSelectRegionByRectangleToolButton.clicked.connect(
             self.selectBreakwaterCubesRegionByRectangle)
@@ -1456,7 +1513,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             elif self.projectType.lower() == MMTDefinitions.CONST_PROJECT_TYPE_ROAD.lower():
                 self.editingProcessesTabWidget.setTabEnabled(2, True)
                 self.editingProcessesTabWidget.setCurrentIndex(2)
-                self.saveNonLinearRoadMarksPushButton.setEnabled(False)
+                # self.saveNonLinearRoadMarksPushButton.setEnabled(False)
         return
 
     def onProjectManagementTabWidgetChanged(self, i):  # changed!
@@ -2550,6 +2607,106 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
+    def selectDisableSelectedRoadMarks(self):
+        if not self.roadMarksVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Road marks Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelectedRoadMarks = self.roadMarksVLayer.selectedFeatureCount()
+        if numberOfSelectedRoadMarks < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from road marks layer")
+            msgBox.exec_()
+            return
+        road_marks_ids_to_disable = []
+        fieldIdIdx = self.roadMarksVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelectedRoadMarks):
+            roadMarkFeature = self.roadMarksVLayer.selectedFeatures()[i]
+            roadMarkId = roadMarkFeature.attributes()[fieldIdIdx]
+            road_marks_ids_to_disable.append(roadMarkId)
+            str_ids = str_ids + str(roadMarkId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtDisableRoadMarks(dbFileName, road_marks_ids_to_disable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectEnableSelectedRoadMarks(self):
+        if not self.roadMarksVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Road marks Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelectedRoadMarks = self.roadMarksVLayer.selectedFeatureCount()
+        if numberOfSelectedRoadMarks < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from road marks layer")
+            msgBox.exec_()
+            return
+        road_marks_ids_to_enable = []
+        fieldIdIdx = self.roadMarksVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_ROAD_MARKS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelectedRoadMarks):
+            roadMarkFeature = self.roadMarksVLayer.selectedFeatures()[i]
+            roadMarkId = roadMarkFeature.attributes()[fieldIdIdx]
+            road_marks_ids_to_enable.append(roadMarkId)
+            str_ids = str_ids + str(roadMarkId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtEnableRoadMarks(dbFileName, road_marks_ids_to_enable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
     def selectRois(self):
         previousFiles = self.roisShapefiles[:]  # copia desligada
         dlg = MultipleFileSelectorDialog(self.iface,
@@ -2660,6 +2817,60 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.manualEditingLinearRoadMarksLayer.startEditing()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
+
+    def selectSaveManuallyEditedNonLinearRoadMarks(self):
+        if not self.manualEditingNonLinearRoadMarksLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Invalid layer for manually edited nonlinear road marks")
+            msgBox.exec_()
+            return
+        numberOfFeatures = self.manualEditingNonLinearRoadMarksLayer.featureCount()
+        if numberOfFeatures < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Edit some feature in layer " + self.manualEditingNonLinearRoadMarksLayer.name())
+            msgBox.exec_()
+            return
+        imgs = []
+        wktGeometries = []
+        for feature in self.manualEditingNonLinearRoadMarksLayer.getFeatures():
+            wktGeometry = feature.geometry().asWkt()
+            img = feature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG]
+            if img == NULL:
+                continue
+            imgs.append(img)
+            wktGeometries.append(wktGeometry)
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        if len(imgs) == 0:
+            ret = self.iPyProject.mmtSaveManuallyEditedNonLinearRoadMarks(dbFileName,
+                                                                          imgs,
+                                                                          wktGeometries)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+        self.manualEditingNonLinearRoadMarksLayer.startEditing()
+        for feature in self.manualEditingNonLinearRoadMarksLayer.getFeatures():
+            self.manualEditingNonLinearRoadMarksLayer.deleteFeature(feature.id())
+        self.manualEditingNonLinearRoadMarksLayer.commitChanges()
+        self.roadMarksVLayer.triggerRepaint()
+        self.manualEditingNonLinearRoadMarksLayer.startEditing()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+        return
 
     def setCrs(self):
         crs = self.projectQgsProjectionSelectionWidget.crs()
