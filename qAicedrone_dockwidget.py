@@ -2851,7 +2851,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Select Db file")
             msgBox.exec_()
             return
-        if len(imgs) == 0:
+        if len(imgs) > 0:
             ret = self.iPyProject.mmtSaveManuallyEditedNonLinearRoadMarks(dbFileName,
                                                                           imgs,
                                                                           wktGeometries)
