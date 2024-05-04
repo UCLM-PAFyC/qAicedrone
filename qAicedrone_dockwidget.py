@@ -2839,8 +2839,9 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         for feature in self.manualEditingNonLinearRoadMarksLayer.getFeatures():
             wktGeometry = feature.geometry().asWkt()
             img = feature[MMTDefinitions.CONST_SPATIALITE_LAYERS_STANDARD_ROAD_MARKS_FIELD_IMG]
-            if img == NULL:
-                continue
+            if img == NULL: # more than two points are fully digitalized by user
+                img = ""
+                # continue
             imgs.append(img)
             wktGeometries.append(wktGeometry)
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
