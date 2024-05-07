@@ -1189,6 +1189,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.aiRailsVLayer = vlayer
+                sldAiRailsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_AI_RAILS_TEMPLATE
+                self.aiRailsVLayer.saveSldStyle(sldAiRailsFileName)
                 if self.aiRailsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1228,6 +1230,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.cvPhmRailsVLayer = vlayer
+                sldCvPhmRailsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_CV_PHM_RAILS_TEMPLATE
+                self.cvPhmRailsVLayer.saveSldStyle(sldCvPhmRailsFileName)
                 if self.aiRailsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1282,6 +1286,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.mergedRailsVLayer = vlayer
+                qmlMergedRailsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_MERGED_RAILS_TEMPLATE
+                sldMergedRailsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_MERGED_RAILS_TEMPLATE
+                self.mergedRailsVLayer.saveNamedStyle(qmlMergedRailsFileName)
+                self.mergedRailsVLayer.saveSldStyle(sldMergedRailsFileName)
                 if self.aiRailsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1308,7 +1316,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.cvPhmRailsVLayer.id())
                     layerNode.setExpanded(False)
                 layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.mergedRailsVLayer.id())
-                layerNode.setExpanded(True)
+                layerNode.setExpanded(False) # can be a lot of ...
         self.refreshMapCanvas()
 
     def loadCubes(self):
@@ -1424,6 +1432,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.aiRoadsVLayer = vlayer
+                sldAiRoadsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_AI_ROADS_TEMPLATE
+                self.aiRoadsVLayer.saveSldStyle(sldAiRoadsFileName)
                 if self.aiRoadsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1462,6 +1472,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.cvPhmPaintsVLayer = vlayer
+                sldCvPhmPaintsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_CV_PHM_PAINTS_TEMPLATE
+                self.cvPhmPaintsVLayer.saveSldStyle(sldCvPhmPaintsFileName)
                 if self.aiRoadsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1505,6 +1517,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.roadMarksVLayer = vlayer
+                sldRoadMarksFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_ROAD_MARKS_TEMPLATE
+                self.roadMarksVLayer.saveSldStyle(sldRoadMarksFileName)
                 if self.aiRoadsImportVLayer.isValid():
                     QgsProject.instance().layerTreeRoot().findLayer(
                         self.aiRoadsImportVLayer.id()).setItemVisibilityChecked(False)
@@ -1560,6 +1574,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 vlayer.triggerRepaint()
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
+                sldRoisFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_ROIS_TEMPLATE
+                vlayer.saveSldStyle(sldRoisFileName)
             else:
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
@@ -2486,13 +2502,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         merged_rails_ids_to_join = []
         fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
-            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID)
         str_ids = ''
         for i in range(numberOfSelected):
             mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
             mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
-            merged_rails_ids_to_join.append(mergedRailId)
-            str_ids = str_ids + str(mergedRailId) + ' '
+            if mergedRailId not in merged_rails_ids_to_join:
+                merged_rails_ids_to_join.append(mergedRailId)
+                str_ids = str_ids + str(mergedRailId) + ' '
         # msgBox = QMessageBox(self)
         # msgBox.setIcon(QMessageBox.Information)
         # msgBox.setWindowTitle(self.windowTitle)
@@ -2654,13 +2671,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         merged_rails_ids_to_remove = []
         fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
-            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID)
         str_ids = ''
         for i in range(numberOfSelected):
             mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
             mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
-            merged_rails_ids_to_remove.append(mergedRailId)
-            str_ids = str_ids + str(mergedRailId) + ' '
+            if mergedRailId not in merged_rails_ids_to_remove:
+                merged_rails_ids_to_remove.append(mergedRailId)
+                str_ids = str_ids + str(mergedRailId) + ' '
         # msgBox = QMessageBox(self)
         # msgBox.setIcon(QMessageBox.Information)
         # msgBox.setWindowTitle(self.windowTitle)
@@ -2860,13 +2878,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         merged_rails_ids_to_disable = []
         fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
-            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID)
         str_ids = ''
         for i in range(numberOfSelected):
             mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
             mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
-            merged_rails_ids_to_disable.append(mergedRailId)
-            str_ids = str_ids + str(mergedRailId) + ' '
+            if mergedRailId not in merged_rails_ids_to_disable:
+                merged_rails_ids_to_disable.append(mergedRailId)
+                str_ids = str_ids + str(mergedRailId) + ' '
         # msgBox = QMessageBox(self)
         # msgBox.setIcon(QMessageBox.Information)
         # msgBox.setWindowTitle(self.windowTitle)
@@ -3060,13 +3079,14 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             return
         merged_rails_ids_to_enable = []
         fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
-            MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_FIELD_ID)
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID)
         str_ids = ''
         for i in range(numberOfSelected):
             mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
             mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
-            merged_rails_ids_to_enable.append(mergedRailId)
-            str_ids = str_ids + str(mergedRailId) + ' '
+            if mergedRailId not in merged_rails_ids_to_enable:
+                merged_rails_ids_to_enable.append(mergedRailId)
+                str_ids = str_ids + str(mergedRailId) + ' '
         # msgBox = QMessageBox(self)
         # msgBox.setIcon(QMessageBox.Information)
         # msgBox.setWindowTitle(self.windowTitle)
