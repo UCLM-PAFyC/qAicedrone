@@ -1048,6 +1048,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.removeSelectedCvPhmRailsPushButton.clicked.connect(self.selectRemoveSelectedCvPhmRails)
         self.enableSelectedCvPhmRailsPushButton.clicked.connect(self.selectEnableSelectedCvPhmRails)
         self.disableSelectedCvPhmRailsPushButton.clicked.connect(self.selectDisableSelectedCvPhmRails)
+        self.removeSelectedMergedRailsPushButton.clicked.connect(self.selectRemoveSelectedMergedRails)
+        self.enableSelectedMergedRailsPushButton.clicked.connect(self.selectEnableSelectedMergedRails)
+        self.disableSelectedMergedRailsPushButton.clicked.connect(self.selectDisableSelectedMergedRails)
+        self.joinSelectedMergedRailsPushButton.clicked.connect(self.selectJoinSelectedMergedRails)
 
     # self.reportGroupBox.setVisible(False)
     # self.reportGroupBox.setEnabled(False)
@@ -2458,6 +2462,62 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # msgBox.exec_()
         return
 
+    def selectJoinSelectedMergedRails(self):
+        if not self.mergedRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("merged_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.mergedRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from merged_rails layer")
+            msgBox.exec_()
+            return
+        text = "The joining process is not reversible"
+        text += "\nDo you wish to continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), "Joining merged rails",
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply != QMessageBox.Yes:
+            return
+        merged_rails_ids_to_join = []
+        fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
+            mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
+            merged_rails_ids_to_join.append(mergedRailId)
+            str_ids = str_ids + str(mergedRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtJoinMergedRails(dbFileName, merged_rails_ids_to_join)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.mergedRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
     def selectRemoveSelectedAiRails(self):
         if not self.aiRailsVLayer:
             msgBox = QMessageBox(self)
@@ -2527,7 +2587,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.setText("Select some feature from cv_phm_rails layer")
             msgBox.exec_()
             return
         text = "Deleted information cannot be recovered"
@@ -2567,6 +2627,62 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         self.cvPhmRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectRemoveSelectedMergedRails(self):
+        if not self.mergedRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("merged_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.mergedRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from merged_rails layer")
+            msgBox.exec_()
+            return
+        text = "Deleted information cannot be recovered"
+        text += "\nDo you wish to continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), "Removing merged rails",
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply != QMessageBox.Yes:
+            return
+        merged_rails_ids_to_remove = []
+        fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
+            mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
+            merged_rails_ids_to_remove.append(mergedRailId)
+            str_ids = str_ids + str(mergedRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtRemoveMergedRails(dbFileName, merged_rails_ids_to_remove)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.mergedRailsVLayer.triggerRepaint()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
@@ -2689,7 +2805,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.setText("Select some feature from cv_phm_rails layer")
             msgBox.exec_()
             return
         cv_phm_rails_ids_to_disable = []
@@ -2723,6 +2839,56 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         self.cvPhmRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectDisableSelectedMergedRails(self):
+        if not self.mergedRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("merged_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.mergedRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from merged_rails layer")
+            msgBox.exec_()
+            return
+        merged_rails_ids_to_disable = []
+        fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
+            mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
+            merged_rails_ids_to_disable.append(mergedRailId)
+            str_ids = str_ids + str(mergedRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtDisableMergedRails(dbFileName, merged_rails_ids_to_disable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.mergedRailsVLayer.triggerRepaint()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
@@ -2839,7 +3005,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox = QMessageBox(self)
             msgBox.setIcon(QMessageBox.Information)
             msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.setText("Select some feature from cv_phm_rails layer")
             msgBox.exec_()
             return
         cv_phm_rails_ids_to_enable = []
@@ -2873,6 +3039,56 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         self.cvPhmRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectEnableSelectedMergedRails(self):
+        if not self.mergedRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("merged_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.mergedRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from merged_rails layer")
+            msgBox.exec_()
+            return
+        merged_rails_ids_to_enable = []
+        fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[i]
+            mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
+            merged_rails_ids_to_enable.append(mergedRailId)
+            str_ids = str_ids + str(mergedRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtEnableMergedRails(dbFileName, merged_rails_ids_to_enable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.mergedRailsVLayer.triggerRepaint()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
