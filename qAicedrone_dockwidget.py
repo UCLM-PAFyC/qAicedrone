@@ -1042,10 +1042,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.breakwaterSegmentCubesRadioButton.setEnabled(False)
         self.breakwaterRemoveCubesRadioButton.setEnabled(False)
 
-        self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setEnabled(False)
-        self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setEnabled(False)
-        self.railAxisFromPointCloudSegmentRadioButton.setEnabled(False)
-        self.railAxisFromPointCloudRemoveRadioButton.setEnabled(False)
+        self.removeSelectedAiRailsPushButton.clicked.connect(self.selectRemoveSelectedAiRails)
+        self.enableSelectedAiRailsPushButton.clicked.connect(self.selectEnableSelectedAiRails)
+        self.disableSelectedAiRailsPushButton.clicked.connect(self.selectDisableSelectedAiRails)
+        self.removeSelectedCvPhmRailsPushButton.clicked.connect(self.selectRemoveSelectedCvPhmRails)
+        self.enableSelectedCvPhmRailsPushButton.clicked.connect(self.selectEnableSelectedCvPhmRails)
+        self.disableSelectedCvPhmRailsPushButton.clicked.connect(self.selectDisableSelectedCvPhmRails)
 
     # self.reportGroupBox.setVisible(False)
     # self.reportGroupBox.setEnabled(False)
@@ -1183,6 +1185,23 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.aiRailsVLayer = vlayer
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsVLayer.id())
+                layerNode.setExpanded(True)
         # self.cvPhmRailsVLayer = None
         cvPhmRailsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_TABLE_NAME
         layerList = QgsProject.instance().mapLayersByName(cvPhmRailsTableName)
@@ -1205,17 +1224,39 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.cvPhmRailsVLayer = vlayer
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsVLayer.id()).setItemVisibilityChecked(True)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.cvPhmRailsVLayer.id())
+                layerNode.setExpanded(True)
         # self.mergedRailsVLayer = None
-        cvPhmRailsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_TABLE_NAME
-        layerList = QgsProject.instance().mapLayersByName(cvPhmRailsTableName)
+        mergedRailsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(mergedRailsTableName)
         if not layerList:
             uri = QgsDataSourceUri()
             uri.setDatabase(self.dbFileName)
             schema = ''
-            table = cvPhmRailsTableName
+            table = mergedRailsTableName
             geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_GEOMETRY_COLUMN
             uri.setDataSource(schema, table, geom_column)
-            display_name = cvPhmRailsTableName
+            display_name = mergedRailsTableName
             vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
             if vlayer.isValid():
                 # if vlayer.featureCount() == 0:
@@ -1237,6 +1278,33 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.mergedRailsVLayer = vlayer
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.cvPhmRailsVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.cvPhmRailsVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.cvPhmRailsVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.mergedRailsVLayer.id())
+                layerNode.setExpanded(True)
         self.refreshMapCanvas()
 
     def loadCubes(self):
@@ -1809,123 +1877,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.iface.zoomToActiveLayer()
         return
 
-    def processRailAxisFromPointCloudForRegion(self):
-        segmentRailAxisFromPointCloud = self.railAxisFromPointCloudSegmentRadioButton.isChecked()
-        removeRailAxisFromPointCloud = self.railAxisFromPointCloudRemoveRadioButton.isChecked()
-        pointCloudPath = ''
-        if removeRailAxisFromPointCloud:
-            yo = 1
-            # if not self.cubesVLayer:
-            #     msgBox = QMessageBox(self)
-            #     msgBox.setIcon(QMessageBox.Information)
-            #     msgBox.setWindowTitle(self.windowTitle)
-            #     msgBox.setText("There are not segmented cubes")
-            #     msgBox.exec_()
-            #     if self.toolRectangle:
-            #         self.toolRectangle.endSelection.disconnect(self.processCubesForRegion)
-            #     elif self.toolPolygon:
-            #         self.toolPolygon.endSelection.disconnect(self.processCubesForRegion)
-            #     return
-        elif segmentRailAxisFromPointCloud:
-            pointCloudPath = self.pointCloudsComboBox.currentText()
-            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Select Point Cloud Project")
-                msgBox.exec_()
-                self.processCommandComboBox.setCurrentIndex(0)
-                if self.toolRectangle:
-                    self.toolRectangle.endSelection.disconnect(self.processCubesForRegion)
-                elif self.toolPolygon:
-                    self.toolPolygon.endSelection.disconnect(self.processCubesForRegion)
-                return
-        wktGeom = None
-        if self.toolRectangle:
-            wktGeom = self.toolRectangle.getWktGeomeetry()
-            self.toolRectangle.endSelection.disconnect(self.processCubesForRegion)
-            self.toolRectangle.rubberBand.hide()
-            self.toolRectangle = None
-            self.iface.mapCanvas().unsetMapTool(self.toolRectangle)
-            self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setChecked(False)
-        elif self.toolPolygon:
-            wktGeom = self.toolPolygon.getWktGeomeetry()
-            self.toolPolygon.endSelection.disconnect(self.processCubesForRegion)
-            self.toolPolygon.rubberBand.hide()
-            self.toolPolygon.rubberBand.reset(QgsWkbTypes.PolygonGeometry)
-            self.toolPolygon.reset()
-            self.toolPolygon = None
-            self.iface.mapCanvas().unsetMapTool(self.toolPolygon)
-            self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setChecked(False)
-        if not wktGeom:
-            return
-        text = "It will proceed to "
-        if segmentRailAxisFromPointCloud:
-            text += "segment rail axis from point cloud"
-        elif removeRailAxisFromPointCloud:
-            text += "remove rail axis from point cloud"
-        text += "\nfor the selected region"
-        text += "\nThis process will update the project database"
-        text += "\n\nDo you wish continue?"
-        reply = QMessageBox.question(self.iface.mainWindow(), self.windowTitle,
-                                     text, QMessageBox.Yes, QMessageBox.No)
-        if reply != QMessageBox.Yes:
-            return
-        #     msgBox = QMessageBox(self)
-        #     msgBox.setIcon(QMessageBox.Information)
-        #     msgBox.setWindowTitle(self.windowTitle)
-        #     msgBox.setText("Process finished:\n")
-        #     msgBox.exec_()
-        # else:
-        #     return
-        projectCrs = QgsProject.instance().crs()
-        projectCrsEpsgCode = -1
-        projectCrsProj4 = ""
-        projectCrsAuthId = projectCrs.authid()
-        if "EPSG" in projectCrsAuthId:
-            projectCrsEpsgCode = int(projectCrsAuthId.replace("EPSG:", ""))
-        projectCrsProj4 = projectCrs.toProj4()
-        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
-        if not dbFileName:
-            msgBox = QMessageBox(self)
-            msgBox.setIcon(QMessageBox.Information)
-            msgBox.setWindowTitle(self.windowTitle)
-            msgBox.setText("Select Db file")
-            msgBox.exec_()
-            return
-        if segmentRailAxisFromPointCloud:
-            yo = 1
-            # ret = self.iPyProject.mmtCubesSegmentationForWkt(dbFileName,
-            #                                                  wktGeom,
-            #                                                  projectCrsEpsgCode,
-            #                                                  projectCrsProj4,
-            #                                                  pointCloudPath)
-            # if ret[0] == "False":
-            #     msgBox = QMessageBox(self)
-            #     msgBox.setIcon(QMessageBox.Information)
-            #     msgBox.setWindowTitle(self.windowTitle)
-            #     msgBox.setText("Error:\n" + ret[1])
-            #     msgBox.exec_()
-            #     return
-        elif removeRailAxisFromPointCloud:
-            yo = 1
-            # ret = self.iPyProject.mmtRemoveCubesForWkt(dbFileName,
-            #                                            wktGeom,
-            #                                            projectCrsEpsgCode,
-            #                                            projectCrsProj4)
-            # if ret[0] == "False":
-            #     msgBox = QMessageBox(self)
-            #     msgBox.setIcon(QMessageBox.Information)
-            #     msgBox.setWindowTitle(self.windowTitle)
-            #     msgBox.setText("Error:\n" + ret[1])
-            #     msgBox.exec_()
-            #     return
-        # self.cubesVLayer.triggerRepaint()
-
-        # self.iface.setActiveLayer(self.roadMarksVLayer)
-        # self.iface.zoomToActiveLayer()
-        return
-
     def refreshMapCanvas(self):
         currentScale = self.iface.mapCanvas().scale()
         newScale = currentScale * 1.001
@@ -2054,8 +2005,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
     def selectCommand(self):
         self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(False)
         self.breakwaterCubesSelectRegionByPolygonToolButton.setEnabled(False)
-        self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setEnabled(False)
-        self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setEnabled(False)
         if self.projectsComboBox.currentText() == MMTDefinitions.CONST_NO_COMBO_SELECT:
             return
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
@@ -2135,14 +2084,6 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.breakwaterSegmentCubesRadioButton.setChecked(True)
             else:
                 self.breakwaterRemoveCubesRadioButton.setChecked(True)
-        if (command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CRWSFFPCF
-                or command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_RRWSFFPCF):
-            self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setEnabled(True)
-            self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setEnabled(True)
-            if command == MMTDefinitions.CONST_MODELRAILWAYDEFINITIONS_COMMAND_CRWSFFPCF:
-                self.railAxisFromPointCloudSegmentRadioButton.setChecked(True)
-            else:
-                self.railAxisFromPointCloudRemoveRadioButton.setChecked(True)
 
     def selectCommandParameters(self):
         command = self.processCommandComboBox.currentText()
@@ -2517,45 +2458,117 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # msgBox.exec_()
         return
 
-    def selectRailAxisFromPointCloudByPolygon(self):
-        if self.railAxisFromPointCloudSegmentRadioButton.isChecked():
-            pointCloudPath = self.pointCloudsComboBox.currentText()
-            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Select Point Cloud Project")
-                msgBox.exec_()
-                self.processCommandComboBox.setCurrentIndex(0)
-                return
-        self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setChecked(False)
-        self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setChecked(True)
-        self.toolRectangle = None
-        self.toolPolygon = None
-        self.toolPolygon = PolygonMapTool(self.iface.mapCanvas())
-        self.iface.mapCanvas().setMapTool(self.toolPolygon)
-        self.toolPolygon.endSelection.connect(self.processRailAxisFromPointCloudForRegion)
-        return
+    def selectRemoveSelectedAiRails(self):
+        if not self.aiRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("ai_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.aiRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        text = "Deleted information cannot be recovered"
+        text += "\nDo you wish to continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), "Removing AI rails",
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply != QMessageBox.Yes:
+            return
+        ai_rails_ids_to_remove = []
+        fieldIdIdx = self.aiRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            aiRailFeature = self.aiRailsVLayer.selectedFeatures()[i]
+            aiRailId = aiRailFeature.attributes()[fieldIdIdx]
+            ai_rails_ids_to_remove.append(aiRailId)
+            str_ids = str_ids + str(aiRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtRemoveAiRails(dbFileName, ai_rails_ids_to_remove)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.aiRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
 
-    def selectRailAxisFromPointCloudByRectangle(self):
-        if self.railAxisFromPointCloudSegmentRadioButton.isChecked():
-            pointCloudPath = self.pointCloudsComboBox.currentText()
-            if pointCloudPath == MMTDefinitions.CONST_NO_COMBO_SELECT:
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Select Point Cloud Project")
-                msgBox.exec_()
-                self.processCommandComboBox.setCurrentIndex(0)
-                return
-        self.railAxisFromPointCloudSelectRegionByRectangleToolButton.setChecked(True)
-        self.railAxisFromPointCloudSelectRegionByPolygonToolButton.setChecked(False)
-        self.toolRectangle = None
-        self.toolPolygon = None
-        self.toolRectangle = RectangleMapTool(self.iface.mapCanvas())
-        self.iface.mapCanvas().setMapTool(self.toolRectangle)
-        self.toolRectangle.endSelection.connect(self.processRailAxisFromPointCloudForRegion)
-        return
+    def selectRemoveSelectedCvPhmRails(self):
+        if not self.cvPhmRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("cv_phm_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.cvPhmRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        text = "Deleted information cannot be recovered"
+        text += "\nDo you wish to continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), "Removing CV and Photogrammetry rails",
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply != QMessageBox.Yes:
+            return
+        cv_phm_rails_ids_to_remove = []
+        fieldIdIdx = self.cvPhmRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            cvPhmRailFeature = self.cvPhmRailsVLayer.selectedFeatures()[i]
+            cvPhmRailId = cvPhmRailFeature.attributes()[fieldIdIdx]
+            cv_phm_rails_ids_to_remove.append(cvPhmRailId)
+            str_ids = str_ids + str(cvPhmRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtRemoveCvPhmRails(dbFileName, cv_phm_rails_ids_to_remove)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.cvPhmRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
 
     def selectRemoveSelectedRoadMarks(self):
         if not self.roadMarksVLayer:
@@ -2572,6 +2585,12 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setWindowTitle(self.windowTitle)
             msgBox.setText("Select some feature from road marks layer")
             msgBox.exec_()
+            return
+        text = "Deleted information cannot be recovered"
+        text += "\nDo you wish to continue?"
+        reply = QMessageBox.question(self.iface.mainWindow(), "Removing Road Marks",
+                                     text, QMessageBox.Yes, QMessageBox.No)
+        if reply != QMessageBox.Yes:
             return
         road_marks_ids_to_remove = []
         fieldIdIdx = self.roadMarksVLayer.dataProvider().fieldNameIndex(
@@ -2604,6 +2623,106 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectDisableSelectedAiRails(self):
+        if not self.aiRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("ai_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.aiRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        ai_rails_ids_to_disable = []
+        fieldIdIdx = self.aiRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            aiRailFeature = self.aiRailsVLayer.selectedFeatures()[i]
+            aiRailId = aiRailFeature.attributes()[fieldIdIdx]
+            ai_rails_ids_to_disable.append(aiRailId)
+            str_ids = str_ids + str(aiRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtDisableAiRails(dbFileName, ai_rails_ids_to_disable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.aiRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectDisableSelectedCvPhmRails(self):
+        if not self.cvPhmRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("cv_phm_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.cvPhmRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        cv_phm_rails_ids_to_disable = []
+        fieldIdIdx = self.cvPhmRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            cvPhmRailFeature = self.cvPhmRailsVLayer.selectedFeatures()[i]
+            cvPhmRailId = cvPhmRailFeature.attributes()[fieldIdIdx]
+            cv_phm_rails_ids_to_disable.append(cvPhmRailId)
+            str_ids = str_ids + str(cvPhmRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtDisableCvPhmRails(dbFileName, cv_phm_rails_ids_to_disable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.cvPhmRailsVLayer.triggerRepaint()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
@@ -2654,6 +2773,106 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.exec_()
             return
         self.roadMarksVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectEnableSelectedAiRails(self):
+        if not self.aiRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("ai_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.aiRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        ai_rails_ids_to_enable = []
+        fieldIdIdx = self.aiRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            aiRailFeature = self.aiRailsVLayer.selectedFeatures()[i]
+            aiRailId = aiRailFeature.attributes()[fieldIdIdx]
+            ai_rails_ids_to_enable.append(aiRailId)
+            str_ids = str_ids + str(aiRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtEnableAiRails(dbFileName, ai_rails_ids_to_enable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.aiRailsVLayer.triggerRepaint()
+        # self.iface.setActiveLayer(self.roadMarksVLayer)
+        # self.iface.zoomToActiveLayer()
+
+    def selectEnableSelectedCvPhmRails(self):
+        if not self.cvPhmRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("cv_phm_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.cvPhmRailsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select some feature from ai_rails layer")
+            msgBox.exec_()
+            return
+        cv_phm_rails_ids_to_enable = []
+        fieldIdIdx = self.cvPhmRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_CV_PHM_RAILS_FIELD_ID)
+        str_ids = ''
+        for i in range(numberOfSelected):
+            cvPhmRailFeature = self.cvPhmRailsVLayer.selectedFeatures()[i]
+            cvPhmRailId = cvPhmRailFeature.attributes()[fieldIdIdx]
+            cv_phm_rails_ids_to_enable.append(cvPhmRailId)
+            str_ids = str_ids + str(cvPhmRailId) + ' '
+        # msgBox = QMessageBox(self)
+        # msgBox.setIcon(QMessageBox.Information)
+        # msgBox.setWindowTitle(self.windowTitle)
+        # msgBox.setText("Selected road marks: " + str_ids)
+        # msgBox.exec_()
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        ret = self.iPyProject.mmtEnableCvPhmRails(dbFileName, cv_phm_rails_ids_to_enable)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        self.cvPhmRailsVLayer.triggerRepaint()
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 

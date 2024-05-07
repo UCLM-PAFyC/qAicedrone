@@ -1136,25 +1136,15 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_Orthomosaic</Code>
+        <Code>PGPTUTSDI_CZF</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>File</Type>
-        <Description>Orthomosaic file (GeoTIFF)</Description>
-        <PrintSize>200</PrintSize>
+        <Type>Value list</Type>
+        <Description>Create zip file</Description>
+        <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_DTM</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>Digital Terrain Model (DTM) file (GeoTIFF)</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1169,6 +1159,28 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
+        <Code>PGPTUTSDI_DTM</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Digital Terrain Model (DTM) file (GeoTIFF)</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Package geomatic products to upload to SDI</Command>
+        <Code>PGPTUTSDI_Orthomosaic</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Orthomosaic file (GeoTIFF)</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Package geomatic products to upload to SDI</Command>
         <Code>PGPTUTSDI_PCF</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -1177,17 +1189,6 @@
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
         <Value>D:/Aicedrone/20230125_Rail/Metashape/202301XX_RAIL_recortada.las</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_ZIP</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>SaveFile</Type>
-        <Description>Output ZIP file, rewrite if exists</Description>
-        <PrintSize>300</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1203,15 +1204,14 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_CZF</Code>
+        <Code>PGPTUTSDI_ZIP</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Create zip file</Description>
-        <PrintSize>10</PrintSize>
+        <Type>SaveFile</Type>
+        <Description>Output ZIP file, rewrite if exists</Description>
+        <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
+        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
     </Parameter>
     <Parameter>
         <Command>2. Preprocess AI results</Command>
