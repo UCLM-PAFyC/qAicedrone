@@ -1052,6 +1052,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.enableSelectedMergedRailsPushButton.clicked.connect(self.selectEnableSelectedMergedRails)
         self.disableSelectedMergedRailsPushButton.clicked.connect(self.selectDisableSelectedMergedRails)
         self.joinSelectedMergedRailsPushButton.clicked.connect(self.selectJoinSelectedMergedRails)
+        self.selectMergedRailsByRailPushButton.clicked.connect(self.selectMergedRailsByRail)
+        self.unselectMergedRailsByRailPushButton.clicked.connect(self.unselectMergedRailsByRail)
 
     # self.reportGroupBox.setVisible(False)
     # self.reportGroupBox.setEnabled(False)
@@ -1280,6 +1282,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     symbol = QgsSymbol.defaultSymbol(vlayer.geometryType())
                     category = QgsRendererCategory(value, symbol, str(value))
                     category_list.append(category)
+                    symbol.setWidthUnit(QgsUnitTypes.RenderPixels)
+                    symbol.setWidth(MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_SIMBOLOGY_LINE_WIDTH)
                 renderer = QgsCategorizedSymbolRenderer(category_field_name, category_list)
                 vlayer.setRenderer(renderer)
                 vlayer.triggerRepaint()
@@ -2477,6 +2481,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # msgBox.setText("Project type: "+projectType)
         # msgBox.exec_()
         return
+
+    def selectMergedRailsByRail(self):
+        return
+
+    def unselectMergedRailsByRail(self):
+        return
+
 
     def selectJoinSelectedMergedRails(self):
         if not self.mergedRailsVLayer:
