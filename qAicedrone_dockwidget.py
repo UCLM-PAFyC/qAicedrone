@@ -1052,6 +1052,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.enableSelectedMergedRailsPushButton.clicked.connect(self.selectEnableSelectedMergedRails)
         self.disableSelectedMergedRailsPushButton.clicked.connect(self.selectDisableSelectedMergedRails)
         self.joinSelectedMergedRailsPushButton.clicked.connect(self.selectJoinSelectedMergedRails)
+        self.selectMergedRailsByRailPushButton.clicked.connect(self.selectMergedRailsByRail)
+        self.unselectMergedRailsByRailPushButton.clicked.connect(self.unselectMergedRailsByRail)
 
     # self.reportGroupBox.setVisible(False)
     # self.reportGroupBox.setEnabled(False)
@@ -1280,6 +1282,8 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     symbol = QgsSymbol.defaultSymbol(vlayer.geometryType())
                     category = QgsRendererCategory(value, symbol, str(value))
                     category_list.append(category)
+                    symbol.setWidthUnit(QgsUnitTypes.RenderPixels)
+                    symbol.setWidth(MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_SIMBOLOGY_LINE_WIDTH)
                 renderer = QgsCategorizedSymbolRenderer(category_field_name, category_list)
                 vlayer.setRenderer(renderer)
                 vlayer.triggerRepaint()
@@ -2477,6 +2481,35 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # msgBox.setText("Project type: "+projectType)
         # msgBox.exec_()
         return
+
+    def selectMergedRailsByRail(self):
+        if not self.mergedRailsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("merged_rails Layer is not loaded")
+            msgBox.exec_()
+            return
+        numberOfSelected = self.mergedRailsVLayer.selectedFeatureCount()
+        if numberOfSelected != 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select one rail segment from merged_rails layer")
+            msgBox.exec_()
+            return
+        fieldIdIdx = self.mergedRailsVLayer.dataProvider().fieldNameIndex(
+            MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID)
+        mergedRailFeature = self.mergedRailsVLayer.selectedFeatures()[0]
+        mergedRailId = mergedRailFeature.attributes()[fieldIdIdx]
+        str_exp = ("\"" + MMTDefinitions.CONST_SPATIALITE_LAYERS_MERGED_RAILS_FIELD_RAIL_ID
+                   + "\" = " + str(mergedRailId))
+        self.mergedRailsVLayer.selectByExpression(str_exp)
+        return
+
+    def unselectMergedRailsByRail(self):
+        return
+
 
     def selectJoinSelectedMergedRails(self):
         if not self.mergedRailsVLayer:
