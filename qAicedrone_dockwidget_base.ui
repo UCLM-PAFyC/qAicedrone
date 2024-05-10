@@ -1044,8 +1044,8 @@
                 </item>
                 <item row="2" column="0">
                  <layout class="QGridLayout" name="gridLayout_4">
-                  <item row="0" column="0" rowspan="2">
-                   <spacer name="horizontalSpacer_12">
+                  <item row="0" column="2">
+                   <spacer name="horizontalSpacer_11">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -1076,8 +1076,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="2">
-                   <spacer name="horizontalSpacer_11">
+                  <item row="0" column="0" rowspan="2">
+                   <spacer name="horizontalSpacer_12">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -1088,51 +1088,6 @@
                      </size>
                     </property>
                    </spacer>
-                  </item>
-                  <item row="1" column="2" rowspan="2">
-                   <spacer name="horizontalSpacer_13">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="2" column="0">
-                   <spacer name="horizontalSpacer_10">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QPushButton" name="unselectMergedRailsByRailPushButton">
-                    <property name="minimumSize">
-                     <size>
-                      <width>310</width>
-                      <height>0</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>330</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Unselect one merged rail by select one of its rail segment</string>
-                    </property>
-                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -1216,7 +1171,7 @@
                    </spacer>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QPushButton" name="joinSelectedMergedRailsPushButton">
+                   <widget class="QPushButton" name="jointSelectedMergedRailsPushButton">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1230,12 +1185,12 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>Join</string>
+                     <string>Joint</string>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="2">
-                   <widget class="QPushButton" name="unjoinSelectedMergedRailsPushButton">
+                   <widget class="QPushButton" name="disjointSelectedMergedRailsPushButton">
                     <property name="maximumSize">
                      <size>
                       <width>50</width>
@@ -1243,7 +1198,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>Unjoin</string>
+                     <string>Disjoint</string>
                     </property>
                    </widget>
                   </item>
