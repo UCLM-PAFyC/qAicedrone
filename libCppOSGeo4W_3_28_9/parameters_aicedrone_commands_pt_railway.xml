@@ -1144,7 +1144,7 @@
         <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
         <ValueList>true;false</ValueList>
-        <Value>false</Value>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1188,7 +1188,7 @@
         <Description>Point Cloud File (LAS/LAZ)</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/Metashape/202301XX_RAIL_recortada.las</Value>
+        <Value></Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>

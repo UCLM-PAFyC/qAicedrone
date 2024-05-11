@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:se="http://www.opengis.net/se" version="1.1.0" xmlns:ogc="http://www.opengis.net/ogc" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1.0" xmlns:se="http://www.opengis.net/se" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd">
   <NamedLayer>
     <se:Name>merged_rails</se:Name>
     <UserStyle>
@@ -12,13 +12,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>0</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -32,13 +32,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>1</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -52,13 +52,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>2</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -72,13 +72,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>3</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -92,13 +92,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>4</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -112,13 +112,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>5</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -132,13 +132,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>6</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -152,13 +152,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>7</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -172,13 +172,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>8</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -192,13 +192,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>9</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -212,13 +212,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>10</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -232,13 +232,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>11</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -252,13 +252,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>12</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -272,13 +272,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>13</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -292,13 +292,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>14</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -312,13 +312,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>15</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -332,13 +332,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>16</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -352,13 +352,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>17</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -372,13 +372,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>18</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -392,13 +392,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>19</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -412,13 +412,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>20</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -432,13 +432,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>21</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -452,13 +452,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>22</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -472,13 +472,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>23</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -492,13 +492,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>24</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -512,13 +512,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>25</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -532,13 +532,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>26</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -552,13 +552,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>27</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -572,13 +572,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>28</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -592,13 +592,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>29</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -612,13 +612,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>30</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -632,13 +632,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>31</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -652,13 +652,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>32</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -672,13 +672,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>33</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -692,13 +692,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>34</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -712,13 +712,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>35</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -732,13 +732,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>36</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -752,13 +752,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>37</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -772,13 +772,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>38</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -792,13 +792,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>39</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -812,13 +812,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>40</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -832,13 +832,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>41</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -852,13 +852,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>42</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -872,13 +872,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>43</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -892,13 +892,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>44</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -912,13 +912,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>45</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -932,13 +932,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>46</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -952,13 +952,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>47</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -972,13 +972,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>48</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -992,13 +992,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>49</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1012,13 +1012,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>50</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1032,13 +1032,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>51</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1052,13 +1052,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>52</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1072,13 +1072,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>53</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1092,13 +1092,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>54</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1112,13 +1112,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>55</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1132,13 +1132,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>56</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1152,13 +1152,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>57</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1172,13 +1172,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>58</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1192,13 +1192,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>59</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1212,13 +1212,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>60</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1232,13 +1232,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>61</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1252,13 +1252,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>62</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1272,13 +1272,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>63</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1292,13 +1292,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>64</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1312,13 +1312,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>65</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1332,13 +1332,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>66</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1352,13 +1352,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>67</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1372,13 +1372,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>68</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1392,13 +1392,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>69</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1412,13 +1412,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>70</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1432,13 +1432,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>71</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1452,13 +1452,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>72</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1472,13 +1472,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>73</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1492,13 +1492,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>74</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1512,13 +1512,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>75</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1532,13 +1532,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>76</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1552,13 +1552,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>77</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1572,13 +1572,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>78</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1592,13 +1592,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>79</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1612,13 +1612,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>80</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1632,13 +1632,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>81</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1652,13 +1652,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>82</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1672,13 +1672,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>83</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1692,13 +1692,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>84</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1712,13 +1712,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>85</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1732,13 +1732,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>86</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1752,13 +1752,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>87</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1772,13 +1772,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>88</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1792,13 +1792,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>89</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1812,13 +1812,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>90</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1832,13 +1832,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>91</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1852,13 +1852,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>92</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1872,13 +1872,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>93</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1892,13 +1892,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>94</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1912,13 +1912,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>95</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1932,13 +1932,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>96</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1952,13 +1952,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>97</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1972,13 +1972,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>98</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1992,13 +1992,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>99</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2012,13 +2012,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>100</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2032,13 +2032,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>101</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2052,13 +2052,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>102</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2072,13 +2072,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>103</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2092,13 +2092,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>104</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2112,13 +2112,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>105</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2132,13 +2132,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>106</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2152,13 +2152,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>107</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2172,13 +2172,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>108</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2192,13 +2192,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>109</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2212,13 +2212,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>110</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2232,13 +2232,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>111</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2252,13 +2252,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>112</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2272,13 +2272,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>113</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2292,13 +2292,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>114</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2312,13 +2312,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>115</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2332,13 +2332,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>116</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2352,13 +2352,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>117</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2372,13 +2372,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>118</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2392,13 +2392,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>119</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2412,13 +2412,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>120</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2432,13 +2432,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>121</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2452,13 +2452,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>122</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2472,13 +2472,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>123</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2492,13 +2492,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>124</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2512,13 +2512,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>125</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2532,13 +2532,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>126</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2552,13 +2552,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>127</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2572,13 +2572,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>128</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2592,13 +2592,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>129</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2612,13 +2612,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>130</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2632,13 +2632,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>131</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2652,13 +2652,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>132</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2672,13 +2672,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>133</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2692,13 +2692,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>134</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2712,13 +2712,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>135</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2732,13 +2732,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>136</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2752,13 +2752,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>137</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2772,13 +2772,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>138</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2792,13 +2792,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>139</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2812,13 +2812,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>140</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2832,13 +2832,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>141</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2852,13 +2852,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>142</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2872,13 +2872,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>143</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2892,13 +2892,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>144</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2912,13 +2912,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>145</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2932,13 +2932,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>146</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2952,13 +2952,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>147</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2972,13 +2972,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>148</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2992,13 +2992,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>149</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3012,13 +3012,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>150</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3032,13 +3032,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>151</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3052,13 +3052,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>152</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3072,13 +3072,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>153</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3092,13 +3092,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>154</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3112,13 +3112,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>155</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3132,13 +3132,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>156</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3152,13 +3152,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>157</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3172,13 +3172,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>158</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3192,13 +3192,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>159</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3212,13 +3212,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>160</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3232,13 +3232,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>161</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3252,13 +3252,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>162</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3272,13 +3272,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>163</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3292,13 +3292,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>164</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3312,13 +3312,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>165</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3332,13 +3332,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>166</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3352,13 +3352,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>167</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3372,13 +3372,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>168</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3392,13 +3392,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>169</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3412,13 +3412,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>170</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3432,13 +3432,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>171</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3452,13 +3452,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>172</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3472,13 +3472,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>173</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3492,13 +3492,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>174</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3512,13 +3512,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>175</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3532,13 +3532,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>176</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3552,13 +3552,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>177</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3572,13 +3572,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>178</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3592,13 +3592,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>179</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3612,13 +3612,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>180</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3632,13 +3632,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>181</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3652,13 +3652,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>182</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3672,13 +3672,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>183</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3692,13 +3692,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>184</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3712,13 +3712,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>185</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3732,13 +3732,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>186</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3752,13 +3752,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>187</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3772,13 +3772,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>188</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -3792,13 +3792,13 @@
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>merged_rail_id</ogc:PropertyName>
+              <ogc:PropertyName>m_rail_id</ogc:PropertyName>
               <ogc:Literal>189</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
