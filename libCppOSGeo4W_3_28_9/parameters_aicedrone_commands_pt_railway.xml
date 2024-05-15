@@ -1136,26 +1136,14 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_CZF</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Create zip file</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_DSM</Code>
+        <Code>PGPTUTSDI_Orthomosaic</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>File</Type>
-        <Description>Digital Surface Model (DSM) file (GeoTIFF)</Description>
+        <Description>Orthomosaic file (GeoTIFF)</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1170,14 +1158,14 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_Orthomosaic</Code>
+        <Code>PGPTUTSDI_DSM</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>File</Type>
-        <Description>Orthomosaic file (GeoTIFF)</Description>
+        <Description>Digital Surface Model (DSM) file (GeoTIFF)</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1188,7 +1176,18 @@
         <Description>Point Cloud File (LAS/LAZ)</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value></Value>
+        <Value>D:/Aicedrone/20230125_Rail/Metashape/202301XX_RAIL_recortada.las</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Package geomatic products to upload to SDI</Command>
+        <Code>PGPTUTSDI_ZIP</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Output ZIP file, rewrite if exists</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1204,14 +1203,15 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_ZIP</Code>
+        <Code>PGPTUTSDI_CZF</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>SaveFile</Type>
-        <Description>Output ZIP file, rewrite if exists</Description>
-        <PrintSize>300</PrintSize>
+        <Type>Value list</Type>
+        <Description>Create zip file</Description>
+        <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>2. Preprocess AI results</Command>
