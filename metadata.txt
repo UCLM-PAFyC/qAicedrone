@@ -8,8 +8,8 @@
 
 [general]
 name=AICEDRONE
-qgisMinimumVersion=3.22
-#qgisMaximumVersion=3.26.3
+qgisMinimumVersion=3.28.9
+qgisMaximumVersion=3.28.15
 description=A plugin for AICEDRONE project
 version=0.1
 author=David Hernandez Lopez, Universidad de Castilla-La Mancha
