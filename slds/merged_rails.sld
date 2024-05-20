@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" version="1.1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:se="http://www.opengis.net/se">
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:se="http://www.opengis.net/se" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogc="http://www.opengis.net/ogc" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd">
   <NamedLayer>
     <se:Name>merged_rails</se:Name>
     <UserStyle>
@@ -18,7 +18,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -38,7 +38,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -58,7 +58,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -78,7 +78,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -98,7 +98,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -118,7 +118,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -138,7 +138,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -158,7 +158,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -178,7 +178,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -198,7 +198,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -218,7 +218,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -238,7 +238,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -258,7 +258,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -278,7 +278,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -298,7 +298,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -318,7 +318,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -338,7 +338,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -358,7 +358,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -378,7 +378,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -398,7 +398,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -418,7 +418,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -438,7 +438,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -458,7 +458,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -478,7 +478,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -498,7 +498,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -518,7 +518,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -538,7 +538,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -558,7 +558,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -578,7 +578,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -598,7 +598,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -618,7 +618,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -638,7 +638,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -658,7 +658,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -678,7 +678,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -698,7 +698,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -718,7 +718,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -738,7 +738,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -758,7 +758,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -778,7 +778,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -798,7 +798,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -818,7 +818,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -838,7 +838,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -858,7 +858,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -878,7 +878,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -898,7 +898,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -918,7 +918,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -938,7 +938,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -958,7 +958,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -978,7 +978,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -998,7 +998,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1018,7 +1018,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1038,7 +1038,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1058,7 +1058,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1078,7 +1078,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1098,7 +1098,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1118,7 +1118,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1138,7 +1138,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1158,7 +1158,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1178,7 +1178,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1198,7 +1198,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1218,7 +1218,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1238,7 +1238,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1258,7 +1258,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1278,7 +1278,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1298,7 +1298,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1318,7 +1318,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1338,7 +1338,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1358,7 +1358,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1378,7 +1378,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1398,7 +1398,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1418,7 +1418,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1438,7 +1438,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1458,7 +1458,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1478,7 +1478,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1498,7 +1498,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1518,7 +1518,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1538,7 +1538,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1558,7 +1558,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1578,7 +1578,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1598,7 +1598,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1618,7 +1618,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1638,7 +1638,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1658,7 +1658,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1678,7 +1678,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1698,7 +1698,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1718,7 +1718,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1738,7 +1738,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1758,7 +1758,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1778,7 +1778,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1798,7 +1798,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1818,7 +1818,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1838,7 +1838,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1858,7 +1858,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1878,7 +1878,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1898,7 +1898,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1918,7 +1918,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1938,7 +1938,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1958,7 +1958,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1978,7 +1978,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -1998,7 +1998,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2018,7 +2018,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2038,7 +2038,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2058,7 +2058,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2078,7 +2078,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2098,7 +2098,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2118,7 +2118,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2138,7 +2138,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2158,7 +2158,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2178,7 +2178,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2198,7 +2198,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2218,7 +2218,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2238,7 +2238,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2258,7 +2258,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2278,7 +2278,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2298,7 +2298,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2318,7 +2318,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2338,7 +2338,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
+              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2358,7 +2358,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
+              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2378,7 +2378,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
+              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2398,7 +2398,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
+              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2418,7 +2418,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
+              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2438,7 +2438,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
+              <se:SvgParameter name="stroke">#91522d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2458,7 +2458,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
+              <se:SvgParameter name="stroke">#beb297</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2478,7 +2478,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
+              <se:SvgParameter name="stroke">#c43c39</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2498,7 +2498,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e5b636</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2518,7 +2518,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e15989</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2538,7 +2538,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
+              <se:SvgParameter name="stroke">#becf50</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2558,7 +2558,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#f3a6b2</se:SvgParameter>
+              <se:SvgParameter name="stroke">#987db7</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2578,7 +2578,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#729b6f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e77148</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2598,7 +2598,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#d5b43c</se:SvgParameter>
+              <se:SvgParameter name="stroke">#b7484b</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2618,7 +2618,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#a47158</se:SvgParameter>
+              <se:SvgParameter name="stroke">#ff9e17</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2638,7 +2638,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#85b66f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#e8718d</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
@@ -2658,7 +2658,7 @@
           </ogc:Filter>
           <se:LineSymbolizer>
             <se:Stroke>
-              <se:SvgParameter name="stroke">#7d8b8f</se:SvgParameter>
+              <se:SvgParameter name="stroke">#8d5a99</se:SvgParameter>
               <se:SvgParameter name="stroke-width">5</se:SvgParameter>
               <se:SvgParameter name="stroke-linejoin">bevel</se:SvgParameter>
               <se:SvgParameter name="stroke-linecap">square</se:SvgParameter>
