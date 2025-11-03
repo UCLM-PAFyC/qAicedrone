@@ -1,5 +1,5 @@
 Model Database Management Project
 - Number of processes ......................................# 1
 - Process (CREATE_DB,ADD_ROI,...) ..........................# ADD_PHDB
-  - Database file name .....................................# "D:/Aicedrone/20230807_Roads/qAicedrone/qAicedrone_road_20230807.sqilte.sqlite"
-  - Photogrammetry spatialite database file ................# "D:/Aicedrone/20230807_Roads/PhotogrammetryTool/PhTools_Road_20230807.sqlite"
+  - Database file name .....................................# "D:/Aicedrone/20231120_Gandia_Road/qAicedrone/qAicedrone_Gandia_Road.sqlite"
+  - Photogrammetry spatialite database file ................# "D:/Aicedrone/20231120_Gandia_Road/PhotogrammetryTool/PhTools_Gandia_Road.sqlite"

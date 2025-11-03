@@ -814,6 +814,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.qmlCubesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_CUBES_TEMPLATE
         self.qmlAiRailsImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILS_IMPORT_TEMPLATE
         self.qmlAiRailwaysImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILWAYS_IMPORT_TEMPLATE
+        self.qmlRailwayAxisPointsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_RAILWAY_AXIS_POINTS_TEMPLATE
         self.qmlAiRailsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILS_TEMPLATE
         self.qmlCvPhmRailsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_CV_PHM_RAILS_TEMPLATE
         self.qmlAiRailsTilesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILS_TILES_TEMPLATE
@@ -926,6 +927,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.aiRailsImportVLayer = None
         self.aiRailwaysImportVLayer = None
         self.aiRailsTilesVLayer = None
+        self.railwayAxisPointsVLayer = None
         self.aiRailsVLayer = None
         self.cvPhmRailsVLayer = None
         self.mergedRailsVLayer = None
@@ -1170,6 +1172,47 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
                 self.aiRailsTilesVLayer = vlayer
+        # railway_axis_points
+        railwayAxisPointsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(railwayAxisPointsTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = railwayAxisPointsTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = railwayAxisPointsTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlAiRailsFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.railwayAxisPointsVLayer = vlayer
+                sldRailwayAxisPointsFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_RAILWAY_AXIS_POINTS_TEMPLATE
+                self.railwayAxisPointsVLayer.saveSldStyle(sldRailwayAxisPointsFileName)
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.railwayAxisPointsVLayer.id())
+                layerNode.setExpanded(True)
         # self.aiRailsImportVLayer = None
         aiRailsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME
         layerList = QgsProject.instance().mapLayersByName(aiRailsTableName)

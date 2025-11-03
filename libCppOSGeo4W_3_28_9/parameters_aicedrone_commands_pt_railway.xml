@@ -263,7 +263,7 @@
         <Description>DSM raster file, same CRS as project and with no data value.</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_dsm_clipped.tif</Value>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/DatosAuxiliares/20231120_Gandia_Rail_5cm_25830_dsm_clipped.tif</Value>
     </Parameter>
     <Parameter>
         <Command>3.1 CV and Photogrammetry solution from AI results</Command>
@@ -383,7 +383,7 @@
         <Description>Output path for reports and images</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug</Value>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_3_1</Value>
     </Parameter>
     <Parameter>
         <Command>3.1 CV and Photogrammetry solution from AI results</Command>
@@ -656,7 +656,7 @@
         <Description>Output path for reports and images</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug</Value>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/debug_kk</Value>
     </Parameter>
     <Parameter>
         <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
@@ -719,7 +719,7 @@
         <Description>Selected rails ids separated by ';' and setted by QGIS interface</Description>
         <PrintSize>100</PrintSize>
         <Unit>adimensional</Unit>
-        <Value></Value>
+        <Value>7890</Value>
     </Parameter>
     <Parameter>
         <Command>3.2 CV and Photogrammetry solution for selected AI rails</Command>
@@ -778,7 +778,7 @@
         <Description>Maximum mean squared error in photogrammetry backward for candidate objects points, in pixels</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>2.00</Value>
+        <Value>3.00</Value>
         <MaximumValue>20.00</MaximumValue>
         <MinimumValue>0.01</MinimumValue>
         <PrintPrecision>2</PrintPrecision>
@@ -815,7 +815,7 @@
         <Description>Exterior percentage of sensor format ignored.</Description>
         <PrintSize>20</PrintSize>
         <Unit>percentage</Unit>
-        <Value>1.000</Value>
+        <Value>0.010</Value>
         <MaximumValue>10.000</MaximumValue>
         <MinimumValue>0.000</MinimumValue>
         <PrintPrecision>3</PrintPrecision>
@@ -1136,25 +1136,15 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_Orthomosaic</Code>
+        <Code>PGPTUTSDI_CZF</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>File</Type>
-        <Description>Orthomosaic file (GeoTIFF)</Description>
-        <PrintSize>200</PrintSize>
+        <Type>Value list</Type>
+        <Description>Create zip file</Description>
+        <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_DTM</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>Digital Terrain Model (DTM) file (GeoTIFF)</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1169,6 +1159,28 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
+        <Code>PGPTUTSDI_DTM</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Digital Terrain Model (DTM) file (GeoTIFF)</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_20cm_25830_dtm_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Package geomatic products to upload to SDI</Command>
+        <Code>PGPTUTSDI_Orthomosaic</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>Orthomosaic file (GeoTIFF)</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/DatosAuxiliares/202301XX_RAIL_5cm_25830_orto_clipped.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Package geomatic products to upload to SDI</Command>
         <Code>PGPTUTSDI_PCF</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -1177,17 +1189,6 @@
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
         <Value>D:/Aicedrone/20230125_Rail/Metashape/202301XX_RAIL_recortada.las</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_ZIP</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>SaveFile</Type>
-        <Description>Output ZIP file, rewrite if exists</Description>
-        <PrintSize>300</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
@@ -1203,15 +1204,14 @@
     </Parameter>
     <Parameter>
         <Command>5. Package geomatic products to upload to SDI</Command>
-        <Code>PGPTUTSDI_CZF</Code>
+        <Code>PGPTUTSDI_ZIP</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Create zip file</Description>
-        <PrintSize>10</PrintSize>
+        <Type>SaveFile</Type>
+        <Description>Output ZIP file, rewrite if exists</Description>
+        <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
+        <Value>D:/Aicedrone/20230125_Rail/sdi/20230125_Rail_sdi.zip</Value>
     </Parameter>
     <Parameter>
         <Command>2. Preprocess AI results</Command>
@@ -1222,7 +1222,7 @@
         <Description>Tolerance for parallel rails, in DEG</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>3.0000</Value>
+        <Value>5.0000</Value>
         <MaximumValue>20.0000</MaximumValue>
         <MinimumValue>0.5000</MinimumValue>
         <PrintPrecision>4</PrintPrecision>
@@ -1316,6 +1316,85 @@
         <Unit>adimensional</Unit>
         <ValueList>true;false</ValueList>
         <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_MinimumRailSegmentPercentage</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum length for detected parallel rails, as rail segment percentage</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>60.0</Value>
+        <MaximumValue>96.0</MaximumValue>
+        <MinimumValue>10.0</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>100</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_RailwayWidthLinearTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Linear difference tolerance for railway width and distance between parallel rails, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.06</Value>
+        <MaximumValue>0.80</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_ReportFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Report file, empty for no report</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Railway_axis_points_from_imported_ai_rails_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>2. Railway axis points from imported ai rails</Command>
+        <Code>PRWAPFIR_TrackGauge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Track gauge, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.668</Value>
+        <MaximumValue>3.100</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
         <Command>Recompute railway sections from images segmentation</Command>
@@ -1612,6 +1691,71 @@
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
+        <Command>6. Railroad track geometry analysis</Command>
+        <Code>RTGA_MaximumRailSectionLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum rail section length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>30.0</Value>
+        <MaximumValue>2000.0</MaximumValue>
+        <MinimumValue>2.0</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>6. Railroad track geometry analysis</Command>
+        <Code>RTGA_MinimumRailSectionLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Minimum rail section length, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>25.0</Value>
+        <MaximumValue>2000.0</MaximumValue>
+        <MinimumValue>2.0</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>6. Railroad track geometry analysis</Command>
+        <Code>RTGA_OutputPath</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Path</Type>
+        <Description>Output path for reports</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output_vertical_analysis_30m_ptos_50cm_weight_tol_95mm_debug</Value>
+    </Parameter>
+    <Parameter>
+        <Command>6. Railroad track geometry analysis</Command>
+        <Code>RTGA_ProcessOnlyEnabledRails</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Process only enabled rails</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>6. Railroad track geometry analysis</Command>
+        <Code>RTGA_VerticalLinearTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Vertical linear tolerance for rails adjustment, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.095</Value>
+        <MaximumValue>1.000</MaximumValue>
+        <MinimumValue>0.001</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
         <Command>Split railway point cloud from contours shapefile</Command>
         <Code>SRWPCFFCSHP_InputShapefile</Code>
         <Enabled>Yes</Enabled>
@@ -1719,70 +1863,5 @@
         <Unit>adimensional</Unit>
         <ValueList>Rails section length;Maximum number of points</ValueList>
         <Value>Rails section length</Value>
-    </Parameter>
-    <Parameter>
-        <Command>6. Railroad track geometry analysis</Command>
-        <Code>RTGA_OutputPath</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Path</Type>
-        <Description>Output path for reports</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20230125_Rail/qAicedrone/output_vertical_analysis</Value>
-    </Parameter>
-    <Parameter>
-        <Command>6. Railroad track geometry analysis</Command>
-        <Code>RTGA_ProcessOnlyEnabledRails</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Process only enabled rails</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
-    </Parameter>
-    <Parameter>
-        <Command>6. Railroad track geometry analysis</Command>
-        <Code>RTGA_VerticalLinearTolerance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Vertical linear tolerance for rails adjustment, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.030</Value>
-        <MaximumValue>1.000</MaximumValue>
-        <MinimumValue>0.001</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>6. Railroad track geometry analysis</Command>
-        <Code>RTGA_MaximumRailSectionLength</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Maximum rail section length, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>100.0</Value>
-        <MaximumValue>2000.0</MaximumValue>
-        <MinimumValue>2.0</MinimumValue>
-        <PrintPrecision>1</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>6. Railroad track geometry analysis</Command>
-        <Code>RTGA_MinimumRailSectionLength</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Minimum rail section length, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>50.0</Value>
-        <MaximumValue>2000.0</MaximumValue>
-        <MinimumValue>2.0</MinimumValue>
-        <PrintPrecision>1</PrintPrecision>
     </Parameter>
 </ParametersManager>
