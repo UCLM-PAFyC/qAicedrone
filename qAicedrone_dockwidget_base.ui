@@ -44,8 +44,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>532</width>
-         <height>503</height>
+         <width>530</width>
+         <height>501</height>
         </rect>
        </property>
        <attribute name="label">
@@ -491,8 +491,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>532</width>
-         <height>503</height>
+         <width>537</width>
+         <height>482</height>
         </rect>
        </property>
        <attribute name="label">
@@ -740,7 +740,7 @@
                </size>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>3</number>
               </property>
               <widget class="QWidget" name="tab">
                <attribute name="title">
@@ -1398,6 +1398,158 @@
                  </widget>
                 </item>
                </layout>
+              </widget>
+              <widget class="QWidget" name="tab_5">
+               <attribute name="title">
+                <string>Railway axis from points</string>
+               </attribute>
+               <widget class="QWidget" name="layoutWidget">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>20</y>
+                  <width>462</width>
+                  <height>28</height>
+                 </rect>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <spacer name="horizontalSpacer_10">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_13">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Operation with selected railway axis points:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="disableSelectedRailwayAxisPointsPushButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Disable</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="enableSelectedRailwayAxisPointsPushButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Enable</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="removeSelectedRailwayAxisPointsPushButton">
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Remove</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_13">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="">
+                <property name="geometry">
+                 <rect>
+                  <x>-1</x>
+                  <y>60</y>
+                  <width>461</width>
+                  <height>28</height>
+                 </rect>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <spacer name="horizontalSpacer_17">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="computeManualEditedRailwayAxisPushButton">
+                   <property name="text">
+                    <string>Compute manually edited railway axis</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_18">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
               </widget>
              </widget>
             </item>
