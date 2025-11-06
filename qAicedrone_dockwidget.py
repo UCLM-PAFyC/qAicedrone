@@ -1060,10 +1060,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.selectMergedRailsByRailPushButton.clicked.connect(self.selectMergedRailsByRail)
         # self.unselectMergedRailsByRailPushButton.clicked.connect(self.unselectMergedRailsByRail)
 
-        self.removeSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectRemoveSelectedRailwayAxisPoints)
-        self.enableSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisPoints)
-        self.disableSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisPoints)
-        self.computeManualEditedRailwayAxisPushButton.clicked.connect(self.computeManualEditedRailwayAxis)
+        self.removeSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectRemoveSelectedRailwayAxisFromAxisPoints)
+        self.enableSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisFromAxisPoints)
+        self.disableSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisFromAxisPoints)
+        self.computeManualEditedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.computeManualEditedRailwayAxisFromAxisPoints)
 
 
     # self.reportGroupBox.setVisible(False)
@@ -1101,6 +1101,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.roadMarksVLayer = None
         self.manualEditingLinearRoadMarksLayer = None
         self.manualEditingNonLinearRoadMarksLayer = None
+        self.manualEditingRailwayAxisFromAxisPointsLayer = None
         self.cubesVLayer = None
         self.aiRailsImportVLayer = None
         self.aiRailwaysImportVLayer = None
@@ -1114,7 +1115,50 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.pvAnomaliesPanelsVLayer = None
         return
 
-    def computeManualEditedRailwayAxis(self):
+    def computeManualEditedRailwayAxisFromAxisPoints(self):
+        if not self.manualEditingRailwayAxisFromAxisPointsLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Invalid layer for manually edited railway axis from axis points")
+            msgBox.exec_()
+            return
+        numberOfFeatures = self.manualEditingRailwayAxisFromAxisPointsLayer.featureCount()
+        if numberOfFeatures < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Edit some feature in layer " + self.manualEditingRailwayAxisFromAxisPointsLayer.name())
+            msgBox.exec_()
+            return
+        wktGeometries = []
+        for feature in self.manualEditingRailwayAxisFromAxisPointsLayer.getFeatures():
+            wktGeometry = feature.geometry().asWkt()
+            wktGeometries.append(wktGeometry)
+        dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
+        if not dbFileName:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Select Db file")
+            msgBox.exec_()
+            return
+        if len(wktGeometries) > 0:
+            ret = self.iPyProject.mmtComputeManuallyEditedRailwayAxisFromAxisPoints(dbFileName,
+                                                                                    wktGeometries)
+            if ret[0] == "False":
+                msgBox = QMessageBox(self)
+                msgBox.setIcon(QMessageBox.Information)
+                msgBox.setWindowTitle(self.windowTitle)
+                msgBox.setText("Error:\n" + ret[1])
+                msgBox.exec_()
+                return
+        self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+        for feature in self.manualEditingRailwayAxisFromAxisPointsLayer.getFeatures():
+            self.manualEditingRailwayAxisFromAxisPointsLayer.deleteFeature(feature.id())
+        self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
+        self.roadMarksVLayer.triggerRepaint()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
         return
 
     def addVirtualRailwayLayers(self):
@@ -1122,29 +1166,29 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         layerManualEditingRailwayAxisFromPointsTitle = MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME
         layerList = QgsProject.instance().mapLayersByName(layerManualEditingRailwayAxisFromPointsTitle)
         if not layerList:
-            self.layerManualEditingRailwayAxisFromPointsLayer = None
-            self.layerManualEditingRailwayAxisFromPointsLayer = QgsVectorLayer("Linestring?crs=" + projectCrs.authid(),
-                                                                    layerManualEditingRailwayAxisFromPointsTitle, "memory")
-            self.layerManualEditingRailwayAxisFromPointsLayer.startEditing()
-            idFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH
+            self.manualEditingRailwayAxisFromAxisPointsLayer = None
+            self.manualEditingRailwayAxisFromAxisPointsLayer = QgsVectorLayer("Linestring?crs=" + projectCrs.authid(),
+                                                                              layerManualEditingRailwayAxisFromPointsTitle, "memory")
+            self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+            # idFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_WIDTH
             enabledField = QgsField(MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED, QVariant.Int)
-            # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
-            # catalogueField = QgsField(catalogueFieldName, QVariant.String)
-            # self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField, catalogueField])
-            self.layerManualEditingRailwayAxisFromPointsLayer.dataProvider().addAttributes([enabledField])
-            self.layerManualEditingRailwayAxisFromPointsLayer.commitChanges()
-            if self.layerManualEditingRailwayAxisFromPointsLayer.isValid():
+            # # catalogueFieldName = MMTDefinitions.CONST_MANUAL_EDITING_OF_LINEAR_ROAD_MARKS_LAYER_FIELD_CATALOGUE_FILE
+            # # catalogueField = QgsField(catalogueFieldName, QVariant.String)
+            # # self.manualEditingLinearRoadMarksLayer.dataProvider().addAttributes([widthField, catalogueField])
+            self.manualEditingRailwayAxisFromAxisPointsLayer.dataProvider().addAttributes([enabledField])
+            self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
+            if self.manualEditingRailwayAxisFromAxisPointsLayer.isValid():
                 # if vlayer.featureCount() == 0:
                 #     return
-                QgsProject.instance().addMapLayer(self.layerManualEditingRailwayAxisFromPointsLayer, False)
-                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.layerManualEditingRailwayAxisFromPointsLayer))
-                self.layerManualEditingRailwayAxisFromPointsLayer.loadNamedStyle(self.qmlManualEditingRailwayAxisFromPointsFileName)
-                self.layerManualEditingRailwayAxisFromPointsLayer.triggerRepaint()
-                self.iface.setActiveLayer(self.layerManualEditingRailwayAxisFromPointsLayer)
+                QgsProject.instance().addMapLayer(self.manualEditingRailwayAxisFromAxisPointsLayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(self.manualEditingRailwayAxisFromAxisPointsLayer))
+                self.manualEditingRailwayAxisFromAxisPointsLayer.loadNamedStyle(self.qmlManualEditingRailwayAxisFromPointsFileName)
+                self.manualEditingRailwayAxisFromAxisPointsLayer.triggerRepaint()
+                self.iface.setActiveLayer(self.manualEditingRailwayAxisFromAxisPointsLayer)
                 self.iface.zoomToActiveLayer()
-                self.layerManualEditingRailwayAxisFromPointsLayer.startEditing()
+                self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
             else:
-                self.layerManualEditingRailwayAxisFromPointsLayer = None
+                self.manualEditingRailwayAxisFromAxisPointsLayer = None
                 msgBox = QMessageBox(self)
                 msgBox.setIcon(QMessageBox.Information)
                 msgBox.setWindowTitle(self.windowTitle)
@@ -1238,7 +1282,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                 #     return
                 QgsProject.instance().addMapLayer(vlayer, False)
                 self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
-                vlayer.loadNamedStyle(self.qmlAiRailsFileName)
+                vlayer.loadNamedStyle(self.qmlRailwayAxisPointsFileName)
                 vlayer.triggerRepaint()
                 self.iface.setActiveLayer(vlayer)
                 self.iface.zoomToActiveLayer()
@@ -1735,6 +1779,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.roadMarksVLayer = None
         self.manualEditingLinearRoadMarksLayer = None
         self.manualEditingNonLinearRoadMarksLayer = None
+        self.manualEditingRailwayAxisFromAxisPointsLayer = None
         connectionFileName = self.projectsComboBox.currentText()
         if connectionFileName == MMTDefinitions.CONST_NO_COMBO_SELECT:
             msgBox = QMessageBox(self)
@@ -2474,10 +2519,16 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.refreshMapCanvas()
         return
 
-    def selectDisableSelectedRailwayAxisPoints(self):
+    def selectDisableManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
         return
 
-    def selectEnableSelectedRailwayAxisPoints(self):
+    def selectDisableSelectedRailwayAxisFromAxisPoints(self):
+        return
+
+    def selectEnableManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
+        return
+
+    def selectEnableSelectedRailwayAxisFromAxisPoints(self):
         return
 
     def selectNewDatabase(self):
@@ -2961,7 +3012,10 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.iface.setActiveLayer(self.roadMarksVLayer)
         # self.iface.zoomToActiveLayer()
 
-    def selectRemoveSelectedRailwayAxisPoints(self):
+    def selectRemoveManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
+        return
+
+    def selectRemoveSelectedRailwayAxisFromAxisPoints(self):
         return
 
     def selectRemoveSelectedRoadMarks(self):

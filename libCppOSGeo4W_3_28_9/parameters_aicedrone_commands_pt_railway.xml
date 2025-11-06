@@ -23,7 +23,7 @@
         <Description>DSM raster file, same CRS as project and with no data value.</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dsm_20mm.tif</Value>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dsm_20mm_25830_5782.tif</Value>
     </Parameter>
     <Parameter>
         <Command>3. Compute railway axis from axis points</Command>
@@ -34,7 +34,7 @@
         <Description>DTM raster file, same CRS as project and with no data value.</Description>
         <PrintSize>200</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm.tif</Value>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm_25830_5782.tif</Value>
     </Parameter>
     <Parameter>
         <Command>3. Compute railway axis from axis points</Command>
