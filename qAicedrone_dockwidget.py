@@ -2197,7 +2197,18 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # processCommandIsEnabled = self.iPyProject.mmtGetEnabledProcessCommand(command)
         # self.processCommandPushButton.setEnabled(processCommandIsEnabled)
         self.commandParamtersPushButton.setEnabled(True)
-        self.processCommandPushButton.setEnabled(True)
+        ret = self.iPyProject.mmtGetCommandIsExecutable(dbFileName, command)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
+        if ret[1] == 'True':
+            self.processCommandPushButton.setEnabled(True)
+        else:
+            self.processCommandPushButton.setEnabled(False)
         if (command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_CSSHP
                 or command == MMTDefinitions.CONST_MODELBREAKWATERDEFINITIONS_COMMAND_RCSHP):
             self.breakwaterCubesSelectRegionByRectangleToolButton.setEnabled(True)
