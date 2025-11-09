@@ -1539,7 +1539,7 @@
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="">
+               <widget class="QWidget" name="layoutWidget">
                 <property name="geometry">
                  <rect>
                   <x>10</x>
@@ -1641,7 +1641,7 @@
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="">
+               <widget class="QWidget" name="layoutWidget">
                 <property name="geometry">
                  <rect>
                   <x>10</x>
@@ -1686,7 +1686,7 @@
                  </item>
                 </layout>
                </widget>
-               <widget class="QWidget" name="">
+               <widget class="QWidget" name="layoutWidget">
                 <property name="geometry">
                  <rect>
                   <x>10</x>
@@ -1724,12 +1724,12 @@
                     </size>
                    </property>
                    <property name="text">
-                    <string>Selected railway axis:</string>
+                    <string>Selected computed railway axis:</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="disableSelectedRailwayAxisFromAxisPointsPushButton">
+                  <widget class="QPushButton" name="disableSelectedRailwayAxisComputedPushButton">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -1748,7 +1748,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="enableSelectedRailwayAxisFromAxisPointsPushButton">
+                  <widget class="QPushButton" name="enableSelectedRailwayAxisComputedPushButton">
                    <property name="maximumSize">
                     <size>
                      <width>50</width>
@@ -1761,7 +1761,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="removeSelectedRailwayAxisFromAxisPointsPushButton">
+                  <widget class="QPushButton" name="removeSelectedRailwayAxisComputedPushButton">
                    <property name="maximumSize">
                     <size>
                      <width>50</width>

@@ -1,8 +1,8 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_LineAdjustTolerance</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_LineAdjustTolerance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
@@ -15,8 +15,8 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_TrackGauge</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_TrackGauge</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
@@ -29,8 +29,8 @@
         <PrintPrecision>3</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_RailHeadWidth</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_RailHeadWidth</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
@@ -43,8 +43,8 @@
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_UseOnlyEnabledTiles</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_UseOnlyEnabledTiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
@@ -55,8 +55,8 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_UseOnlyEnabledPoints</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_UseOnlyEnabledPoints</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
@@ -67,19 +67,19 @@
         <Value>true</Value>
     </Parameter>
     <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_ReportFile</Code>
+        <Command>3. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_ReportFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>SaveFile</Type>
         <Description>Report file, empty for no report</Description>
         <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Railway_axis_from_axis_points_report.txt</Value>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Manually_edited_railway_axis_from_axis_points_report.txt</Value>
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_DsmFile</Code>
+        <Code>CMERWAFAP_DsmFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>File</Type>
@@ -90,7 +90,7 @@
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_DtmFile</Code>
+        <Code>CMERWAFAP_DtmFile</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>File</Type>
@@ -101,7 +101,7 @@
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_ExteriorWidthFromRail</Code>
+        <Code>CMERWAFAP_ExteriorWidthFromRail</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
@@ -115,7 +115,7 @@
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_RailwayAxisPointsDistance</Code>
+        <Code>CMERWAFAP_RailwayAxisPointsDistance</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Double precision number</Type>
@@ -129,7 +129,7 @@
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_AltitudeTypeRailwayAxis</Code>
+        <Code>CMERWAFAP_AltitudeTypeRailwayAxis</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
