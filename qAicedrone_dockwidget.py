@@ -1060,9 +1060,13 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.selectMergedRailsByRailPushButton.clicked.connect(self.selectMergedRailsByRail)
         # self.unselectMergedRailsByRailPushButton.clicked.connect(self.unselectMergedRailsByRail)
 
-        self.removeSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectRemoveSelectedRailwayAxisFromAxisPoints)
-        self.enableSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisFromAxisPoints)
-        self.disableSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisFromAxisPoints)
+        self.removeSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectRemoveSelectedRailwayAxisPoints)
+        self.enableSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisPoints)
+        self.disableSelectedRailwayAxisPointsPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisPoints)
+        self.removeManuallyEditedSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectRemoveManuallyEditedSelectedRailwayAxisFromAxisPoints)
+        self.enableManuallyEditedSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectEnableManuallyEditedSelectedRailwayAxisFromAxisPoints)
+        self.disableManuallyEditedSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectDisableManuallyEditedSelectedRailwayAxisFromAxisPoints)
+
         self.computeManualEditedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.computeManualEditedRailwayAxisFromAxisPoints)
 
 
@@ -2520,15 +2524,165 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         return
 
     def selectDisableManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
+        if not self.manualEditingRailwayAxisFromAxisPointsLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.manualEditingRailwayAxisFromAxisPointsLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+        for feat_id in self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureIds():
+            self.manualEditingRailwayAxisFromAxisPointsLayer.changeAttributeValue(feat_id, field_enabled, 0)
+        self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.triggerRepaint()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.removeSelection()
         return
 
     def selectDisableSelectedRailwayAxisFromAxisPoints(self):
         return
 
+    def selectDisableSelectedRailwayAxisPoints(self):
+        if not self.railwayAxisPointsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisPointsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.railwayAxisPointsVLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisPointsVLayer.startEditing()
+        for feat_id in self.railwayAxisPointsVLayer.selectedFeatureIds():
+            self.railwayAxisPointsVLayer.changeAttributeValue(feat_id, field_enabled, 0)
+        self.railwayAxisPointsVLayer.commitChanges()
+        self.railwayAxisPointsVLayer.triggerRepaint()
+        self.railwayAxisPointsVLayer.removeSelection()
+        return
+
     def selectEnableManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
+        if not self.manualEditingRailwayAxisFromAxisPointsLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.manualEditingRailwayAxisFromAxisPointsLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+        for feat_id in self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureIds():
+            self.manualEditingRailwayAxisFromAxisPointsLayer.changeAttributeValue(feat_id, field_enabled, 1)
+        self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.triggerRepaint()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.removeSelection()
         return
 
     def selectEnableSelectedRailwayAxisFromAxisPoints(self):
+        return
+
+    def selectEnableSelectedRailwayAxisPoints(self):
+        if not self.railwayAxisPointsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisPointsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.railwayAxisPointsVLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisPointsVLayer.startEditing()
+        for feat_id in self.railwayAxisPointsVLayer.selectedFeatureIds():
+            self.railwayAxisPointsVLayer.changeAttributeValue(feat_id, field_enabled, 1)
+        self.railwayAxisPointsVLayer.commitChanges()
+        self.railwayAxisPointsVLayer.triggerRepaint()
+        self.railwayAxisPointsVLayer.removeSelection()
         return
 
     def selectNewDatabase(self):
@@ -3013,9 +3167,60 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         # self.iface.zoomToActiveLayer()
 
     def selectRemoveManuallyEditedSelectedRailwayAxisFromAxisPoints(self):
+        if not self.manualEditingRailwayAxisFromAxisPointsLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+        for feat_id in self.manualEditingRailwayAxisFromAxisPointsLayer.selectedFeatureIds():
+            self.manualEditingRailwayAxisFromAxisPointsLayer.deleteFeature(feat_id)
+        self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.triggerRepaint()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.removeSelection()
         return
 
     def selectRemoveSelectedRailwayAxisFromAxisPoints(self):
+        return
+
+    def selectRemoveSelectedRailwayAxisPoints(self):
+        if not self.railwayAxisPointsVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisPointsVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_POINTS_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisPointsVLayer.startEditing()
+        for feat_id in self.railwayAxisPointsVLayer.selectedFeatureIds():
+            self.railwayAxisPointsVLayer.deleteFeature(feat_id)
+        self.railwayAxisPointsVLayer.commitChanges()
+        self.railwayAxisPointsVLayer.triggerRepaint()
+        self.railwayAxisPointsVLayer.removeSelection()
         return
 
     def selectRemoveSelectedRoadMarks(self):

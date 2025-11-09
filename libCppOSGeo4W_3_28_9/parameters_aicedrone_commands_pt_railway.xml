@@ -16,28 +16,6 @@
     </Parameter>
     <Parameter>
         <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_DsmFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>DSM raster file, same CRS as project and with no data value.</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dsm_20mm_25830_5782.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_DtmFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>DTM raster file, same CRS as project and with no data value.</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm_25830_5782.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
         <Code>CRWAFAP_TrackGauge</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
@@ -66,57 +44,15 @@
     </Parameter>
     <Parameter>
         <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_LengthEndsInitialSolution</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Length at the ends for the initial solution, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>1.0</Value>
-        <MaximumValue>50.0</MaximumValue>
-        <MinimumValue>0.05</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_ExteriorWidthFromRail</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Exterior width from rail for altitude computation, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.1</Value>
-        <MaximumValue>1.0</MaximumValue>
-        <MinimumValue>0.01</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_RailwayAxisPointsDistance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Railway axis points distance, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>2.0</Value>
-        <MaximumValue>10.0</MaximumValue>
-        <MinimumValue>0.50</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute railway axis from axis points</Command>
-        <Code>CRWAFAP_AltitudeTypeRailwayAxis</Code>
+        <Code>CRWAFAP_UseOnlyEnabledTiles</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
-        <Description>Altitude type railway axis</Description>
+        <Description>Use only enabled tiles</Description>
         <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>minimum;mean;maximum</ValueList>
-        <Value>minimum</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>3. Compute railway axis from axis points</Command>
@@ -140,6 +76,68 @@
         <PrintSize>300</PrintSize>
         <Unit>adimensional</Unit>
         <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Railway_axis_from_axis_points_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CRWAFAP_DsmFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DSM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dsm_20mm_25830_5782.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CRWAFAP_DtmFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm_25830_5782.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CRWAFAP_ExteriorWidthFromRail</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Exterior width from rail for altitude computation, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.1</Value>
+        <MaximumValue>1.0</MaximumValue>
+        <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CRWAFAP_RailwayAxisPointsDistance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Railway axis points distance, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>2.0</Value>
+        <MaximumValue>10.0</MaximumValue>
+        <MinimumValue>0.50</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CRWAFAP_AltitudeTypeRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Altitude type railway axis</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>minimum;mean;maximum</ValueList>
+        <Value>minimum</Value>
     </Parameter>
     <Parameter>
         <Command>Compute railway sections from filtered point clouds files</Command>
