@@ -1141,10 +1141,31 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Edit some feature in layer " + self.manualEditingRailwayAxisFromAxisPointsLayer.name())
             msgBox.exec_()
             return
+        field_enabled = (self.manualEditingRailwayAxisFromAxisPointsLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
         wktGeometries = []
         for feature in self.manualEditingRailwayAxisFromAxisPointsLayer.getFeatures():
+            if feature[MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED] == 0:
+                continue
             wktGeometry = feature.geometry().asWkt()
             wktGeometries.append(wktGeometry)
+        if len(wktGeometries) == 0:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Not exists enabled features in layer " + self.manualEditingRailwayAxisFromAxisPointsLayer.name())
+            msgBox.exec_()
+            return
         dbFileName = self.modelManagementConnections[self.projectsComboBox.currentText()]
         if not dbFileName:
             msgBox = QMessageBox(self)
@@ -1153,22 +1174,64 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
             msgBox.setText("Select Db file")
             msgBox.exec_()
             return
-        if len(wktGeometries) > 0:
-            ret = self.iPyProject.mmtComputeManuallyEditedRailwayAxisFromAxisPoints(dbFileName,
-                                                                                    wktGeometries)
-            if ret[0] == "False":
-                msgBox = QMessageBox(self)
-                msgBox.setIcon(QMessageBox.Information)
-                msgBox.setWindowTitle(self.windowTitle)
-                msgBox.setText("Error:\n" + ret[1])
-                msgBox.exec_()
-                return
+        ret = self.iPyProject.mmtComputeManuallyEditedRailwayAxisFromAxisPoints(dbFileName, wktGeometries)
+        if ret[0] == "False":
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            msgBox.setText("Error:\n" + ret[1])
+            msgBox.exec_()
+            return
         self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
         for feature in self.manualEditingRailwayAxisFromAxisPointsLayer.getFeatures():
-            self.manualEditingRailwayAxisFromAxisPointsLayer.deleteFeature(feature.id())
+            if feature[MMTDefinitions.CONST_MANUAL_EDITING_OF_RAILWAY_AXIS_FROM_POINTS_LAYER_FIELD_ENABLED] == 0:
+                continue
+            self.manualEditingRailwayAxisFromAxisPointsLayer.changeAttributeValue(feature.id(), field_enabled, 0)
         self.manualEditingRailwayAxisFromAxisPointsLayer.commitChanges()
-        self.roadMarksVLayer.triggerRepaint()
+        self.manualEditingRailwayAxisFromAxisPointsLayer.triggerRepaint()
         self.manualEditingRailwayAxisFromAxisPointsLayer.startEditing()
+        # railway_axis_computed
+        railwayAxisComputedTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_COMPUTED_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(railwayAxisComputedTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = railwayAxisComputedTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_COMPUTED_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = railwayAxisComputedTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlRailwayAxisComputedFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.railwayAxisComputedVLayer = vlayer
+                sldRailwayAxisComputedFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_RAILWAY_AXIS_COMPUTED_TEMPLATE
+                self.railwayAxisComputedVLayer.saveSldStyle(sldRailwayAxisComputedFileName)
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.railwayAxisComputedVLayer.id())
+                layerNode.setExpanded(True)
+        self.refreshMapCanvas()
         return
 
     def addVirtualRailwayLayers(self):
