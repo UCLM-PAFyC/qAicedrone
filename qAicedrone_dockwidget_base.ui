@@ -1646,7 +1646,7 @@
                  <rect>
                   <x>10</x>
                   <y>90</y>
-                  <width>304</width>
+                  <width>461</width>
                   <height>28</height>
                  </rect>
                 </property>
@@ -1668,6 +1668,16 @@
                   <widget class="QPushButton" name="computeManualEditedRailwayAxisFromAxisPointsPushButton">
                    <property name="text">
                     <string>Compute manually edited railway axis</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="mergeRailwayAxisComputedPushButton">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="text">
+                    <string>Merge computed railway axis</string>
                    </property>
                   </widget>
                  </item>

@@ -1,81 +1,16 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
     <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_LineAdjustTolerance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Line adjust tolerance, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.050</Value>
-        <MaximumValue>1.000</MaximumValue>
-        <MinimumValue>0.000</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_TrackGauge</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Track gauge, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>1.668</Value>
-        <MaximumValue>3.100</MaximumValue>
-        <MinimumValue>1.400</MinimumValue>
-        <PrintPrecision>3</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_RailHeadWidth</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Rail head width, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.07</Value>
-        <MaximumValue>0.12</MaximumValue>
-        <MinimumValue>0.05</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_UseOnlyEnabledTiles</Code>
+        <Command>5. Compute railway axis from axis points</Command>
+        <Code>CMERWAFAP_AltitudeTypeRailwayAxis</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
-        <Description>Use only enabled tiles</Description>
+        <Description>Altitude type railway axis</Description>
         <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_UseOnlyEnabledPoints</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Use only enabled points</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <ValueList>true;false</ValueList>
-        <Value>true</Value>
-    </Parameter>
-    <Parameter>
-        <Command>3. Compute manually edited railway axis from axis points</Command>
-        <Code>CMERWAFAP_ReportFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>SaveFile</Type>
-        <Description>Report file, empty for no report</Description>
-        <PrintSize>300</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Manually_edited_railway_axis_from_axis_points_report.txt</Value>
+        <ValueList>minimum;mean;maximum</ValueList>
+        <Value>minimum</Value>
     </Parameter>
     <Parameter>
         <Command>5. Compute railway axis from axis points</Command>
@@ -108,9 +43,37 @@
         <Description>Exterior width from rail for altitude computation, in meters</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>0.1</Value>
-        <MaximumValue>1.0</MaximumValue>
+        <Value>0.10</Value>
+        <MaximumValue>1.00</MaximumValue>
         <MinimumValue>0.01</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_LineAdjustTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Line adjust tolerance, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.050</Value>
+        <MaximumValue>1.000</MaximumValue>
+        <MinimumValue>0.000</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
@@ -122,22 +85,124 @@
         <Description>Railway axis points distance, in meters</Description>
         <PrintSize>20</PrintSize>
         <Unit>adimensional</Unit>
-        <Value>2.0</Value>
-        <MaximumValue>10.0</MaximumValue>
+        <Value>2.00</Value>
+        <MaximumValue>10.00</MaximumValue>
         <MinimumValue>0.50</MinimumValue>
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_AltitudeTypeRailwayAxis</Code>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_ReportFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Report file, empty for no report</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Manually_edited_railway_axis_from_axis_points_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_TrackGauge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Track gauge, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.668</Value>
+        <MaximumValue>3.100</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_UseOnlyEnabledPoints</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
-        <Description>Altitude type railway axis</Description>
+        <Description>Use only enabled points</Description>
         <PrintSize>10</PrintSize>
         <Unit>adimensional</Unit>
-        <ValueList>minimum;mean;maximum</ValueList>
-        <Value>minimum</Value>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.1. Compute manually edited railway axis from axis points</Command>
+        <Code>CMERWAFAP_UseOnlyEnabledTiles</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use only enabled tiles</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2. Merge computed railway axis</Command>
+        <Code>MCRWA_AngularTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Angular tolerance in azimuth of computed railway axises to join, in DEG</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10.0000</Value>
+        <MaximumValue>50.0000</MaximumValue>
+        <MinimumValue>0.5000</MinimumValue>
+        <PrintPrecision>4</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2. Merge computed railway axis</Command>
+        <Code>MCRWA_PointsLinearTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance between extreme points of computed railway axises to join, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>5.0</Value>
+        <MaximumValue>50.0</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2. Merge computed railway axis</Command>
+        <Code>MCRWA_LinesLinearTolerance</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum distance between railway axises to join, computed in extreme points, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.20</Value>
+        <MaximumValue>1.5</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.2. Merge computed railway axis</Command>
+        <Code>MCRWA_ReportFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Report file, empty for no report</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Merge_computed_railway_axis_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.2. Merge computed railway axis</Command>
+        <Code>MCRWA_UseOnlyEnabledComputedRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use only enabled points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
     </Parameter>
     <Parameter>
         <Command>Compute railway sections from filtered point clouds files</Command>
