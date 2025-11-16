@@ -816,6 +816,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.qmlAiRailwaysImportFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILWAYS_IMPORT_TEMPLATE
         self.qmlRailwayAxisPointsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_RAILWAY_AXIS_POINTS_TEMPLATE
         self.qmlRailwayAxisComputedFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_RAILWAY_AXIS_COMPUTED_TEMPLATE
+        self.qmlRailwayAxisMergedFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_RAILWAY_AXIS_MERGED_TEMPLATE
         self.qmlAiRailsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILS_TEMPLATE
         self.qmlCvPhmRailsFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_CV_PHM_RAILS_TEMPLATE
         self.qmlAiRailsTilesFileName = self.templatePath + MMTDefinitions.CONST_SYMBOLOGY_AI_RAILS_TILES_TEMPLATE
@@ -932,6 +933,7 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.aiRailsTilesVLayer = None
         self.railwayAxisPointsVLayer = None
         self.railwayAxisComputedVLayer = None
+        self.railwayAxisMergedVLayer = None
         self.aiRailsVLayer = None
         self.cvPhmRailsVLayer = None
         self.mergedRailsVLayer = None
@@ -1072,6 +1074,9 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.enableManuallyEditedSelectedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.selectEnableManuallyEditedSelectedRailwayAxisFromAxisPoints)
         self.disableSelectedRailwayAxisComputedPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisComputed)
         self.enableSelectedRailwayAxisComputedPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisComputed)
+        self.disableSelectedRailwayAxisMergedPushButton.clicked.connect(self.selectDisableSelectedRailwayAxisMerged)
+        self.enableSelectedRailwayAxisMergedPushButton.clicked.connect(self.selectEnableSelectedRailwayAxisMerged)
+        self.removeSelectedRailwayAxisMergedPushButton.clicked.connect(self.selectRemoveSelectedRailwayAxisMerged)
 
         self.computeManualEditedRailwayAxisFromAxisPointsPushButton.clicked.connect(self.computeManualEditedRailwayAxisFromAxisPoints)
 
@@ -1419,6 +1424,47 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
                     layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
                     layerNode.setExpanded(False)
                 layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.railwayAxisComputedVLayer.id())
+                layerNode.setExpanded(True)
+        # railway_axis_merged
+        railwayAxisMergedTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME
+        layerList = QgsProject.instance().mapLayersByName(railwayAxisMergedTableName)
+        if not layerList:
+            uri = QgsDataSourceUri()
+            uri.setDatabase(self.dbFileName)
+            schema = ''
+            table = railwayAxisMergedTableName
+            geom_column = MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_GEOMETRY_COLUMN
+            uri.setDataSource(schema, table, geom_column)
+            display_name = railwayAxisMergedTableName
+            vlayer = QgsVectorLayer(uri.uri(), display_name, 'spatialite')
+            if vlayer.isValid():
+                # if vlayer.featureCount() == 0:
+                #     return
+                QgsProject.instance().addMapLayer(vlayer, False)
+                self.layerTreeProject.insertChildNode(1, QgsLayerTreeLayer(vlayer))
+                vlayer.loadNamedStyle(self.qmlRailwayAxisMergedFileName)
+                vlayer.triggerRepaint()
+                self.iface.setActiveLayer(vlayer)
+                self.iface.zoomToActiveLayer()
+                self.railwayAxisMergedVLayer = vlayer
+                sldRailwayAxisMergedFileName = self.sldFilesPath + MMTDefinitions.CONST_SYMBOLOGY_SLD_RAILWAY_AXIS_MERGED_TEMPLATE
+                self.railwayAxisMergedVLayer.saveSldStyle(sldRailwayAxisMergedFileName)
+                if self.aiRailsImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailwaysImportVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailwaysImportVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailwaysImportVLayer.id())
+                    layerNode.setExpanded(False)
+                if self.aiRailsTilesVLayer.isValid():
+                    QgsProject.instance().layerTreeRoot().findLayer(
+                        self.aiRailsTilesVLayer.id()).setItemVisibilityChecked(False)
+                    layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.aiRailsTilesVLayer.id())
+                    layerNode.setExpanded(False)
+                layerNode = QgsProject.instance().layerTreeRoot().findLayer(self.railwayAxisMergedVLayer.id())
                 layerNode.setExpanded(True)
         # self.aiRailsImportVLayer = None
         aiRailsTableName = MMTDefinitions.CONST_SPATIALITE_LAYERS_AI_RAILS_TABLE_NAME
@@ -2711,6 +2757,45 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.railwayAxisComputedVLayer.removeSelection()
         return
 
+    def selectDisableSelectedRailwayAxisMerged(self):
+        if not self.railwayAxisMergedVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisMergedVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.railwayAxisMergedVLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisMergedVLayer.startEditing()
+        for feat_id in self.railwayAxisMergedVLayer.selectedFeatureIds():
+            self.railwayAxisMergedVLayer.changeAttributeValue(feat_id, field_enabled, 0)
+        self.railwayAxisMergedVLayer.commitChanges()
+        self.railwayAxisMergedVLayer.triggerRepaint()
+        self.railwayAxisMergedVLayer.removeSelection()
+        return
+
     def selectDisableSelectedRailwayAxisPoints(self):
         if not self.railwayAxisPointsVLayer:
             msgBox = QMessageBox(self)
@@ -2826,6 +2911,45 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.railwayAxisComputedVLayer.commitChanges()
         self.railwayAxisComputedVLayer.triggerRepaint()
         self.railwayAxisComputedVLayer.removeSelection()
+        return
+
+    def selectEnableSelectedRailwayAxisMerged(self):
+        if not self.railwayAxisMergedVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisMergedVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        field_enabled = (self.railwayAxisMergedVLayer.fields()
+                         .indexOf(MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_FIELD_ENABLED))
+        if field_enabled == -1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Not exists field: "
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_FIELD_ENABLED
+                    + " in layer:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisMergedVLayer.startEditing()
+        for feat_id in self.railwayAxisMergedVLayer.selectedFeatureIds():
+            self.railwayAxisMergedVLayer.changeAttributeValue(feat_id, field_enabled, 1)
+        self.railwayAxisMergedVLayer.commitChanges()
+        self.railwayAxisMergedVLayer.triggerRepaint()
+        self.railwayAxisMergedVLayer.removeSelection()
         return
 
     def selectEnableSelectedRailwayAxisPoints(self):
@@ -3400,6 +3524,33 @@ class qAicedroneDockWidget(QtWidgets.QDockWidget, FORM_CLASS):
         self.railwayAxisComputedVLayer.commitChanges()
         self.railwayAxisComputedVLayer.triggerRepaint()
         self.railwayAxisComputedVLayer.removeSelection()
+        return
+
+    def selectRemoveSelectedRailwayAxisMerged(self):
+        if not self.railwayAxisMergedVLayer:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = "Layer is not loaded:\n" + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        numberOfSelected = self.railwayAxisMergedVLayer.selectedFeatureCount()
+        if numberOfSelected < 1:
+            msgBox = QMessageBox(self)
+            msgBox.setIcon(QMessageBox.Information)
+            msgBox.setWindowTitle(self.windowTitle)
+            text = ("Select some feature from Layer:\n"
+                    + MMTDefinitions.CONST_SPATIALITE_LAYERS_RAILWAY_AXIS_MERGED_TABLE_NAME)
+            msgBox.setText(text)
+            msgBox.exec_()
+            return
+        self.railwayAxisMergedVLayer.startEditing()
+        for feat_id in self.railwayAxisMergedVLayer.selectedFeatureIds():
+            self.railwayAxisMergedVLayer.deleteFeature(feat_id)
+        self.railwayAxisMergedVLayer.commitChanges()
+        self.railwayAxisMergedVLayer.triggerRepaint()
+        self.railwayAxisMergedVLayer.removeSelection()
         return
 
     def selectRemoveSelectedRailwayAxisPoints(self):
