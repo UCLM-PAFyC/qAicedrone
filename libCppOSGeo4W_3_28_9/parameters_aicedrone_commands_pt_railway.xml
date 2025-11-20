@@ -1,54 +1,6 @@
 <!DOCTYPE ParametersManager>
 <ParametersManager version="1.1">
     <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_AltitudeTypeRailwayAxis</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Value list</Type>
-        <Description>Altitude type railway axis</Description>
-        <PrintSize>10</PrintSize>
-        <Unit>adimensional</Unit>
-        <ValueList>minimum;mean;maximum</ValueList>
-        <Value>minimum</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_DsmFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>DSM raster file, same CRS as project and with no data value.</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dsm_20mm_25830_5782.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_DtmFile</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>File</Type>
-        <Description>DTM raster file, same CRS as project and with no data value.</Description>
-        <PrintSize>200</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm_25830_5782.tif</Value>
-    </Parameter>
-    <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_ExteriorWidthFromRail</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Exterior width from rail for altitude computation, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>0.10</Value>
-        <MaximumValue>1.00</MaximumValue>
-        <MinimumValue>0.01</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
         <Command>3.1. Compute manually edited railway axis from axis points</Command>
         <Code>CMERWAFAP_LineAdjustTolerance</Code>
         <Enabled>Yes</Enabled>
@@ -74,20 +26,6 @@
         <Value>0.07</Value>
         <MaximumValue>0.12</MaximumValue>
         <MinimumValue>0.05</MinimumValue>
-        <PrintPrecision>2</PrintPrecision>
-    </Parameter>
-    <Parameter>
-        <Command>5. Compute railway axis from axis points</Command>
-        <Code>CMERWAFAP_RailwayAxisPointsDistance</Code>
-        <Enabled>Yes</Enabled>
-        <Tag></Tag>
-        <Type>Double precision number</Type>
-        <Description>Railway axis points distance, in meters</Description>
-        <PrintSize>20</PrintSize>
-        <Unit>adimensional</Unit>
-        <Value>2.00</Value>
-        <MaximumValue>10.00</MaximumValue>
-        <MinimumValue>0.50</MinimumValue>
         <PrintPrecision>2</PrintPrecision>
     </Parameter>
     <Parameter>
@@ -195,6 +133,163 @@
     <Parameter>
         <Command>3.2. Merge computed railway axis</Command>
         <Code>MCRWA_UseOnlyEnabledComputedRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Use only enabled points</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>true;false</ValueList>
+        <Value>true</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_RailHeadWidth</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Rail head width, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.07</Value>
+        <MaximumValue>0.12</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_TrackGauge</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Track gauge, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.668</Value>
+        <MaximumValue>3.100</MaximumValue>
+        <MinimumValue>1.400</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_RailwayAxisSegmentLength</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Railway axis segment length, in meters (1.20 for two sleepers at 0.6 m)</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>1.20</Value>
+        <MaximumValue>10.00</MaximumValue>
+        <MinimumValue>0.50</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_HeightTypeRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Value list</Type>
+        <Description>Height type railway axis</Description>
+        <PrintSize>10</PrintSize>
+        <Unit>adimensional</Unit>
+        <ValueList>minimum;axis;maximum</ValueList>
+        <Value>minimum</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_MaximumCamber</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Maximum camber, in meters, https://cdn.mitma.gob.es/portal-web-drupal/esinf_paisvasco-bilbao-abando_05_trazado_y_superestructura.pdf</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.160</Value>
+        <MaximumValue>0.190</MaximumValue>
+        <MinimumValue>0.050</MinimumValue>
+        <PrintPrecision>3</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_CamberSignificativeRatioMeanStd</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Significative minimum value of ratio Std versus Mean. 10 means is significatie when mean is greather than 10 times std</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10.0</Value>
+        <MaximumValue>10000.0</MaximumValue>
+        <MinimumValue>1.0</MinimumValue>
+        <PrintPrecision>1</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_CamberMinimumNumberOfInliers</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Integer number</Type>
+        <Description>Minimum number of inliers for significative camber</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>10</Value>
+        <MaximumValue>1000</MaximumValue>
+        <MinimumValue>3</MinimumValue>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_DtmFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>File</Type>
+        <Description>DTM raster file, same CRS as project and with no data value.</Description>
+        <PrintSize>200</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/Metashape/metashape_railway_dtm_20mm_25830_5782.tif</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_CamberBufferRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Distance from railway axis to compute camber, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.40</Value>
+        <MaximumValue>0.80</MaximumValue>
+        <MinimumValue>0.30</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_HeightBufferRailwayAxis</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>Double precision number</Type>
+        <Description>Distance from railway axis to compute height, in meters</Description>
+        <PrintSize>20</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>0.10</Value>
+        <MaximumValue>0.50</MaximumValue>
+        <MinimumValue>0.05</MinimumValue>
+        <PrintPrecision>2</PrintPrecision>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_ReportFile</Code>
+        <Enabled>Yes</Enabled>
+        <Tag></Tag>
+        <Type>SaveFile</Type>
+        <Description>Report file, empty for no report</Description>
+        <PrintSize>300</PrintSize>
+        <Unit>adimensional</Unit>
+        <Value>D:/Aicedrone/20231120_Gandia_Rail/qAicedrone/output_202510/Compute_3D_railway_axis_report.txt</Value>
+    </Parameter>
+    <Parameter>
+        <Command>3.3. Compute 3D railway axis</Command>
+        <Code>C3DRWAXS_UseOnlyEnabledMergedRailwayAxis</Code>
         <Enabled>Yes</Enabled>
         <Tag></Tag>
         <Type>Value list</Type>
